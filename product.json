@@ -1,0 +1,26 @@
+[
+    {
+        "name": "厚帽子",
+        "price": 90.0,
+        "discountCoefficient": 0.8,
+        "discountDay": 6,
+        "firstRecordTime": "2023-12-22T16:53:50.642891",
+        "purchaseTime": ""
+    },
+    {
+        "name": "杜莎夫人蜡像馆",
+        "price": 95.0,
+        "discountCoefficient": 0.6,
+        "discountDay": 5,
+        "firstRecordTime": "2023-12-23T17:27:10.611044",
+        "purchaseTime": ""
+    },
+    {
+        "name": "本周出行",
+        "price": 120.0,
+        "discountCoefficient": 0.7,
+        "discountDay": 6,
+        "firstRecordTime": "2023-12-22T16:53:50.642904",
+        "purchaseTime": ""
+    }
+]

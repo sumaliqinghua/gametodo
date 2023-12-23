@@ -1,0 +1,18 @@
+[
+    {
+        "name": "电池",
+        "price": 20.0,
+        "discountCoefficient": 0.8,
+        "discountDay": 1,
+        "firstRecordTime": "2023-12-22T16:53:50.642830",
+        "purchaseTime": "2023-12-22T17:09:27.444627"
+    },
+    {
+        "name": "5L农夫山泉",
+        "price": 20.0,
+        "discountCoefficient": 0.8,
+        "discountDay": 8,
+        "firstRecordTime": "2023-12-23T13:21:37.541985",
+        "purchaseTime": "2023-12-23T13:22:21.427595"
+    }
+]

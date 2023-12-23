@@ -1,0 +1,95 @@
+{
+    "2023-12-22": [
+        {
+            "difficulty": "中等",
+            "task": "爱好",
+            "tomatoes": 5,
+            "tomatoes_today": 5,
+            "continuous": 0,
+            "coins": 62.2,
+            "gain": 10.0,
+            "last_active_days": "2023-12-21T15:46:17.390559",
+            "last_time": "2023-12-22T15:09:39.055863"
+        },
+        {
+            "difficulty": "中等",
+            "task": "爱好",
+            "tomatoes": 6,
+            "tomatoes_today": 6,
+            "continuous": 0,
+            "coins": 74.2,
+            "gain": 10.0,
+            "last_active_days": "2023-12-21T15:46:17.390559",
+            "last_time": "2023-12-22T16:25:28.588646"
+        },
+        {
+            "difficulty": "中等",
+            "task": "爱好",
+            "tomatoes": 4,
+            "tomatoes_today": 4,
+            "continuous": 0,
+            "coins": 57.0,
+            "gain": 10.0,
+            "last_active_days": "2023-12-21T15:46:17.390559",
+            "last_time": "2023-12-22T17:01:44.400393"
+        }
+    ],
+    "2023-12-23": [
+        {
+            "difficulty": "中等",
+            "task": "工作",
+            "achievement": 0.4,
+            "focus": 3,
+            "tomatoes": 9,
+            "tomatoes_today": 2,
+            "continuous": 0,
+            "coins": 67.06,
+            "gain": 10.0,
+            "last_active_days": "2023-12-21T15:46:17.390559",
+            "last_time": "2023-12-23T13:42:02.074338",
+            "time_delta": 84.87214873333333
+        },
+        {
+            "difficulty": "中等",
+            "task": "工作",
+            "achievement": 0.4,
+            "focus": 3,
+            "tomatoes": 9,
+            "tomatoes_today": 2,
+            "continuous": 0,
+            "coins": 67.06,
+            "gain": 10.0,
+            "last_active_days": "2023-12-21T15:46:17.390559",
+            "last_time": "2023-12-23T13:42:02.074338",
+            "time_delta": 84.87214873333333
+        },
+        {
+            "difficulty": "中等",
+            "task": "爱好",
+            "achievement": 0.8,
+            "focus": 3,
+            "tomatoes": 10,
+            "tomatoes_today": 3,
+            "continuous": 0,
+            "coins": 71.51,
+            "gain": 5.45,
+            "last_active_days": "2023-12-21T15:46:17.390559",
+            "last_time": "2023-12-23T17:30:01.739432",
+            "time_delta": 227.99432678333332
+        },
+        {
+            "difficulty": "中等",
+            "task": "工作",
+            "achievement": 0.5,
+            "focus": 1,
+            "tomatoes": 11,
+            "tomatoes_today": 4,
+            "continuous": 0,
+            "coins": 80.0,
+            "gain": 8.49,
+            "last_active_days": "2023-12-21T15:46:17.390559",
+            "last_time": "2023-12-23T18:33:42.842211",
+            "time_delta": 63.684937
+        }
+    ]
+}
