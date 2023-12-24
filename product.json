@@ -2,6 +2,8 @@
     {
         "name": "unity插件:seatodo",
         "price": 35.0,
+        "type": "教育",
+        "comments": "厚帽子，防风保暖",
         "discountCoefficient": 0.8,
         "discountDay": 7,
         "firstRecordTime": "2023-12-23T19:27:10.467880",
@@ -11,9 +13,11 @@
         "name": "杜莎夫人蜡像馆",
         "price": 95.0,
         "type": "出行",
+        "comments": "厚帽子，防风保暖",
         "discountCoefficient": 0.6,
         "discountDay": 5,
         "firstRecordTime": "2023-12-23T17:27:10.611044",
-        "purchaseTime": ""
+        "purchaseTime": "",
+        "comment": "非常不错，值得购买"
     }
 ]

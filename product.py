@@ -9,6 +9,7 @@ import random
 from statics import total_stats
 
 from utils import savejson
+purchased_product_file_path = 'purchased_product.json'
 
 product_file_path = 'product.json'
 product_type_dict = {
@@ -26,14 +27,67 @@ product = {
       "price": 15.0,
       "type": "其他",
       "discountCoefficient": 0.8,
+      "comments": "厚帽子，防风保暖",
       "discountDay": -1,#折扣日 日期个位正好和价格个位数相等 0.6-0.99折扣
       "firstRecordTime": "",#添加产品后首次记录番茄的时间
-      "purchaseTime": ""
+      "purchaseTime": "",
+      "writeoffTime": "",
     }
+def ExchangeProduct():
+    purchased_data = []
+    notwriteoff_index = []
+    if os.path.exists(purchased_product_file_path):
+      with open(purchased_product_file_path, 'r',encoding='utf8') as file:
+        purchased_data = json.load(file)
+    for index,product in enumerate(purchased_data):
+       if 'writeoffTime' not in product or product['writeoffTime'] == "":
+            notwriteoff_index.append(index)
+    if len(notwriteoff_index) != 0:
+       print("还未核销的商品有:")
+       for index in notwriteoff_index:
+           product = purchased_data[index]
+           print('{}:{}'.format(index,product['name']))
+    while True:
+        product_index = int(input("请输入要核销的商品序号:"))
+        if product_index in notwriteoff_index:
+            product = purchased_data[product_index]
+            product['writeoffTime'] = str(datetime.today())
+            print("核销 {} 成功".format(product['name']))
+            check = input("是否继续核销商品?(y/n)")
+            if check == 'n':
+                break
+            else:
+                continue
+        else:
+            print("商品无法核销")
+            break
+    savejson(purchased_product_file_path,purchased_data)
+
+    purchased_data.append(product)
+def GotoStore():
+    print("欢迎来到商品商城")
+    while True:
+        print("1.购买商品")
+        print("2.核销商品")
+        print("3.取消")
+        choice = input("请输入选项:")
+        if choice == "1":
+            RecordProduct()
+        elif choice == "2":
+            ExchangeProduct()
+        elif choice == "3":
+            break
+        else:
+            print("输入错误")
+            continue
+def total_stats():
+    purchased_data = []
+    notwriteoff_index = []
 def RecordProduct():
     name = input("请输入商品名称:")
     type = input("请选择商品分类: 娱乐1/服装2/健康3/出行4/教育5/数码6/其他7")
     type = product_type_dict[type]
+    comments = input("请输入商品备注:")
     price = float(input("请输入商品价格:"))
     # 当价格超出一天平均日的gain时询问希望几天内获得，调整商品价格并确认
     average_gains = total_stats()['daily_average_gains']
@@ -51,10 +105,12 @@ def RecordProduct():
         "name": name,
         "price": price, 
         "type": type,
+        "comments": comments,
         "discountCoefficient": discountCoefficient,
         "discountDay": random.randint(0,9),
         "firstRecordTime": datetime.now().isoformat(),
-        "purchaseTime": ""
+        "purchaseTime": "",
+        "writeoffTime": ""
     }
     data = CheckProductFile()
     data.append(product_info)
@@ -118,7 +174,6 @@ def PurchaseProduct(cash):
     #   json.dump(data, file,ensure_ascii=False)
       
     # 将购买的商品追加到purchased_product_file_pathjson中
-    purchased_product_file_path = 'purchased_product.json'
     purchased_data = []
     if os.path.exists(purchased_product_file_path):
       with open(purchased_product_file_path, 'r',encoding='utf8') as file:

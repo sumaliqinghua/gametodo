@@ -5,7 +5,7 @@ import math
 import os
 import random
 
-from product import CanBuyOne, PurchaseProduct, RecordProduct
+from product import CanBuyOne, GotoStore, PurchaseProduct, RecordProduct
 from recordLog import add_record
 from statics import record_all_tomatoes, show_today_stats
 from utils import savejson
@@ -143,7 +143,7 @@ def main():
     elif operation == "3":
         add_record()
     elif operation == "4":
-        RecordProduct()
+        GotoStore()
     else:
         print("无效的选择")
         return
