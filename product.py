@@ -11,10 +11,20 @@ from statics import total_stats
 from utils import savejson
 
 product_file_path = 'product.json'
-
+product_type_dict = {
+        '1': '娱乐',
+        '2': '服装',
+        '3': '健康',
+        '4': '出行',
+        '5': '教育',
+        '6': '数码',
+        '7': '其他'
+        # //【?】虚拟的单独一类？
+    }
 product = {
       "name": "厚帽子",
       "price": 15.0,
+      "type": "其他",
       "discountCoefficient": 0.8,
       "discountDay": -1,#折扣日 日期个位正好和价格个位数相等 0.6-0.99折扣
       "firstRecordTime": "",#添加产品后首次记录番茄的时间
@@ -22,22 +32,25 @@ product = {
     }
 def RecordProduct():
     name = input("请输入商品名称:")
+    type = input("请选择商品分类: 娱乐1/服装2/健康3/出行4/教育5/数码6/其他7")
+    type = product_type_dict[type]
     price = float(input("请输入商品价格:"))
     # 当价格超出一天平均日的gain时询问希望几天内获得，调整商品价格并确认
     average_gains = total_stats()['daily_average_gains']
 
     if price > average_gains * 1.5:
         adjust = input("该商品价格较高,是否调整商品价格?(y/n)")
-    if adjust == 'y':
-        days = int(input("您希望在几天内获得收益?"))
-        new_price = average_gains * days
-        confirm = input(f"该商品价格调整为{new_price},确定使用新价格吗?(y/n)")
-        if confirm == 'y':
-            price = new_price
+        if adjust == 'y':
+            days = int(input("您希望在几天内获得该商品?"))
+            new_price = average_gains * days
+            confirm = input(f"该商品价格调整为{new_price},确定使用新价格吗?(y/n)")
+            if confirm == 'y':
+                price = new_price
     discountCoefficient = float(input("请输入打折日的折扣力度:"))
     product_info = {
         "name": name,
         "price": price, 
+        "type": type,
         "discountCoefficient": discountCoefficient,
         "discountDay": random.randint(0,9),
         "firstRecordTime": datetime.now().isoformat(),

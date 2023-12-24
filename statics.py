@@ -75,8 +75,8 @@ def record_all_tomatoes(user):
         data[today].append(user)
     else:
         data[today] = [user]
-    show_today_stats()
     savejson(file_path,data)
+    show_today_stats()
 
 def get_all_tomatoes_data():
     file_exists = os.path.exists(file_path)

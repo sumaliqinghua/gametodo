@@ -2,6 +2,7 @@
     {
         "name": "电池",
         "price": 20.0,
+        "type": "数码",
         "discountCoefficient": 0.8,
         "discountDay": 1,
         "firstRecordTime": "2023-12-22T16:53:50.642830",
@@ -10,9 +11,19 @@
     {
         "name": "5L农夫山泉",
         "price": 20.0,
+        "type": "健康",
         "discountCoefficient": 0.8,
         "discountDay": 8,
         "firstRecordTime": "2023-12-23T13:21:37.541985",
         "purchaseTime": "2023-12-23T13:22:21.427595"
+    },
+    {
+        "name": "厚帽子",
+        "price": 90.0,
+        "type": "服装",
+        "discountCoefficient": 0.8,
+        "discountDay": 6,
+        "firstRecordTime": "2023-12-22T16:53:50.642891",
+        "purchaseTime": "2023-12-23T19:20:58.533767"
     }
 ]

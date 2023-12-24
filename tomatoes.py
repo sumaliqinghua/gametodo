@@ -183,7 +183,7 @@ def record_tomatoes():
         last_time = datetime.fromisoformat(user.get('last_time'))
         time_delta = (datetime.now() - last_time).total_seconds() / 60
         print("系统正在加强您的属性👏🏻改变正在发生，距离上次提升记录已过去{}分钟".format(time_delta))
-        is_continuous = time_delta <= 30
+        is_continuous = time_delta <= 25+20#在20分钟内又完成了一个番茄
         if is_continuous:
             continuous_count = user['continuous'] + 1
     
