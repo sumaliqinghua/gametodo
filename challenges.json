@@ -1,0 +1,16 @@
+{
+    "active": [
+        {
+            "name": "1",
+            "desc": "1",
+            "bonus": 45.0,
+            "goal": 1,
+            "cost": 10.0,
+            "progress": 0,
+            "start_time": "2023-12-26T19:44:29.877910",
+            "duration": 1.0,
+            "failed": false
+        }
+    ],
+    "finished": []
+}

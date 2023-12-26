@@ -140,18 +140,6 @@ def RecordProduct():
                 price = new_price
     discountCoefficient = float(input("请输入打折日的折扣力度:"))
     product = Product(name, price, type, discountCoefficient, comments) 
-
-    # product_info = {
-    #     "name": name,
-    #     "price": price, 
-    #     "type": type,
-    #     "comments": comments,
-    #     "discountCoefficient": discountCoefficient,
-    #     "discountDay": random.randint(0,9),
-    #     "firstRecordTime": datetime.now().isoformat(),
-    #     "purchaseTime": "",
-    #     "writeoffTime": ""
-    # }
     data = load_products()
     data.append(product)
     savejson(product_file_path,data)
@@ -175,15 +163,6 @@ def load_products(file_path = 'product.json'):
 
   return products
 
-# def CheckProductFile():
-#     file_exists = os.path.exists(product_file_path)
-#     # 如果文件存在，读取已有数据
-#     if file_exists:
-#         with open(product_file_path, 'r',encoding='utf8') as file:
-#             data = json.load(file)
-#     else:
-#         data = []
-#     return data
 def PurchaseProduct(cash):
     print("欢迎光临小店，当前余额{}".format(cash))
     # 检查文件是否存在
@@ -201,11 +180,6 @@ def PurchaseProduct(cash):
                 print('可以兑换商品:{},价格:{},序号为:{}'.format(product.name,product.get_price(),index))
             else:
                 break
-    # //【C】上面的 hasUpdated只是最后一次的值不能拿这个判断
-    # if hasUpdated:
-    #     savejson(product_file_path,data)
-        # with open(product_file_path, 'w',encoding='utf8') as file:
-        #     json.dump(data, file,ensure_ascii=False)
 
     ind = input('请输入要购买的商品序号(-1取消购买):')
     if ind == '-1':
@@ -227,9 +201,6 @@ def PurchaseProduct(cash):
     # 将原json种对应商品剔除掉更新json
     data.pop(ind)
     savejson(product_file_path,data)
-
-    # with open(product_file_path, 'w') as file:
-    #   json.dump(data, file,ensure_ascii=False)
       
     # 将购买的商品追加到purchased_product_file_pathjson中
     purchased_data = load_products(purchased_product_file_path)
@@ -240,11 +211,7 @@ def PurchaseProduct(cash):
     #   json.dump(purchased_data, file,ensure_ascii=False)
     print("蟹蟹惠顾٩('ω')و")
     return cash
-#If discountDay is -1, randomly assign it to 0-9
-# Get today's date
-# Check if discountDay matches last digit of today's date
-# If matches, update price by multiplying discountCoefficient
-# Else return original price
+
 def CanBuyOne(cash):
     data = load_products()
     data = sorted(data, key=lambda x: x.get_price())

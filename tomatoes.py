@@ -4,6 +4,7 @@ import json
 import math
 import os
 import random
+from Challenge import create_challenge, create_random_challenge, load_challenges, save_challenges
 from User import User
 
 from product import CanBuyOne, GotoStore, PurchaseProduct, RecordProduct
@@ -120,6 +121,24 @@ def main():
 
 def record_tomatoes():
     # 输入当前数据
+    try:
+        challenges = load_challenges(True)
+    except:
+        challenges = []
+
+    if challenges and len(challenges) != 0:
+        #更新challege的进度
+        for challenge in challenges:
+            challenge.update_progress()
+            print("挑战任务:{}进度{}/{}".format(challenge.name, challenge.progress, challenge.goal))
+    else:
+        # 没有未完成挑战,按概率触发新的
+        # challenges = generate_challenges(user)
+        challenge = create_random_challenge()
+        if challenge:
+            challenges = [challenge]
+            print("新挑战任务:{}".format(challenge.name))
+    save_challenges(challenges, user)
     difficulty = input('请输入难度(简单1/中等2/困难3):')  #根据数字转成对应的中文
     task = input('请输入任务类型(工作1/爱好2/杂事3):')
 
@@ -179,7 +198,6 @@ def record_tomatoes():
     
     if user.last_active_days == "":
         user.last_active_days = datetime.now().isoformat()
-
     
     # 检查是否达到每日目标
     if user.tomatoes_today == DAILY_GOAL:
@@ -187,9 +205,23 @@ def record_tomatoes():
         user.coins += DAILY_REWARD
         user.gains += DAILY_REWARD
         user.save_user_data()
-    # with open('user.json', 'w') as f:
-    #     json.dump(user, f)
     
+
+    
+    # if challenges and len(challenges) != 0:
+    #     #更新challege的进度
+    #     for challenge in challenges:
+    #         challenge.update_progress()
+    #         print("挑战任务:{}进度{}/{}".format(challenge.name, challenge.progress, challenge.goal))
+    # else:
+    #     # 没有未完成挑战,按概率触发新的
+    #     # challenges = generate_challenges(user)
+    #     challenge = create_random_challenge()
+    #     if challenge:
+    #         challenges = [challenge]
+    #         print("新挑战任务:{}".format(challenge.name))
+    # save_challenges(challenges, user)
+
     record_all_tomatoes(user)
     print('本次获得 {} 金币'.format(coins))
     print('当前金币数:{}'.format(user.coins))
