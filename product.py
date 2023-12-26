@@ -6,9 +6,8 @@ from datetime import datetime
 import json
 import os
 import random
-from statics import total_stats
+from statics import show_today_stats, total_stats
 
-from utils import savejson
 purchased_product_file_path = 'purchased_product.json'
 
 product_file_path = 'product.json'
@@ -19,40 +18,70 @@ product_type_dict = {
         '4': '出行',
         '5': '教育',
         '6': '数码',
-        '7': '其他'
+        '7': '礼物',
+        '8': '家居',
+        '9': '美食',
+        '10': '美妆',
+        '11': '宠物',
+        '12': '虚拟',
+        '13': '其他',
         # //【?】虚拟的单独一类？
     }
-product = {
-      "name": "厚帽子",
-      "price": 15.0,
-      "type": "其他",
-      "discountCoefficient": 0.8,
-      "comments": "厚帽子，防风保暖",
-      "discountDay": -1,#折扣日 日期个位正好和价格个位数相等 0.6-0.99折扣
-      "firstRecordTime": "",#添加产品后首次记录番茄的时间
-      "purchaseTime": "",
-      "writeoffTime": "",
-    }
+# product = {
+#       "name": "厚帽子",
+#       "price": 15.0,
+#       "type": "其他",
+#       "discountCoefficient": 0.8,
+#       "comments": "厚帽子，防风保暖",
+#       "discountDay": -1,#折扣日 日期个位正好和价格个位数相等 0.6-0.99折扣
+#       "firstRecordTime": "",#添加产品后首次记录番茄的时间
+#       "purchaseTime": "",
+#       "writeoffTime": "",
+#     }
+
+class Product:
+  
+  def __init__(self, name, price, type, discountCoefficient, comments, discountDay = -1, firstRecordTime ='', purchaseTime ='', writeoffTime = ''):
+    self.name = name
+    self.price = price
+    self.type = type
+    self.discountCoefficient = discountCoefficient
+    self.comments = comments
+    self.discountDay = discountDay if discountDay >= 0 else random.randint(0, 9)
+    self.firstRecordTime = firstRecordTime
+    self.purchaseTime = purchaseTime
+    self.writeoffTime = writeoffTime
+    
+  def get_price(self):
+    today = datetime.today()
+    price = self.price
+    if self.discountDay == today.day % 10:
+        price *= self.discountCoefficient
+    return price
+    
+# 修改后的数据存储
+products = [] 
+
 def ExchangeProduct():
-    purchased_data = []
-    notwriteoff_index = []
-    if os.path.exists(purchased_product_file_path):
-      with open(purchased_product_file_path, 'r',encoding='utf8') as file:
-        purchased_data = json.load(file)
-    for index,product in enumerate(purchased_data):
-       if 'writeoffTime' not in product or product['writeoffTime'] == "":
-            notwriteoff_index.append(index)
-    if len(notwriteoff_index) != 0:
-       print("还未核销的商品有:")
-       for index in notwriteoff_index:
-           product = purchased_data[index]
-           print('{}:{}'.format(index,product['name']))
     while True:
+        notwriteoff_index = []
+        purchased_data = load_products(purchased_product_file_path)
+        for index,product in enumerate(purchased_data):
+            if product.writeoffTime == "":
+                notwriteoff_index.append(index)
+        if len(notwriteoff_index) != 0:
+            print("还未核销的商品有:")
+            for index in notwriteoff_index:
+                product = purchased_data[index]
+                print('{}:{}'.format(index,product.name))
+        else:
+            print("所有商品都已核销")
+            break
         product_index = int(input("请输入要核销的商品序号:"))
         if product_index in notwriteoff_index:
             product = purchased_data[product_index]
-            product['writeoffTime'] = str(datetime.today())
-            print("核销 {} 成功".format(product['name']))
+            product.writeoffTime = str(datetime.today())
+            print("核销 {} 成功".format(product.name))
             check = input("是否继续核销商品?(y/n)")
             if check == 'n':
                 break
@@ -64,28 +93,37 @@ def ExchangeProduct():
     savejson(purchased_product_file_path,purchased_data)
 
     purchased_data.append(product)
-def GotoStore():
+def GotoStore(user):
     print("欢迎来到商品商城")
     while True:
-        print("1.购买商品")
+        print("1.录入商品")
         print("2.核销商品")
-        print("3.取消")
+        print("3.购买商品")
+        print("4.取消")
         choice = input("请输入选项:")
         if choice == "1":
             RecordProduct()
+            continue
         elif choice == "2":
             ExchangeProduct()
+            continue
         elif choice == "3":
+            cash = PurchaseProduct(user.coins)
+            user.coins = cash
+            user.save_user_data()
+            show_today_stats()
+            continue
+        elif choice == "4":
             break
         else:
             print("输入错误")
             continue
-def total_stats():
-    purchased_data = []
-    notwriteoff_index = []
+
 def RecordProduct():
     name = input("请输入商品名称:")
-    type = input("请选择商品分类: 娱乐1/服装2/健康3/出行4/教育5/数码6/其他7")
+    for i in range(len(product_type_dict)):
+        print(i+1,":",product_type_dict[str(i+1)])
+    type = input("请选择商品分类:")
     type = product_type_dict[type]
     comments = input("请输入商品备注:")
     price = float(input("请输入商品价格:"))
@@ -101,34 +139,55 @@ def RecordProduct():
             if confirm == 'y':
                 price = new_price
     discountCoefficient = float(input("请输入打折日的折扣力度:"))
-    product_info = {
-        "name": name,
-        "price": price, 
-        "type": type,
-        "comments": comments,
-        "discountCoefficient": discountCoefficient,
-        "discountDay": random.randint(0,9),
-        "firstRecordTime": datetime.now().isoformat(),
-        "purchaseTime": "",
-        "writeoffTime": ""
-    }
-    data = CheckProductFile()
-    data.append(product_info)
-    savejson(product_file_path,data)
+    product = Product(name, price, type, discountCoefficient, comments) 
 
-def CheckProductFile():
-    file_exists = os.path.exists(product_file_path)
-    # 如果文件存在，读取已有数据
-    if file_exists:
-        with open(product_file_path, 'r',encoding='utf8') as file:
-            data = json.load(file)
-    else:
-        data = []
-    return data
+    # product_info = {
+    #     "name": name,
+    #     "price": price, 
+    #     "type": type,
+    #     "comments": comments,
+    #     "discountCoefficient": discountCoefficient,
+    #     "discountDay": random.randint(0,9),
+    #     "firstRecordTime": datetime.now().isoformat(),
+    #     "purchaseTime": "",
+    #     "writeoffTime": ""
+    # }
+    data = load_products()
+    data.append(product)
+    savejson(product_file_path,data)
+def savejson(file_path,products):
+    product_dicts = [product.__dict__ for product in products] 
+    with open(file_path, 'w', encoding='utf-8') as output:
+        json.dump(product_dicts, output, indent=4, ensure_ascii=False)
+# 新加一个从json加载产品列表的函数  
+def load_products(file_path = 'product.json'):
+
+  file_exists = os.path.exists(file_path)
+  
+  if file_exists:
+    with open(file_path) as f:
+      product_dicts = json.load(f)
+
+    products = [Product(d['name'], d['price'], d['type'], d['discountCoefficient'], d['comments'], d['discountDay'], d['firstRecordTime'], d['purchaseTime'], d['writeoffTime']) 
+                for d in product_dicts]
+  else:
+    products = []
+
+  return products
+
+# def CheckProductFile():
+#     file_exists = os.path.exists(product_file_path)
+#     # 如果文件存在，读取已有数据
+#     if file_exists:
+#         with open(product_file_path, 'r',encoding='utf8') as file:
+#             data = json.load(file)
+#     else:
+#         data = []
+#     return data
 def PurchaseProduct(cash):
     print("欢迎光临小店，当前余额{}".format(cash))
     # 检查文件是否存在
-    data = CheckProductFile()
+    data = load_products()
     ind = 0
     # 检查是否可以兑换商品
     dvalue,x = CanBuyOne(cash)
@@ -138,9 +197,8 @@ def PurchaseProduct(cash):
         return cash
     else:
         for index,product in enumerate(data):
-            price,hasUpdated = UpdateProductProperty(product)
-            if price <= cash:
-                print('可以兑换商品:{},价格:{},序号为:{}'.format(product['name'],product['price'],index))
+            if product.get_price() <= cash:
+                print('可以兑换商品:{},价格:{},序号为:{}'.format(product.name,product.get_price(),index))
             else:
                 break
     # //【C】上面的 hasUpdated只是最后一次的值不能拿这个判断
@@ -159,12 +217,12 @@ def PurchaseProduct(cash):
     product = data[ind]
     
     # 购买指定商品并更新cash值,打印信息
-    if product['price'] > cash:
+    if product.get_price() > cash:
         print("余额不足(⊙︿⊙)")
         return cash
-    cash -= product['price']
-    product['purchaseTime'] = datetime.now().isoformat()
-    print('已购买商品:{} 余额剩余:{}'.format(product['name'], cash))
+    cash -= product.get_price()
+    product.purchaseTime = datetime.now().isoformat()
+    print('已购买商品:{} 余额剩余:{}'.format(product.name, cash))
     
     # 将原json种对应商品剔除掉更新json
     data.pop(ind)
@@ -174,10 +232,7 @@ def PurchaseProduct(cash):
     #   json.dump(data, file,ensure_ascii=False)
       
     # 将购买的商品追加到purchased_product_file_pathjson中
-    purchased_data = []
-    if os.path.exists(purchased_product_file_path):
-      with open(purchased_product_file_path, 'r',encoding='utf8') as file:
-        purchased_data = json.load(file)
+    purchased_data = load_products(purchased_product_file_path)
     purchased_data.append(product)
     savejson(purchased_product_file_path,purchased_data)
 
@@ -191,19 +246,7 @@ def PurchaseProduct(cash):
 # If matches, update price by multiplying discountCoefficient
 # Else return original price
 def CanBuyOne(cash):
-    data = CheckProductFile()
-    data = sorted(data, key=lambda x: x['price'])
+    data = load_products()
+    data = sorted(data, key=lambda x: x.get_price())
     savejson(product_file_path,data)
-    return cash - data[0]['price'],data[0]['name']
-#//【C】这个函数意义不大了
-def UpdateProductProperty(product):
-  hasUpdated = False
-#   if product['firstRecordTime'] == "":
-#     hasUpdated = True
-#     product['firstRecordTime'] = datetime.now().isoformat()
-  today = datetime.today()
-  if product['discountDay'] == today.day % 10:
-    product['price'] *= product['discountCoefficient']
-    return product['price'],hasUpdated
-  else:
-    return product['price'], hasUpdated
+    return cash - data[0].get_price(),data[0].name

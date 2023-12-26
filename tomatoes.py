@@ -4,6 +4,7 @@ import json
 import math
 import os
 import random
+from User import User
 
 from product import CanBuyOne, GotoStore, PurchaseProduct, RecordProduct
 from recordLog import add_record
@@ -25,11 +26,11 @@ Time_LEVEL = {0:0.6, 1:0.8, 2:1.0, 3:1.2, 4:1.5}
 # 检测到今日首次登陆时设置今日目标
 # //【C】今日到指定个数番茄额外奖励
 # 保留小数两位
-DAILY_GOAL = 100
-DAILY_REWARD = 20
+DAILY_GOAL = 8
+DAILY_REWARD = 50
 
 DECAY_AMOUNT = 50 #达到此数值开始衰减
-DECAY_RATE = 0.15
+DECAY_RATE = 0.08
 
 
 # 时间因素
@@ -41,25 +42,10 @@ PRODUCTS = {'电池': 20, '帽子': 100, '奖杯': 200}
 
 firstLaunch = False
 
-# # 用户数据
-user = {
-  'difficulty': '中等',
-  'task': '工作',
-  'achievement': 0.0,
-  'focus': 2,
-  'tomatoes': 0,#总番茄数
-  'tomatoes_today': 0, #今日番茄数
-  'continuous': 0, #【?】//S:连续完成番茄数
-  'coins': 0.0,
-  'gain': 0.0,
-  'last_active_days': "",  #//S:连续使用天数//【C】保存上一次开始的时间，如果某次_time超过了24则把
-  'last_time': ''
-}
-
 def calculate_coins(task, continuous_count,time_delta):
     
     # 计算难度和任务类型系数
-    difficulty_coeff = DIFFICULTY[user['difficulty']]
+    difficulty_coeff = DIFFICULTY[user.difficulty]
     task_coeff = TASK_TYPE[task]
     
     if continuous_count < 6:
@@ -81,9 +67,9 @@ def calculate_coins(task, continuous_count,time_delta):
     print('时间耗费{}'.format(time_punish))
     reward -= time_punish
     # 成果分直接累加到奖励中
-    reward += user['achievement'] * reward
+    reward += user.achievement * reward
     # 根据专注度得到系数乘以基础奖励
-    focus_coeff = FOCUS_LEVEL[user['focus']]
+    focus_coeff = FOCUS_LEVEL[user.focus]
     reward = reward * focus_coeff
     reward = round(reward, 2)
     if firstLaunch:
@@ -94,12 +80,12 @@ def calculate_coins(task, continuous_count,time_delta):
     #     reward += continuous_bonus
     
     # 加上时间因素奖励 特定任务奖励
-    # if user['task'] == 'urgent':
+    # if user.task == 'urgent':
     #     reward *= URGENT_BONUS
     #特定时间奖励
     #   if datetime.date.today().day == 1:  //S:限时赛事奖励
     #     reward *= LIMIT_BONUS
-    last_time = datetime.fromisoformat(user.get('last_time'))
+    last_time = datetime.fromisoformat(user.last_time)
     # 添加随机奖励
     if last_time:
         delta = (datetime.now() - last_time).total_seconds() / 3600
@@ -114,36 +100,20 @@ def main():
     global user,firstLaunch
     # 加载用户数据
     print('当前时间{}, 欢迎━(*｀∀´*)ノ亻!'.format(datetime.now().isoformat()))
-
-    try:
-        with open('user.json') as f:
-            user = json.load(f)
-    except FileNotFoundError:
-        # 如果文件不存在，则创建新的用户数据
-        savejson('user.json',user)
-        # with open('user.json', 'w') as f:
-        #     json.dump(user, f)
-        firstLaunch = True
-    operation = input("请选择服务(番茄记录1/购买商品2/单纯日志记录3/添加商品4):")
+    user = User()
+    operation = input("请选择服务(番茄记录1/进入商城2/单纯日志记录3):")
     if not operation or operation == "1":
         record_tomatoes()
-        dvalue,x = CanBuyOne(user['coins'])
+        dvalue,x = CanBuyOne(user.coins)
         print('当前现金购买商品{},{}{}元'.format(x, '多出' if dvalue > 0 else '还差',abs(round(dvalue,2))))
         record = input("是否立即记录日志(否0/是1):")
-        if record == "1":
+        if record == "1" or record == "":
             add_record()
-        savejson('user.json',user)
+        user.save_user_data()
     elif operation == "2":
-        cash = PurchaseProduct(user['coins'])
-        user['coins'] = cash
-        savejson('user.json',user)
-        show_today_stats()
-        # with open('user.json', 'w') as f:
-        #     json.dump(user, f)
+        GotoStore(user)
     elif operation == "3":
         add_record()
-    elif operation == "4":
-        GotoStore()
     else:
         print("无效的选择")
         return
@@ -180,17 +150,17 @@ def record_tomatoes():
         print("欢迎您使用未来科技提升系统👏🏻，在游戏中改进您的真实属性")
     else:
         # 计算时间间隔
-        last_time = datetime.fromisoformat(user.get('last_time'))
+        last_time = datetime.fromisoformat(user.last_time)
         time_delta = (datetime.now() - last_time).total_seconds() / 60
         print("系统正在加强您的属性👏🏻改变正在发生，距离上次提升记录已过去{}分钟".format(time_delta))
         is_continuous = time_delta <= 25+20#在20分钟内又完成了一个番茄
         if is_continuous:
-            continuous_count = user['continuous'] + 1
+            continuous_count = user.continuous + 1
     
-    user['difficulty'] = difficulty
-    user['task'] = task
-    user['focus'] = focus
-    user['achievement'] = achievement
+    user.difficulty = difficulty
+    user.task = task
+    user.focus = focus
+    user.achievement = achievement
 
     # 计算本次获得的金币数
     coins = calculate_coins(task, continuous_count, time_delta)
@@ -199,33 +169,34 @@ def record_tomatoes():
     handle_decay()
 
     # 更新用户数据
-    user['coins'] += coins
-    user['gain'] = coins
-    user['last_time'] = datetime.now().isoformat()
-    user['time_delta'] = time_delta
-    user['tomatoes'] += 1
-    user['tomatoes_today'] += 1
-    user['continuous'] = continuous_count
+    user.coins += coins
+    user.gain = coins
+    user.last_time = datetime.now().isoformat()
+    user.time_delta = time_delta
+    user.tomatoes += 1
+    user.tomatoes_today += 1
+    user.continuous = continuous_count
     
-    if user['last_active_days'] == "":
-        user['last_active_days'] = datetime.now().isoformat()
+    if user.last_active_days == "":
+        user.last_active_days = datetime.now().isoformat()
 
     
     # 检查是否达到每日目标
-    if user['coins'] >= DAILY_GOAL:
+    if user.tomatoes_today == DAILY_GOAL:
         print('恭喜达到每日目标!获得额外奖励{}金币'.format(DAILY_REWARD))
-        user['coins'] += DAILY_REWARD
-        savejson('user.json',user)
+        user.coins += DAILY_REWARD
+        user.gains += DAILY_REWARD
+        user.save_user_data()
     # with open('user.json', 'w') as f:
     #     json.dump(user, f)
     
     record_all_tomatoes(user)
     print('本次获得 {} 金币'.format(coins))
-    print('当前金币数:{}'.format(user['coins']))
+    print('当前金币数:{}'.format(user.coins))
 
 def handle_decay():
     try:
-        last_time = datetime.strptime(user['last_time'], "%Y-%m-%dT%H:%M:%S.%f")
+        last_time = datetime.strptime(user.last_time, "%Y-%m-%dT%H:%M:%S.%f")
     except:
         last_time = datetime.now()
 
@@ -236,26 +207,26 @@ def handle_decay():
     current_date = datetime.date(current_time)
     days_diff = (current_date - last_date).days
     if(days_diff > 0):
-        user['tomatoes_today'] = 0
+        user.tomatoes_today = 0
     if(days_diff > 1):
-        user['last_active_days'] = datetime.now().isoformat()
+        user.last_active_days = datetime.now().isoformat()
         print("连续日期记录已经中断")
     else:
         try:
-            last_active_days = datetime.strptime(user['last_active_time'], "%Y-%m-%dT%H:%M:%S.%f")
+            last_active_days = datetime.strptime(user.last_active_time, "%Y-%m-%dT%H:%M:%S.%f")
         except:
             last_active_days = datetime.now()
         last_active_date = datetime.date(last_active_days)#连续记录开始的最早时间
         active_days = (current_date - last_active_date).days
 
-    if user['coins'] > DECAY_AMOUNT:
+    if user.coins > DECAY_AMOUNT:
         decay_rate = DECAY_RATE
         if active_days >= 3:
             decay_rate /= 2 
         delta_hours = (current_time - last_time).total_seconds() / 3600
 
-        decayed = int(user['coins'] * decay_rate * delta_hours / 24)
+        decayed = int(user.coins * decay_rate * delta_hours / 24)
         print('金币衰减了{}!'.format(decayed))
-        user['coins'] -= decayed
+        user.coins -= decayed
 
 main()

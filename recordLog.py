@@ -24,5 +24,3 @@ def add_record():
     content = f.read()
     f.seek(0, 0)
     f.write(record + "\n" + content)
-
-# add_record()

@@ -3,6 +3,7 @@ import json
 import os
 
 from utils import savejson
+from User import User
 file_path = 'tomatoesAll.json'
 
 #返回的是列表，每一天的
@@ -43,8 +44,8 @@ def total_stats():
 
     return {
         'total': total_gains,#总收入
-        'daily_average_gains': total_gains/num_days,
-        'average': total_gains / num_users#平均一个番茄挣多钱
+        'daily_average_gains': round(total_gains/num_days,2),
+        'average': round(total_gains / num_users,2)#平均一个番茄挣多钱
     }
 
 #计算番茄平均数
@@ -69,7 +70,7 @@ def record_all_tomatoes(user):
 
     # 获取当前日期
     today = datetime.today().strftime('%Y-%m-%d')
-    
+    user = user.user_data_to_json()
     # 检查当前日期是否已在字典中 会立马写入，不要纯调用这个
     if today in data:
         data[today].append(user)

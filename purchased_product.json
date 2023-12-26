@@ -3,18 +3,19 @@
         "name": "电池",
         "price": 20.0,
         "type": "数码",
-        "comments": "厚帽子，防风保暖",
         "discountCoefficient": 0.8,
+        "comments": "厚帽子，防风保暖",
         "discountDay": 1,
         "firstRecordTime": "2023-12-22T16:53:50.642830",
-        "purchaseTime": "2023-12-22T17:09:27.444627"
+        "purchaseTime": "2023-12-22T17:09:27.444627",
+        "writeoffTime": ""
     },
     {
         "name": "5L农夫山泉",
         "price": 20.0,
         "type": "健康",
-        "comments": "厚帽子，防风保暖",
         "discountCoefficient": 0.8,
+        "comments": "厚帽子，防风保暖",
         "discountDay": 8,
         "firstRecordTime": "2023-12-23T13:21:37.541985",
         "purchaseTime": "2023-12-23T13:22:21.427595",
@@ -24,10 +25,22 @@
         "name": "厚帽子",
         "price": 90.0,
         "type": "服装",
-        "comments": "厚帽子，防风保暖",
         "discountCoefficient": 0.8,
+        "comments": "厚帽子，防风保暖",
         "discountDay": 6,
         "firstRecordTime": "2023-12-22T16:53:50.642891",
-        "purchaseTime": "2023-12-23T19:20:58.533767"
+        "purchaseTime": "2023-12-23T19:20:58.533767",
+        "writeoffTime": ""
+    },
+    {
+        "name": "unity插件:seatodo",
+        "price": 35.0,
+        "type": "教育",
+        "discountCoefficient": "厚帽子，防风保暖",
+        "comments": 0.8,
+        "discountDay": 7,
+        "firstRecordTime": "2023-12-23T19:27:10.467880",
+        "purchaseTime": "2023-12-26T17:20:11.541151",
+        "writeoffTime": "2023-12-26 17:35:27.918681"
     }
 ]
