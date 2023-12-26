@@ -20,7 +20,7 @@ def add_record():
   for question in questions[questions.index(question)+1:]:
     record += f"{question}\n"
 
-  with open("recordLog.txt", "r+") as f:
+  with open("recordLog.txt", "r+",encoding='utf-8') as f:
     content = f.read()
     f.seek(0, 0)
     f.write(record + "\n" + content)

@@ -82,7 +82,7 @@ def record_all_tomatoes(user):
 def get_all_tomatoes_data():
     file_exists = os.path.exists(file_path)
     if file_exists:
-        with open(file_path, 'r') as file:
+        with open(file_path, 'r',encoding='utf-8') as file:
             data = json.load(file)
     else:
         data = {}

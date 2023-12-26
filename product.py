@@ -153,7 +153,7 @@ def load_products(file_path = 'product.json'):
   file_exists = os.path.exists(file_path)
   
   if file_exists:
-    with open(file_path) as f:
+    with open(file_path, encoding='utf-8') as f:
       product_dicts = json.load(f)
 
     products = [Product(d['name'], d['price'], d['type'], d['discountCoefficient'], d['comments'], d['discountDay'], d['firstRecordTime'], d['purchaseTime'], d['writeoffTime']) 

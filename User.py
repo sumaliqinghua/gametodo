@@ -54,7 +54,7 @@ class User:
 
     def __init__(self):
         try:
-            with open('user.json') as f:
+            with open('user.json',encoding='utf-8') as f:
                 user_dict = json.load(f)
             
             self.difficulty = user_dict['difficulty'] 
