@@ -1,0 +1,38 @@
+[
+    {
+        "role": "system",
+        "content": "You are a helpful assistant. Your response should be in JSON format."
+    },
+    {
+        "role": "user",
+        "content": "中国举办了哪些大的赛事"
+    },
+    {
+        "role": "user",
+        "content": "你好"
+    },
+    {
+        "role": "user",
+        "content": "你好"
+    },
+    {
+        "role": "assistant",
+        "content": "```json\n{\n  \"response\": \"您好！有什么可以帮到您的吗？\"\n}\n```"
+    },
+    {
+        "role": "user",
+        "content": "中国举办了哪些大的赛事"
+    },
+    {
+        "role": "assistant",
+        "content": "```json\n{\n  \"events\": [\n    \"奥运会\",\n    \"世界杯\",\n    \"亚运会\",\n    \"世界田径锦标赛\",\n    \"世界游泳锦标赛\",\n    \"亚洲杯足球赛\"\n  ]\n}\n```"
+    },
+    {
+        "role": "user",
+        "content": "中国举办了世界杯??"
+    },
+    {
+        "role": "assistant",
+        "content": "```json\n{\n  \"events\": [\n    \"FIFA女子世界杯\"\n  ]\n}\n```"
+    }
+]

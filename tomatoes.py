@@ -10,7 +10,7 @@ from User import User
 from product import CanBuyOne, GotoStore, PurchaseProduct, RecordProduct
 from recordLog import add_record
 from statics import record_all_tomatoes, show_today_stats
-from utils import savejson
+from utilsd import savejson
 
 # 基础配置
 BASE_REWARD = 7 # 每个番茄钟的基础奖励
