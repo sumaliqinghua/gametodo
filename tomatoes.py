@@ -224,8 +224,8 @@ def record_tomatoes():
     record_all_tomatoes(user)
     print('本次获得 {} 金币'.format(coins))
     print('当前金币数:{}'.format(user.coins))
-    result = max(min(coins/5, 4), 1)
-    start_conversation(result)
+    # result = max(min(coins/5, 6), 1)
+    start_conversation(int(coins))
 
 def handle_decay():
     try:

@@ -24,24 +24,39 @@ api_key = os.getenv("OPENAI_API_KEY")
 # Load the conversation history from a file
 def load_conversation():
     try:
-        with open("conversation.json", "r") as f:
+        with open("conversation.json", "r", encoding='utf-8') as f:
             msg = json.load(f)
     except FileNotFoundError:
         msg = [{"role": "system", 
                 "content": '''
 Let's play a game, you are going to act as AdventureGPT an AI capable of generating and manage an adventure text based game based on a title chosen by me.
 The game works like this: based on the title and the information I choose, you will generate a text game. Always keep in mind what happens in the game, for example if the player has lost health in battle, keep count! make sure that the game has all the necessary dynamics to entertain and excite the player, for example add information and secondary missions. Also, when a new scene based on a player's choice is loaded, always add lore of information regarding the fictional world in which the story is set, connected to the events being told.
-
-All your outputs except for the first and the second one will contain:
-
-"Turns:"<tarting from 1, it increases only by one with each answer; when the turn number is a multiple of 5, a conflict or contradiction arises in the plot to increase the story's interest, and when the turn number is a multiple of 11, a new scene is entered.">
-"**Health**: " <the health of the character n/100>,
-"**Goal**: " <the closest goal in order to advance in the story>,
-"**Scene**: " <a detailed reconstruction of the scene, the first three lines are about the description of the place, then what is happening inside the place is also explained. Also explain what the character does, if he finds any objects, if he sees something in particular, describe everything>,
-"**Dialogue**: " <the dialogue recreates sounds, whispers, words, people talking, ambient noises, literally showing the onomatopoeias of sounds, do never explain what the character is hearing, just write it as a sound or a dialogue>,
-"**Possible actions**: " <a numbered list of 4 possible actions to advance the story, with increasing difficulty from the first to the last one.The first one is a beneficial option, the last one is a harmful option."
-
-You should generate the game turns only one times at a time. Then at the end of every prompt, add "Choose an option to go on with the game".
+And make that output text in structured JSON format exactly like this:
+{
+    "Title": "",
+    "Turns": 1,
+    "Health": {
+        "current": 100,
+        "maximum": 100
+    },
+    "Goal": "",
+    "Scene": "",
+    "Dialogue": "",
+    "PossibleActions": {
+        "1": "",
+        "2": "",
+        "3": "",
+        "4": ""
+    }
+}
+Before generating a complete plot, the current turns need to be determined. When the turn number is a multiple of 5, a conflict or contradiction arises in the plot to increase the story's interest, and when the turn number is a multiple of 11, a new scene is entered. You must remember the rules of turns!
+And here is an explanation of each field in the JSON:
+"Turns:"<starting from 1, it increases only by one with each answer">
+"Health: " <the health of the character n/100>,
+"Goal: " <the closest goal in order to advance in the story, Once you determine that the player has completed this objective, you must switch to the next objective to drive the plot forward. It's important!>,
+"Scene: " <a detailed reconstruction of the scene, the first three lines are about the description of the place, then what is happening inside the place is also explained. Also explain what the character does, if he finds any objects, if he sees something in particular, describe everything>,
+"Dialogue: " <the dialogue recreates sounds, whispers, words, people talking, ambient noises, literally showing the onomatopoeias of sounds, do never explain what the character is hearing, just write it as a sound or a dialogue>,
+"PossibleActions: " <a numbered list of 4 possible actions to advance the story, with increasing difficulty from the first to the last one.The first one is a beneficial option, the last one is a bad and harmful option may cause a decrease in health."
 '''}]
     return msg
 
@@ -59,6 +74,7 @@ def get_response(msg):
     payload = {
         "model": "gpt-3.5-turbo-1106",
         "messages": msg,
+        "response_format":{"type": "json_object"}
     }
     try:
         response = requests.post(url, headers=headers, json=payload)
@@ -73,7 +89,7 @@ def add_message(msg, content):
     msg.append({"role": "user", "content": content})
     # Truncate the conversation history if it's too long
     if len(json.dumps(msg)) > 2048:
-        msgtmp = msg[-5:]
+        msgtmp = [msg[0]] + msg[-2:]
     else:
         msgtmp = msg
     response = get_response(msgtmp)
@@ -85,9 +101,16 @@ def add_message(msg, content):
 
 # Start the conversation
 def start_conversation(input):
+    if input>20 and input % 5 ==0:
+        input = "change the content of 'Goal'"
+    elif input>20 and input % 3 ==0:
+        input = "'Health' decrease"
+    else:
+        input = input % 4 + 1
     msg = load_conversation()
-    content = input
+    content = str(input)
     print("你选择了"+content)
     msg = add_message(msg, content)
     save_conversation(msg)
-    print("AI: " + msg[-1]["content"])
+    print("AI: " + msg[-1]["content"])# //【?】好像不是打印的最后一条
+# start_conversation(3)
