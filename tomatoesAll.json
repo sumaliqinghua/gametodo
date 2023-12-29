@@ -392,5 +392,20 @@
             "last_active_days": "2023-12-26T14:16:54.341718",
             "last_time": "2023-12-26T17:40:53.146595"
         }
+    ],
+    "2023-12-29": [
+        {
+            "difficulty": "中等",
+            "task": "爱好",
+            "achievement": 1.0,
+            "focus": 3,
+            "tomatoes": 25,
+            "tomatoes_today": 1,
+            "continuous": 0,
+            "coins": 77.55999999999999,
+            "gain": -5.02,
+            "last_active_days": "2023-12-29T19:49:53.050208",
+            "last_time": "2023-12-29T19:49:53.050249"
+        }
     ]
 }
