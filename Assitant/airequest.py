@@ -105,6 +105,8 @@ def start_conversation(input):
         input = "change the content of 'Goal'"
     elif input>20 and input % 3 ==0:
         input = "'Health' decrease"
+    elif input>20 and input % 2 ==0:
+        input = '4'
     else:
         input = input % 4 + 1
     msg = load_conversation()
@@ -113,4 +115,4 @@ def start_conversation(input):
     msg = add_message(msg, content)
     save_conversation(msg)
     print("AI: " + msg[-1]["content"])# //【?】好像不是打印的最后一条
-# start_conversation(3)
+# start_conversation(2-1)
