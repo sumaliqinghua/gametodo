@@ -48,7 +48,7 @@ class Product:
     self.discountCoefficient = discountCoefficient
     self.comments = comments
     self.discountDay = discountDay if discountDay >= 0 else random.randint(0, 9)
-    self.firstRecordTime = firstRecordTime
+    self.firstRecordTime = firstRecordTime if firstRecordTime else datetime.now().isoformat()
     self.purchaseTime = purchaseTime
     self.writeoffTime = writeoffTime
     
