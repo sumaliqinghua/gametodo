@@ -99,7 +99,7 @@ def create_random_challenge():
 def load_challenges(is_active):
     challenges = []
     try:
-        with open('challenges.json', 'r',encoding='utf-8') as f:
+        with open('json/challenges.json', 'r',encoding='utf-8') as f:
             data = json.load(f, object_hook=datetime_decoder)
             for c in data['active'] if is_active else data['finished']:
                 challenges.append(Challenge.load_from_dict(c))
@@ -120,7 +120,7 @@ def save_challenges(challenges, user):
     completed_before.extend(completed)
     active = [c.__dict__ for c in challenges if not c.is_completed()]
     data = {'active': active, 'finished': completed}
-    with open('challenges.json', 'w',encoding='utf-8') as f:
+    with open('json/challenges.json', 'w',encoding='utf-8') as f:
         json.dump(data, f, indent=4, ensure_ascii=False, default=datetime_handler)
 
 # def save_challenges():

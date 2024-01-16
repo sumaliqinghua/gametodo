@@ -4,7 +4,7 @@ import os
 
 from utilsd import savejson
 from User import User
-file_path = 'tomatoesAll.json'
+file_path = 'json/tomatoesAll.json'
 
 #返回的是列表，每一天的
 def daily_stats(data):

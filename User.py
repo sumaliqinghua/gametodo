@@ -49,12 +49,12 @@ class User:
         return user_data
     def save_user_data(self):
         user_dict = self.user_data_to_json()
-        savejson('user.json', user_dict)
+        savejson('json/user.json', user_dict)
         return user_dict
 
     def __init__(self):
         try:
-            with open('user.json',encoding='utf-8') as f:
+            with open('json/user.json',encoding='utf-8') as f:
                 user_dict = json.load(f)
             
             self.difficulty = user_dict['difficulty'] 

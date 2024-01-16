@@ -8,9 +8,9 @@ import os
 import random
 from statics import show_today_stats, total_stats
 
-purchased_product_file_path = 'purchased_product.json'
+purchased_product_file_path = 'json/purchased_product.json'
 
-product_file_path = 'product.json'
+product_file_path = 'json/product.json'
 product_type_dict = {
         '1': '娱乐',
         '2': '服装',
@@ -148,7 +148,7 @@ def savejson(file_path,products):
     with open(file_path, 'w', encoding='utf-8') as output:
         json.dump(product_dicts, output, indent=4, ensure_ascii=False)
 # 新加一个从json加载产品列表的函数  
-def load_products(file_path = 'product.json'):
+def load_products(file_path = 'json/product.json'):
 
   file_exists = os.path.exists(file_path)
   
