@@ -53,5 +53,16 @@
         "firstRecordTime": "2024-01-03T16:31:35.500468",
         "purchaseTime": "2024-01-13T14:14:59.476523",
         "writeoffTime": "2024-01-13 14:16:04.969383"
+    },
+    {
+        "name": "1月1号破",
+        "price": 199.0,
+        "type": "虚拟",
+        "discountCoefficient": 0.5,
+        "comments": "凌晨两点有点恶心",
+        "discountDay": 6,
+        "firstRecordTime": "2024-01-03T16:33:19.547230",
+        "purchaseTime": "2024-01-16T16:30:48.857353",
+        "writeoffTime": ""
     }
 ]
