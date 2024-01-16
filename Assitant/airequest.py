@@ -24,7 +24,7 @@ api_key = os.getenv("OPENAI_API_KEY")
 # Load the conversation history from a file
 def load_conversation():
     try:
-        with open("conversation.json", "r", encoding='utf-8') as f:
+        with open("json/conversation.json", "r", encoding='utf-8') as f:
             msg = json.load(f)
     except FileNotFoundError:
         msg = [{"role": "system", 
@@ -62,7 +62,7 @@ And here is an explanation of each field in the JSON:
 
 # Save the conversation history to a file
 def save_conversation(msg):
-    with open("conversation.json", "w", encoding='utf-8') as output:
+    with open("json/conversation.json", "w", encoding='utf-8') as output:
         json.dump(msg, output, indent=4, ensure_ascii=False)
 
 # Send a request to the API and get a response
