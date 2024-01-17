@@ -104,9 +104,11 @@ def start_conversation(input):
     if input>20 and input % 5 ==0:
         input = "change the content of 'Goal'"
     elif input>20 and input % 3 ==0:
-        input = "'Health' decrease"
-    elif input>20 and input % 2 ==0:
-        input = '4'
+        input = "'Health' increase"
+    elif input>20 and input % 4 ==0:
+        input = '1'
+    elif input>20 and input % 6 ==0:
+        input = 'Use props to change the course of the story'
     else:
         input = input % 4 + 1
     msg = load_conversation()

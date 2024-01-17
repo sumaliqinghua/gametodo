@@ -22,15 +22,15 @@
         "writeoffTime": "2024-01-03T15:29:38.600902"
     },
     {
-        "name": "波司登羽绒服",
-        "price": 266.77,
-        "type": "服装",
-        "discountCoefficient": 0.5,
-        "comments": "哈尔滨",
-        "discountDay": 7,
-        "firstRecordTime": "2024-01-03T16:29:38.600902",
+        "name": "1月20日出游",
+        "price": 120.0,
+        "type": "出行",
+        "discountCoefficient": 0.6,
+        "comments": "苗",
+        "discountDay": 9,
+        "firstRecordTime": "2024-01-17T18:07:34.855940",
         "purchaseTime": "",
-        "writeoffTime": "2024-01-03T16:29:38.600902"
+        "writeoffTime": ""
     },
     {
         "name": "妙控板",
@@ -64,5 +64,38 @@
         "firstRecordTime": "2023-12-24T18:30:44.276468",
         "purchaseTime": "",
         "writeoffTime": "2023-12-24T18:30:44.276468"
+    },
+    {
+        "name": "花花",
+        "price": 424.24,
+        "type": "礼物",
+        "discountCoefficient": 0.6,
+        "comments": "to乔",
+        "discountDay": 3,
+        "firstRecordTime": "2024-01-17T18:02:54.750998",
+        "purchaseTime": "",
+        "writeoffTime": ""
+    },
+    {
+        "name": "新眼镜",
+        "price": 700.0,
+        "type": "健康",
+        "discountCoefficient": 0.5,
+        "comments": "325 375",
+        "discountDay": 1,
+        "firstRecordTime": "2024-01-17T18:06:01.340191",
+        "purchaseTime": "",
+        "writeoffTime": ""
+    },
+    {
+        "name": "ipad",
+        "price": 3500.0,
+        "type": "数码",
+        "discountCoefficient": 0.5,
+        "comments": "买前生产力",
+        "discountDay": 3,
+        "firstRecordTime": "2024-01-17T18:05:29.541250",
+        "purchaseTime": "",
+        "writeoffTime": ""
     }
 ]

@@ -63,6 +63,17 @@
         "discountDay": 6,
         "firstRecordTime": "2024-01-03T16:33:19.547230",
         "purchaseTime": "2024-01-16T16:30:48.857353",
-        "writeoffTime": ""
+        "writeoffTime": "2024-01-17 17:57:58.807996"
+    },
+    {
+        "name": "波司登羽绒服",
+        "price": 266.77,
+        "type": "服装",
+        "discountCoefficient": 0.5,
+        "comments": "哈尔滨",
+        "discountDay": 7,
+        "firstRecordTime": "2024-01-03T16:29:38.600902",
+        "purchaseTime": "2024-01-17T17:56:42.056735",
+        "writeoffTime": "2024-01-03T16:29:38.600902"
     }
 ]

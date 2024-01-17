@@ -86,6 +86,8 @@ def ExchangeProduct():
             if check == 'n':
                 break
             else:
+                # while true又要重新读取所以此处得保存
+                savejson(purchased_product_file_path,purchased_data)
                 continue
         else:
             print("商品无法核销")
