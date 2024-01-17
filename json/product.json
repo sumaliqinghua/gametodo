@@ -11,17 +11,6 @@
         "writeoffTime": "2024-01-03T15:29:38.600902"
     },
     {
-        "name": "妙控板",
-        "price": 148.08,
-        "type": "数码",
-        "discountCoefficient": 0.5,
-        "comments": "操控pad",
-        "discountDay": 3,
-        "firstRecordTime": "2024-01-13T14:18:41.106843",
-        "purchaseTime": "",
-        "writeoffTime": ""
-    },
-    {
         "name": "加绒裤子",
         "price": 158.0,
         "type": "服装",
@@ -31,6 +20,28 @@
         "firstRecordTime": "2024-01-03T15:29:38.600902",
         "purchaseTime": "",
         "writeoffTime": "2024-01-03T15:29:38.600902"
+    },
+    {
+        "name": "波司登羽绒服",
+        "price": 266.77,
+        "type": "服装",
+        "discountCoefficient": 0.5,
+        "comments": "哈尔滨",
+        "discountDay": 7,
+        "firstRecordTime": "2024-01-03T16:29:38.600902",
+        "purchaseTime": "",
+        "writeoffTime": "2024-01-03T16:29:38.600902"
+    },
+    {
+        "name": "妙控板",
+        "price": 148.08,
+        "type": "数码",
+        "discountCoefficient": 0.5,
+        "comments": "操控pad",
+        "discountDay": 3,
+        "firstRecordTime": "2024-01-13T14:18:41.106843",
+        "purchaseTime": "",
+        "writeoffTime": ""
     },
     {
         "name": "马丁靴",
@@ -53,16 +64,5 @@
         "firstRecordTime": "2023-12-24T18:30:44.276468",
         "purchaseTime": "",
         "writeoffTime": "2023-12-24T18:30:44.276468"
-    },
-    {
-        "name": "波司登羽绒服",
-        "price": 266.77,
-        "type": "服装",
-        "discountCoefficient": 0.5,
-        "comments": "哈尔滨",
-        "discountDay": 7,
-        "firstRecordTime": "2024-01-03T16:29:38.600902",
-        "purchaseTime": "",
-        "writeoffTime": "2024-01-03T16:29:38.600902"
     }
 ]

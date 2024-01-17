@@ -217,3 +217,10 @@ def CanBuyOne(cash):
     data = sorted(data, key=lambda x: x.get_price())
     savejson(product_file_path,data)
     return cash - data[0].get_price(),data[0].name
+def show_products():
+    data = load_products()
+    data = sorted(data, key=lambda x: x.get_price())
+    # savejson(product_file_path,data)
+    print('商品列表:')
+    for index,product in enumerate(data):
+        print('{}. {}:{}'.format(index,product.name,product.get_price()))

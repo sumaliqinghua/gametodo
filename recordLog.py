@@ -1,5 +1,7 @@
 from datetime import datetime
 
+from Assitant.ainormal import get_response, load_raiseconversation
+
 
 def add_record():
 
@@ -19,8 +21,14 @@ def add_record():
   # 将剩余问题的答案设为空
   for question in questions[questions.index(question)+1:]:
     record += f"{question}\n"
+  judegment = judge_record(record)
+  record += f"9. AI点评: {judegment}\n"
 
   with open("recordLog.txt", "r+",encoding='utf-8') as f:
     content = f.read()
     f.seek(0, 0)
     f.write(record + "\n" + content)
+def judge_record(content):
+  content = load_raiseconversation(content)
+  judgment = get_response(content)["choices"][0]["message"]['content']
+  return judgment

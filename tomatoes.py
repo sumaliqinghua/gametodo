@@ -8,7 +8,7 @@ from Assitant.airequest import start_conversation
 from Challenge import create_challenge, create_random_challenge, load_challenges, save_challenges
 from User import User
 
-from product import CanBuyOne, GotoStore, PurchaseProduct, RecordProduct
+from product import CanBuyOne, GotoStore, PurchaseProduct, RecordProduct, show_products
 from recordLog import add_record
 from statics import record_all_tomatoes, show_today_stats
 from utilsd import savejson
@@ -106,6 +106,7 @@ def main():
     operation = input("请选择服务(番茄记录1/进入商城2/单纯日志记录3):")
     if not operation or operation == "1":
         record_tomatoes()
+        show_products()
         dvalue,x = CanBuyOne(user.coins)
         print('当前现金购买商品{},{}{}元'.format(x, '多出' if dvalue > 0 else '还差',abs(round(dvalue,2))))
         record = input("是否立即记录日志(否0/是1):")
