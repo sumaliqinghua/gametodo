@@ -865,5 +865,98 @@
             "last_active_days": "2024-01-16T14:54:33.795165",
             "last_time": "2024-01-17T19:59:49.334235"
         }
+    ],
+    "2024-01-18": [
+        {
+            "difficulty": "中等",
+            "task": "工作",
+            "achievement": 0.7,
+            "focus": 2,
+            "tomatoes": 57,
+            "tomatoes_today": 1,
+            "continuous": 0,
+            "coins": 103.68499999999995,
+            "gain": 3.72,
+            "last_active_days": "2024-01-16T14:54:33.795165",
+            "last_time": "2024-01-18T13:36:52.105220"
+        },
+        {
+            "difficulty": "中等",
+            "task": "工作",
+            "achievement": 0.8,
+            "focus": 1,
+            "tomatoes": 58,
+            "tomatoes_today": 2,
+            "continuous": 0,
+            "coins": 113.27499999999995,
+            "gain": 9.59,
+            "last_active_days": "2024-01-16T14:54:33.795165",
+            "last_time": "2024-01-18T14:53:21.938376"
+        },
+        {
+            "difficulty": "中等",
+            "task": "工作",
+            "achievement": 0.6,
+            "focus": 3,
+            "tomatoes": 59,
+            "tomatoes_today": 3,
+            "continuous": 0,
+            "coins": 127.07499999999995,
+            "gain": 13.8,
+            "last_active_days": "2024-01-16T14:54:33.795165",
+            "last_time": "2024-01-18T15:54:17.677070"
+        },
+        {
+            "difficulty": "中等",
+            "task": "工作",
+            "achievement": 0.9,
+            "focus": 3,
+            "tomatoes": 60,
+            "tomatoes_today": 4,
+            "continuous": 0,
+            "coins": 144.31499999999994,
+            "gain": 17.24,
+            "last_active_days": "2024-01-16T14:54:33.795165",
+            "last_time": "2024-01-18T16:47:03.333505"
+        },
+        {
+            "difficulty": "中等",
+            "task": "工作",
+            "achievement": 1.0,
+            "focus": 3,
+            "tomatoes": 61,
+            "tomatoes_today": 5,
+            "continuous": 0,
+            "coins": 161.04499999999993,
+            "gain": 16.73,
+            "last_active_days": "2024-01-16T14:54:33.795165",
+            "last_time": "2024-01-18T17:53:44.310699"
+        },
+        {
+            "difficulty": "中等",
+            "task": "工作",
+            "achievement": 0.9,
+            "focus": 4,
+            "tomatoes": 62,
+            "tomatoes_today": 6,
+            "continuous": 1,
+            "coins": 114.82499999999993,
+            "gain": 30.78,
+            "last_active_days": "2024-01-16T14:54:33.795165",
+            "last_time": "2024-01-18T18:35:33.618447"
+        },
+        {
+            "difficulty": "中等",
+            "task": "工作",
+            "achievement": 0.9,
+            "focus": 3,
+            "tomatoes": 63,
+            "tomatoes_today": 7,
+            "continuous": 0,
+            "coins": 130.94499999999994,
+            "gain": 16.12,
+            "last_active_days": "2024-01-16T14:54:33.795165",
+            "last_time": "2024-01-18T19:39:24.642563"
+        }
     ]
 }

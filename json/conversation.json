@@ -250,5 +250,61 @@
     {
         "role": "assistant",
         "content": "{\n    \"Title\": \"水浒传的故事\",\n    \"Turns\": 30,\n    \"Health\": {\n        \"current\": 30,\n        \"maximum\": 100\n    },\n    \"Goal\": \"解开好汉隐藏的秘密\",\n    \"Scene\": \"你发现四周有很多树木，似乎可以借助它们逃跑。\",\n    \"Dialogue\": \"树叶被风吹得沙沙作响。\",\n    \"PossibleActions\": {\n        \"1\": \"尝试爬上树\",\n        \"2\": \"寻找石头扔向敌人\",\n        \"3\": \"沿着树林边缘悄悄逃跑\",\n        \"4\": \"原地等待，试图交涉\"\n    }\n}"
+    },
+    {
+        "role": "user",
+        "content": "4"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n    \"Title\": \"水浒传的故事\",\n    \"Turns\": 31,\n    \"Health\": {\n        \"current\": 20,\n        \"maximum\": 100\n    },\n    \"Goal\": \"解开好汉隐藏的秘密\",\n    \"Scene\": \"你原地等待，试图交涉，但敌人并不理会你的请求，他们正在搜寻你的踪迹。\",\n    \"Dialogue\": \"脚步声越来越近，你听到敌人低声交谈的声音。\",\n    \"PossibleActions\": {\n        \"1\": \"寻找藏身之处\",\n        \"2\": \"尝试偷偷离开\",\n        \"3\": \"寻找武器应对\",\n        \"4\": \"试图喊出求救声\"\n    }\n}"
+    },
+    {
+        "role": "user",
+        "content": "2"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n    \"Title\": \"Water Margin Story\",\n    \"Turns\": 32,\n    \"Health\": {\n        \"current\": 20,\n        \"maximum\": 100\n    },\n    \"Goal\": \"Uncover the secret of the heroes\",\n    \"Scene\": \"你悄悄地向敌人的背后挪动，试图找到离开的机会。在你的眼前出现了一扇半开的门。\",\n    \"Dialogue\": \"咚咚咚，你听到有人在另一边敲门的声音。\",\n    \"PossibleActions\": {\n        \"1\": \"悄悄推开门\",\n        \"2\": \"寻找其他逃跑的路线\",\n        \"3\": \"静静等待\",\n        \"4\": \"高声呼救\"\n    }\n}"
+    },
+    {
+        "role": "user",
+        "content": "2"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n    \"Title\": \"Water Margin Story\",\n    \"Turns\": 33,\n    \"Health\": {\n        \"current\": 20,\n        \"maximum\": 100\n    },\n    \"Goal\": \"Uncover the secret of the heroes\",\n    \"Scene\": \"你小心翼翼地绕过房间，寻找其他逃跑的路线。突然你发现一扇半隐藏在墙壁后面的窗户，外面是一条小巷。\",\n    \"Dialogue\": \"窸窸窣窣，你听到了脚步声在小巷中渐行渐远的声音。\",\n    \"PossibleActions\": {\n        \"1\": \"爬出窗户逃跑\",\n        \"2\": \"继续寻找其他逃跑路线\",\n        \"3\": \"留在原地观察\",\n        \"4\": \"大声呼救\"\n    }\n}"
+    },
+    {
+        "role": "user",
+        "content": "2"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n    \"Title\": \"Water Margin Story\",\n    \"Turns\": 34,\n    \"Health\": {\n        \"current\": 20,\n        \"maximum\": 100\n    },\n    \"Goal\": \"Uncover the secret of the heroes\",\n    \"Scene\": \"你继续搜索房间，终于找到了一条隐藏在地板下的秘密通道。\",\n    \"Dialogue\": \"咔嚓，你听到了地板慢慢被移开的声音。\",\n    \"PossibleActions\": {\n        \"1\": \"进入秘密通道\",\n        \"2\": \"寻找其他逃跑路线\",\n        \"3\": \"观察通道周围环境\",\n        \"4\": \"召唤帮手\"\n    }\n}"
+    },
+    {
+        "role": "user",
+        "content": "1"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n    \"Title\": \"Water Margin Story\",\n    \"Turns\": 35,\n    \"Health\": {\n        \"current\": 20,\n        \"maximum\": 100\n    },\n    \"Goal\": \"Uncover the secret of the heroes\",\n    \"Scene\": \"你进入了秘密通道，黑暗中看不清周围的情况，但你可以感觉到通道一直向下延伸。\",\n    \"Dialogue\": \"咚咚，你听到了从上方传来的脚步声。\",\n    \"PossibleActions\": {\n        \"1\": \"继续向下走\",\n        \"2\": \"停下等待脚步声的来源\",\n        \"3\": \"寻找可能的隐藏出口\",\n        \"4\": \"试图回头寻找其他途径\"\n    }\n}"
+    },
+    {
+        "role": "user",
+        "content": "change the content of 'Goal'"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n    \"Title\": \"Water Margin Story\",\n    \"Turns\": 35,\n    \"Health\": {\n        \"current\": 20,\n        \"maximum\": 100\n    },\n    \"Goal\": \"Discover the truth behind the mysterious disappearances\",\n    \"Scene\": \"你进入了秘密通道，黑暗中看不清周围的情况，但你可以感觉到通道一直向下延伸。\",\n    \"Dialogue\": \"咚咚，你听到了从上方传来的脚步声。\",\n    \"PossibleActions\": {\n        \"1\": \"继续向下走\",\n        \"2\": \"停下等待脚步声的来源\",\n        \"3\": \"寻找可能的隐藏出口\",\n        \"4\": \"试图回头寻找其他途径\"\n    }\n}"
+    },
+    {
+        "role": "user",
+        "content": "1"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n    \"Title\": \"Water Margin Story\",\n    \"Turns\": 36,\n    \"Health\": {\n        \"current\": 20,\n        \"maximum\": 100\n    },\n    \"Goal\": \"Discover the truth behind the mysterious disappearances\",\n    \"Scene\": \"你继续向下走，通道的墙壁越来越潮湿，似乎离地底越来越近。\",\n    \"Dialogue\": \"滴答，你听到水滴落在地面的声音。\",\n    \"PossibleActions\": {\n        \"1\": \"继续往下走\",\n        \"2\": \"观察四周有没有什么可以利用的东西\",\n        \"3\": \"尝试寻找光亮出口\",\n        \"4\": \"担心可能有危险，停下来思考下一步\"\n    }\n}"
     }
 ]

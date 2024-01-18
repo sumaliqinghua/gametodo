@@ -1,14 +1,14 @@
 [
     {
-        "name": "加绒口罩",
-        "price": 77.0,
-        "type": "服装",
-        "discountCoefficient": 0.5,
-        "comments": "哈尔滨",
-        "discountDay": 6,
-        "firstRecordTime": "2024-01-03T15:29:38.600902",
+        "name": "1月20日出游",
+        "price": 120.0,
+        "type": "出行",
+        "discountCoefficient": 0.6,
+        "comments": "苗",
+        "discountDay": 9,
+        "firstRecordTime": "2024-01-17T18:07:34.855940",
         "purchaseTime": "",
-        "writeoffTime": "2024-01-03T15:29:38.600902"
+        "writeoffTime": ""
     },
     {
         "name": "加绒裤子",
@@ -22,19 +22,8 @@
         "writeoffTime": "2024-01-03T15:29:38.600902"
     },
     {
-        "name": "1月20日出游",
-        "price": 120.0,
-        "type": "出行",
-        "discountCoefficient": 0.6,
-        "comments": "苗",
-        "discountDay": 9,
-        "firstRecordTime": "2024-01-17T18:07:34.855940",
-        "purchaseTime": "",
-        "writeoffTime": ""
-    },
-    {
         "name": "妙控板",
-        "price": 148.08,
+        "price": 188.08,
         "type": "数码",
         "discountCoefficient": 0.5,
         "comments": "操控pad",

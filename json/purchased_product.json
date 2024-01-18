@@ -75,5 +75,16 @@
         "firstRecordTime": "2024-01-03T16:29:38.600902",
         "purchaseTime": "2024-01-17T17:56:42.056735",
         "writeoffTime": "2024-01-03T16:29:38.600902"
+    },
+    {
+        "name": "加绒口罩",
+        "price": 77.0,
+        "type": "服装",
+        "discountCoefficient": 0.5,
+        "comments": "哈尔滨",
+        "discountDay": 6,
+        "firstRecordTime": "2024-01-03T15:29:38.600902",
+        "purchaseTime": "2024-01-18T18:08:33.445615",
+        "writeoffTime": "2024-01-03T15:29:38.600902"
     }
 ]
