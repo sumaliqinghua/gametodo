@@ -306,5 +306,37 @@
     {
         "role": "assistant",
         "content": "{\n    \"Title\": \"Water Margin Story\",\n    \"Turns\": 36,\n    \"Health\": {\n        \"current\": 20,\n        \"maximum\": 100\n    },\n    \"Goal\": \"Discover the truth behind the mysterious disappearances\",\n    \"Scene\": \"你继续向下走，通道的墙壁越来越潮湿，似乎离地底越来越近。\",\n    \"Dialogue\": \"滴答，你听到水滴落在地面的声音。\",\n    \"PossibleActions\": {\n        \"1\": \"继续往下走\",\n        \"2\": \"观察四周有没有什么可以利用的东西\",\n        \"3\": \"尝试寻找光亮出口\",\n        \"4\": \"担心可能有危险，停下来思考下一步\"\n    }\n}"
+    },
+    {
+        "role": "user",
+        "content": "3"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n    \"Title\": \"Water Margin Story\",\n    \"Turns\": 37,\n    \"Health\": {\n        \"current\": 20,\n        \"maximum\": 100\n    },\n    \"Goal\": \"Discover the truth behind the mysterious disappearances\",\n    \"Scene\": \"你摸索着四周，突然感觉到一丝微弱的光亮，看起来似乎有出口的希望。\",\n    \"Dialogue\": \"嘈杂的水流声渐渐变得清晰起来。\",\n    \"PossibleActions\": {\n        \"1\": \"朝光亮处前进\",\n        \"2\": \"喝一口水，恢复一些体力\",\n        \"3\": \"寻找更多的线索\",\n        \"4\": \"尝试找到安全的方法穿过水流\"\n    }\n}"
+    },
+    {
+        "role": "user",
+        "content": "3"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n    \"Title\": \"Water Margin Story\",\n    \"Turns\": 38,\n    \"Health\": {\n        \"current\": 20,\n        \"maximum\": 100\n    },\n    \"Goal\": \"Discover the truth behind the mysterious disappearances\",\n    \"Scene\": \"你继续寻找更多的线索，突然你发现一枚古老的玉佩，似乎与这个地方的秘密有着某种联系。\",\n    \"Dialogue\": \"微风吹过古老佩玉，发出微弱的歌唱声。\",\n    \"PossibleActions\": {\n        \"1\": \"仔细研究玉佩\",\n        \"2\": \"继续探索周围的环境\",\n        \"3\": \"尝试使用玉佩来触发某种机关\",\n        \"4\": \"无视玉佩，离开这个地方\"\n    }\n}"
+    },
+    {
+        "role": "user",
+        "content": "4"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n    \"Title\": \"Water Margin Story\",\n    \"Turns\": 39,\n    \"Health\": {\n        \"current\": 10,\n        \"maximum\": 100\n    },\n    \"Goal\": \"Discover the truth behind the mysterious disappearances\",\n    \"Scene\": \"你决定无视玉佩，离开这个地方。突然，一阵阴风吹过，你感到一股邪恶的力量在你周围聚集。\",\n    \"Dialogue\": \"呼呼呼......\",\n    \"PossibleActions\": {\n        \"1\": \"寻找避难所\",\n        \"2\": \"试图驱散邪恶力量\",\n        \"3\": \"使用守护符咒\",\n        \"4\": \"闭上眼睛祈祷\"\n    }\n}"
+    },
+    {
+        "role": "user",
+        "content": "4"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n    \"Title\": \"Water Margin Story\",\n    \"Turns\": 40,\n    \"Health\": {\n        \"current\": 10,\n        \"maximum\": 100\n    },\n    \"Goal\": \"Discover the truth behind the mysterious disappearances\",\n    \"Scene\": \"你闭上眼睛开始祈祷，突然感到一股温暖的光芒环绕着你，邪恶力量渐渐消散。当你睁开眼睛，你发现自己站在一片美丽的花海中。\",\n    \"Dialogue\": \"轰隆隆......\",\n    \"PossibleActions\": {\n        \"1\": \"沿着花海向前走\",\n        \"2\": \"寻找花海中的守护者\",\n        \"3\": \"采摘花朵\",\n        \"4\": \"大声呼喊求救\"\n    }\n}"
     }
 ]

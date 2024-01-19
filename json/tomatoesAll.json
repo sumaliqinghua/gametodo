@@ -958,5 +958,72 @@
             "last_active_days": "2024-01-16T14:54:33.795165",
             "last_time": "2024-01-18T19:39:24.642563"
         }
+    ],
+    "2024-01-19": [
+        {
+            "difficulty": "中等",
+            "task": "工作",
+            "achievement": 1.0,
+            "focus": 4,
+            "tomatoes": 64,
+            "tomatoes_today": 1,
+            "continuous": 0,
+            "coins": 129.16499999999994,
+            "gain": 6.22,
+            "last_active_days": "2024-01-16T14:54:33.795165",
+            "last_time": "2024-01-19T14:40:15.060162"
+        },
+        {
+            "difficulty": "中等",
+            "task": "工作",
+            "achievement": 1.0,
+            "focus": 4,
+            "tomatoes": 65,
+            "tomatoes_today": 2,
+            "continuous": 0,
+            "coins": 151.70499999999993,
+            "gain": 22.54,
+            "last_active_days": "2024-01-16T14:54:33.795165",
+            "last_time": "2024-01-19T15:33:58.886575"
+        },
+        {
+            "difficulty": "中等",
+            "task": "杂事",
+            "achievement": 1.0,
+            "focus": 3,
+            "tomatoes": 66,
+            "tomatoes_today": 3,
+            "continuous": 0,
+            "coins": 155.68499999999992,
+            "gain": 3.98,
+            "last_active_days": "2024-01-16T14:54:33.795165",
+            "last_time": "2024-01-19T16:42:27.518440"
+        },
+        {
+            "difficulty": "中等",
+            "task": "杂事",
+            "achievement": 1.0,
+            "focus": 4,
+            "tomatoes": 67,
+            "tomatoes_today": 4,
+            "continuous": 0,
+            "coins": 86.92499999999991,
+            "gain": 3.24,
+            "last_active_days": "2024-01-16T14:54:33.795165",
+            "last_time": "2024-01-19T18:11:53.727256"
+        },
+        {
+            "difficulty": "简单",
+            "task": "杂事",
+            "achievement": 0.6,
+            "focus": 1,
+            "tomatoes": 68,
+            "tomatoes_today": 5,
+            "continuous": 0,
+            "coins": 36.694999999999915,
+            "gain": -1.23,
+            "last_active_days": "2024-01-16T14:54:33.795165",
+            "last_time": "2024-01-19T19:25:41.706036"
+        }
     ]
 }

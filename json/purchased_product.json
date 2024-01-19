@@ -86,5 +86,27 @@
         "firstRecordTime": "2024-01-03T15:29:38.600902",
         "purchaseTime": "2024-01-18T18:08:33.445615",
         "writeoffTime": "2024-01-03T15:29:38.600902"
+    },
+    {
+        "name": "1月20日出游",
+        "price": 120.0,
+        "type": "出行",
+        "discountCoefficient": 0.6,
+        "comments": "苗",
+        "discountDay": 9,
+        "firstRecordTime": "2024-01-17T18:07:34.855940",
+        "purchaseTime": "2024-01-19T17:34:04.593202",
+        "writeoffTime": ""
+    },
+    {
+        "name": "内裤南极人f",
+        "price": 49.0,
+        "type": "服装",
+        "discountCoefficient": 0.8,
+        "comments": "一年20次海澜之家",
+        "discountDay": 2,
+        "firstRecordTime": "2024-01-19T17:33:48.868237",
+        "purchaseTime": "2024-01-19T18:55:38.261411",
+        "writeoffTime": "2024-01-19 18:55:47.585028"
     }
 ]

@@ -1,12 +1,12 @@
 [
     {
-        "name": "1月20日出游",
-        "price": 120.0,
-        "type": "出行",
+        "name": "护理液",
+        "price": 139.0,
+        "type": "健康",
         "discountCoefficient": 0.6,
-        "comments": "苗",
+        "comments": "fyj",
         "discountDay": 9,
-        "firstRecordTime": "2024-01-17T18:07:34.855940",
+        "firstRecordTime": "2024-01-19T17:50:33.086024",
         "purchaseTime": "",
         "writeoffTime": ""
     },
@@ -84,6 +84,17 @@
         "comments": "买前生产力",
         "discountDay": 3,
         "firstRecordTime": "2024-01-17T18:05:29.541250",
+        "purchaseTime": "",
+        "writeoffTime": ""
+    },
+    {
+        "name": "速热水杯",
+        "price": 199.0,
+        "type": "健康",
+        "discountCoefficient": 0.5,
+        "comments": "多喝热水",
+        "discountDay": 6,
+        "firstRecordTime": "2024-01-19T19:57:36.255369",
         "purchaseTime": "",
         "writeoffTime": ""
     }
