@@ -338,5 +338,13 @@
     {
         "role": "assistant",
         "content": "{\n    \"Title\": \"Water Margin Story\",\n    \"Turns\": 40,\n    \"Health\": {\n        \"current\": 10,\n        \"maximum\": 100\n    },\n    \"Goal\": \"Discover the truth behind the mysterious disappearances\",\n    \"Scene\": \"你闭上眼睛开始祈祷，突然感到一股温暖的光芒环绕着你，邪恶力量渐渐消散。当你睁开眼睛，你发现自己站在一片美丽的花海中。\",\n    \"Dialogue\": \"轰隆隆......\",\n    \"PossibleActions\": {\n        \"1\": \"沿着花海向前走\",\n        \"2\": \"寻找花海中的守护者\",\n        \"3\": \"采摘花朵\",\n        \"4\": \"大声呼喊求救\"\n    }\n}"
+    },
+    {
+        "role": "user",
+        "content": "4"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n    \"Title\": \"Water Margin Story\",\n    \"Turns\": 41,\n    \"Health\": {\n        \"current\": 5,\n        \"maximum\": 100\n    },\n    \"Goal\": \"Discover the truth behind the mysterious disappearances\",\n    \"Scene\": \"你大声呼喊求救，但没有人出现。突然，一道黑影从花海中闪现，向你袭来。\",\n    \"Dialogue\": \"嗖！\",\n    \"PossibleActions\": {\n        \"1\": \"躲避黑影\",\n        \"2\": \"寻找可以利用的武器\",\n        \"3\": \"尝试与黑影交谈\",\n        \"4\": \"迎战黑影\"\n    }\n}"
     }
 ]
