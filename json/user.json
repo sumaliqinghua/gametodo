@@ -1,6 +1,5 @@
 {
     "difficulty": "中等",
-<<<<<<< HEAD
     "task": "工作",
     "achievement": 0.7,
     "focus": 2,
@@ -11,16 +10,4 @@
     "gain": 17.97,
     "last_active_days": "2024-01-21T13:38:44.492030",
     "last_time": "2024-01-21T19:57:45.636990"
-=======
-    "task": "爱好",
-    "achievement": 1.0,
-    "focus": 4,
-    "tomatoes": 70,
-    "tomatoes_today": 1,
-    "continuous": 0,
-    "coins": 55.02499999999992,
-    "gain": 10.66,
-    "last_active_days": "2024-01-16T14:54:33.795165",
-    "last_time": "2024-01-20T01:15:39.109894"
->>>>>>> c380834eca48122610cc43a75e1e82b26c6df7e0
 }
