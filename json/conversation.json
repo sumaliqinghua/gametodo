@@ -341,6 +341,7 @@
     },
     {
         "role": "user",
+<<<<<<< HEAD
         "content": "3"
     },
     {
@@ -386,5 +387,12 @@
     {
         "role": "assistant",
         "content": "{\n    \"Title\": \"Water Margin Story\",\n    \"Turns\": 46,\n    \"Health\": {\n        \"current\": 7,\n        \"maximum\": 100\n    },\n    \"Goal\": \"Discover the truth behind the mysterious disappearances\",\n    \"Scene\": \"你继续挖掘，突然一阵风从暗道中吹出，你觉得有些不对劲。\",\n    \"Dialogue\": \"\",\n    \"PossibleActions\": {\n        \"1\": \"小心继续挖掘\",\n        \"2\": \"尽快闪开\",\n        \"3\": \"寻找道具抵御风\",\n        \"4\": \"尝试堵住暗道的通风口\"\n    }\n}"
+=======
+        "content": "4"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n    \"Title\": \"Water Margin Story\",\n    \"Turns\": 41,\n    \"Health\": {\n        \"current\": 5,\n        \"maximum\": 100\n    },\n    \"Goal\": \"Discover the truth behind the mysterious disappearances\",\n    \"Scene\": \"你大声呼喊求救，但没有人出现。突然，一道黑影从花海中闪现，向你袭来。\",\n    \"Dialogue\": \"嗖！\",\n    \"PossibleActions\": {\n        \"1\": \"躲避黑影\",\n        \"2\": \"寻找可以利用的武器\",\n        \"3\": \"尝试与黑影交谈\",\n        \"4\": \"迎战黑影\"\n    }\n}"
+>>>>>>> c380834eca48122610cc43a75e1e82b26c6df7e0
     }
 ]

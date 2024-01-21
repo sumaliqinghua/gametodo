@@ -97,5 +97,52 @@
         "firstRecordTime": "2024-01-17T18:05:29.541250",
         "purchaseTime": "",
         "writeoffTime": ""
+<<<<<<< HEAD
+=======
+    },
+    {
+        "name": "乔北京之旅",
+        "price": 1400.0,
+        "type": "出行",
+        "discountCoefficient": 0.7,
+        "comments": "︿(￣︶￣)︿",
+        "discountDay": 3,
+        "firstRecordTime": "2024-01-20T01:19:24.670188",
+        "purchaseTime": "",
+        "writeoffTime": ""
+    },
+    {
+        "name": "烧水壶",
+        "price": 60.0,
+        "type": "健康",
+        "discountCoefficient": 0.9,
+        "comments": "烧啊烧啊烧",
+        "discountDay": 1,
+        "firstRecordTime": "2024-01-20T01:21:54.787279",
+        "purchaseTime": "",
+        "writeoffTime": ""
+    },
+    {
+        "name": "袜子",
+        "price": 59.0,
+        "type": "服装",
+        "discountCoefficient": 0.6,
+        "comments": "",
+        "discountDay": 5,
+        "firstRecordTime": "2024-01-20T01:22:31.699782",
+        "purchaseTime": "",
+        "writeoffTime": ""
+    },
+    {
+        "name": "冻干粥早餐",
+        "price": 60.0,
+        "type": "健康",
+        "discountCoefficient": 0.8,
+        "comments": "吃早饭吧",
+        "discountDay": 9,
+        "firstRecordTime": "2024-01-20T01:22:57.491852",
+        "purchaseTime": "",
+        "writeoffTime": ""
+>>>>>>> c380834eca48122610cc43a75e1e82b26c6df7e0
     }
 ]
