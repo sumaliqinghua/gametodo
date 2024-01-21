@@ -44,6 +44,17 @@
         "writeoffTime": ""
     },
     {
+        "name": "速热水杯",
+        "price": 199.0,
+        "type": "健康",
+        "discountCoefficient": 0.5,
+        "comments": "多喝热水",
+        "discountDay": 6,
+        "firstRecordTime": "2024-01-19T19:57:36.255369",
+        "purchaseTime": "",
+        "writeoffTime": ""
+    },
+    {
         "name": "dow熊圣诞礼物",
         "price": 225.84999999999997,
         "type": "礼物",
@@ -53,17 +64,6 @@
         "firstRecordTime": "2023-12-24T18:30:44.276468",
         "purchaseTime": "",
         "writeoffTime": "2023-12-24T18:30:44.276468"
-    },
-    {
-        "name": "花花",
-        "price": 424.24,
-        "type": "礼物",
-        "discountCoefficient": 0.6,
-        "comments": "to乔",
-        "discountDay": 3,
-        "firstRecordTime": "2024-01-17T18:02:54.750998",
-        "purchaseTime": "",
-        "writeoffTime": ""
     },
     {
         "name": "新眼镜",
@@ -77,6 +77,17 @@
         "writeoffTime": ""
     },
     {
+        "name": "花花",
+        "price": 424.24,
+        "type": "礼物",
+        "discountCoefficient": 0.6,
+        "comments": "to乔",
+        "discountDay": 3,
+        "firstRecordTime": "2024-01-17T18:02:54.750998",
+        "purchaseTime": "",
+        "writeoffTime": ""
+    },
+    {
         "name": "ipad",
         "price": 3500.0,
         "type": "数码",
@@ -84,17 +95,6 @@
         "comments": "买前生产力",
         "discountDay": 3,
         "firstRecordTime": "2024-01-17T18:05:29.541250",
-        "purchaseTime": "",
-        "writeoffTime": ""
-    },
-    {
-        "name": "速热水杯",
-        "price": 199.0,
-        "type": "健康",
-        "discountCoefficient": 0.5,
-        "comments": "多喝热水",
-        "discountDay": 6,
-        "firstRecordTime": "2024-01-19T19:57:36.255369",
         "purchaseTime": "",
         "writeoffTime": ""
     }

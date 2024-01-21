@@ -338,5 +338,53 @@
     {
         "role": "assistant",
         "content": "{\n    \"Title\": \"Water Margin Story\",\n    \"Turns\": 40,\n    \"Health\": {\n        \"current\": 10,\n        \"maximum\": 100\n    },\n    \"Goal\": \"Discover the truth behind the mysterious disappearances\",\n    \"Scene\": \"你闭上眼睛开始祈祷，突然感到一股温暖的光芒环绕着你，邪恶力量渐渐消散。当你睁开眼睛，你发现自己站在一片美丽的花海中。\",\n    \"Dialogue\": \"轰隆隆......\",\n    \"PossibleActions\": {\n        \"1\": \"沿着花海向前走\",\n        \"2\": \"寻找花海中的守护者\",\n        \"3\": \"采摘花朵\",\n        \"4\": \"大声呼喊求救\"\n    }\n}"
+    },
+    {
+        "role": "user",
+        "content": "3"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n    \"Title\": \"Water Margin Story\",\n    \"Turns\": 41,\n    \"Health\": {\n        \"current\": 10,\n        \"maximum\": 100\n    },\n    \"Goal\": \"Discover the truth behind the mysterious disappearances\",\n    \"Scene\": \"你沿着花海向前走，突然你听到了一阵低沉的吼叫声，你走近声音的方向，发现了一头巨大的花妖正在守护花海。\",\n    \"Dialogue\": \"嗡嗡嗡......\",\n    \"PossibleActions\": {\n        \"1\": \"试图与花妖进行交谈\",\n        \"2\": \"寻找花妖的弱点\",\n        \"3\": \"迅速逃离花海\",\n        \"4\": \"使用武器攻击花妖\"\n    }\n}"
+    },
+    {
+        "role": "user",
+        "content": "3"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n    \"Title\": \"Water Margin Story\",\n    \"Turns\": 42,\n    \"Health\": {\n        \"current\": 10,\n        \"maximum\": 100\n    },\n    \"Goal\": \"Discover the truth behind the mysterious disappearances\",\n    \"Scene\": \"你成功逃离了花妖的攻击，远离了花海。你发现前方有一座古老的庙宇，门前摆放着一个铁盒。\",\n    \"Dialogue\": \"咚咚咚......\",\n    \"PossibleActions\": {\n        \"1\": \"打开铁盒看看里面有什么\",\n        \"2\": \"绕过庙宇，继续前行\",\n        \"3\": \"细心观察庙宇的周围\",\n        \"4\": \"试图找到庙宇的守护者\"\n    }\n}"
+    },
+    {
+        "role": "user",
+        "content": "2"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n    \"Title\": \"Water Margin Story\",\n    \"Turns\": 43,\n    \"Health\": {\n        \"current\": 10,\n        \"maximum\": 100\n    },\n    \"Goal\": \"Discover the truth behind the mysterious disappearances\",\n    \"Scene\": \"你选择绕过庙宇，继续前行。突然，一阵阴风袭来，你感觉到有什么不祥的事情即将发生。\",\n    \"Dialogue\": \"嗖嗖嗖......\",\n    \"PossibleActions\": {\n        \"1\": \"加快速度前行\",\n        \"2\": \"停下来仔细观察四周\",\n        \"3\": \"大声呼救，看看有没有人回应\",\n        \"4\": \"闭上眼睛静静等待\"\n    }\n}"
+    },
+    {
+        "role": "user",
+        "content": "2"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n    \"Title\": \"Water Margin Story\",\n    \"Turns\": 44,\n    \"Health\": {\n        \"current\": 10,\n        \"maximum\": 100\n    },\n    \"Goal\": \"Discover the truth behind the mysterious disappearances\",\n    \"Scene\": \"你停下来仔细观察四周，发现一块石头上刻着古老的符号。突然，石头下面露出一个小洞口，仿佛通往地下秘境一般。\",\n    \"Dialogue\": \"\",\n    \"PossibleActions\": {\n        \"1\": \"探索洞口\",\n        \"2\": \"继续前行\",\n        \"3\": \"寻找工具准备挖掘石头下面的秘密\",\n        \"4\": \"立刻离开这个地方\"\n    }\n}"
+    },
+    {
+        "role": "user",
+        "content": "3"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n    \"Title\": \"Water Margin Story\",\n    \"Turns\": 45,\n    \"Health\": {\n        \"current\": 10,\n        \"maximum\": 100\n    },\n    \"Goal\": \"Discover the truth behind the mysterious disappearances\",\n    \"Scene\": \"你找到了一把铁铲，开始挖掘石头下面的秘密。随着努力，你终于打开了一个通往地下的暗道。\",\n    \"Dialogue\": \"\",\n    \"PossibleActions\": {\n        \"1\": \"进入暗道\",\n        \"2\": \"继续挖掘\",\n        \"3\": \"寻找火把照亮暗道\",\n        \"4\": \"回到地面\"\n    }\n}"
+    },
+    {
+        "role": "user",
+        "content": "2"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n    \"Title\": \"Water Margin Story\",\n    \"Turns\": 46,\n    \"Health\": {\n        \"current\": 7,\n        \"maximum\": 100\n    },\n    \"Goal\": \"Discover the truth behind the mysterious disappearances\",\n    \"Scene\": \"你继续挖掘，突然一阵风从暗道中吹出，你觉得有些不对劲。\",\n    \"Dialogue\": \"\",\n    \"PossibleActions\": {\n        \"1\": \"小心继续挖掘\",\n        \"2\": \"尽快闪开\",\n        \"3\": \"寻找道具抵御风\",\n        \"4\": \"尝试堵住暗道的通风口\"\n    }\n}"
     }
 ]
