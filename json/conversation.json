@@ -341,7 +341,6 @@
     },
     {
         "role": "user",
-<<<<<<< HEAD
         "content": "3"
     },
     {
@@ -387,12 +386,29 @@
     {
         "role": "assistant",
         "content": "{\n    \"Title\": \"Water Margin Story\",\n    \"Turns\": 46,\n    \"Health\": {\n        \"current\": 7,\n        \"maximum\": 100\n    },\n    \"Goal\": \"Discover the truth behind the mysterious disappearances\",\n    \"Scene\": \"你继续挖掘，突然一阵风从暗道中吹出，你觉得有些不对劲。\",\n    \"Dialogue\": \"\",\n    \"PossibleActions\": {\n        \"1\": \"小心继续挖掘\",\n        \"2\": \"尽快闪开\",\n        \"3\": \"寻找道具抵御风\",\n        \"4\": \"尝试堵住暗道的通风口\"\n    }\n}"
-=======
-        "content": "4"
+    },
+    {
+        "role": "user",
+        "content": "1"
     },
     {
         "role": "assistant",
-        "content": "{\n    \"Title\": \"Water Margin Story\",\n    \"Turns\": 41,\n    \"Health\": {\n        \"current\": 5,\n        \"maximum\": 100\n    },\n    \"Goal\": \"Discover the truth behind the mysterious disappearances\",\n    \"Scene\": \"你大声呼喊求救，但没有人出现。突然，一道黑影从花海中闪现，向你袭来。\",\n    \"Dialogue\": \"嗖！\",\n    \"PossibleActions\": {\n        \"1\": \"躲避黑影\",\n        \"2\": \"寻找可以利用的武器\",\n        \"3\": \"尝试与黑影交谈\",\n        \"4\": \"迎战黑影\"\n    }\n}"
->>>>>>> c380834eca48122610cc43a75e1e82b26c6df7e0
+        "content": "{\n    \"Title\": \"Water Margin Story\",\n    \"Turns\": 47,\n    \"Health\": {\n        \"current\": 7,\n        \"maximum\": 100\n    },\n    \"Goal\": \"Discover the truth behind the mysterious disappearances\",\n    \"Scene\": \"你小心继续挖掘，发现地下有一道密道。\",\n    \"Dialogue\": \"\",\n    \"PossibleActions\": {\n        \"1\": \"走进密道探索\",\n        \"2\": \"寻找其他线索\",\n        \"3\": \"回到村庄寻求帮助\",\n        \"4\": \"继续挖掘另一个通道\"\n    }\n}"
+    },
+    {
+        "role": "user",
+        "content": "2"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n    \"Title\": \"Water Margin Story\",\n    \"Turns\": 48,\n    \"Health\": {\n        \"current\": 7,\n        \"maximum\": 100\n    },\n    \"Goal\": \"Discover the truth behind the mysterious disappearances\",\n    \"Scene\": \"你继续寻找其他线索，突然听到远处传来一阵奇怪的嘈杂声。\",\n    \"Dialogue\": \"\",\n    \"PossibleActions\": {\n        \"1\": \"悄悄潜入声音传来的地方\",\n        \"2\": \"留在原地观察\",\n        \"3\": \"小心翼翼回到密道\",\n        \"4\": \"试图寻找逃跑的路线\"\n    }\n}"
+    },
+    {
+        "role": "user",
+        "content": "1"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n    \"Title\": \"Water Margin Story\",\n    \"Turns\": 49,\n    \"Health\": {\n        \"current\": 7,\n        \"maximum\": 100\n    },\n    \"Goal\": \"Discover the truth behind the mysterious disappearances\",\n    \"Scene\": \"你悄悄潜入声音传来的地方，发现一群武装匪徒正在密谋下一步行动。\",\n    \"Dialogue\": \"\",\n    \"PossibleActions\": {\n        \"1\": \"寻找机会潜行离开\",\n        \"2\": \"尝试跟踪匪徒\",\n        \"3\": \"直接面对匪徒\",\n        \"4\": \"藏起来观察他们的行动\"\n    }\n}"
     }
 ]

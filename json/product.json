@@ -1,5 +1,49 @@
 [
     {
+        "name": "袜子",
+        "price": 59.0,
+        "type": "服装",
+        "discountCoefficient": 0.6,
+        "comments": "",
+        "discountDay": 5,
+        "firstRecordTime": "2024-01-20T01:22:31.699782",
+        "purchaseTime": "",
+        "writeoffTime": ""
+    },
+    {
+        "name": "烧水壶",
+        "price": 60.0,
+        "type": "健康",
+        "discountCoefficient": 0.9,
+        "comments": "烧啊烧啊烧",
+        "discountDay": 1,
+        "firstRecordTime": "2024-01-20T01:21:54.787279",
+        "purchaseTime": "",
+        "writeoffTime": ""
+    },
+    {
+        "name": "冻干粥早餐",
+        "price": 60.0,
+        "type": "健康",
+        "discountCoefficient": 0.8,
+        "comments": "吃早饭吧",
+        "discountDay": 9,
+        "firstRecordTime": "2024-01-20T01:22:57.491852",
+        "purchaseTime": "",
+        "writeoffTime": ""
+    },
+    {
+        "name": "妙控板",
+        "price": 188.08,
+        "type": "数码",
+        "discountCoefficient": 0.5,
+        "comments": "操控pad",
+        "discountDay": 3,
+        "firstRecordTime": "2024-01-13T14:18:41.106843",
+        "purchaseTime": "",
+        "writeoffTime": ""
+    },
+    {
         "name": "护理液",
         "price": 139.0,
         "type": "健康",
@@ -20,17 +64,6 @@
         "firstRecordTime": "2024-01-03T15:29:38.600902",
         "purchaseTime": "",
         "writeoffTime": "2024-01-03T15:29:38.600902"
-    },
-    {
-        "name": "妙控板",
-        "price": 188.08,
-        "type": "数码",
-        "discountCoefficient": 0.5,
-        "comments": "操控pad",
-        "discountDay": 3,
-        "firstRecordTime": "2024-01-13T14:18:41.106843",
-        "purchaseTime": "",
-        "writeoffTime": ""
     },
     {
         "name": "马丁靴",
@@ -66,17 +99,6 @@
         "writeoffTime": "2023-12-24T18:30:44.276468"
     },
     {
-        "name": "新眼镜",
-        "price": 700.0,
-        "type": "健康",
-        "discountCoefficient": 0.5,
-        "comments": "325 375",
-        "discountDay": 1,
-        "firstRecordTime": "2024-01-17T18:06:01.340191",
-        "purchaseTime": "",
-        "writeoffTime": ""
-    },
-    {
         "name": "花花",
         "price": 424.24,
         "type": "礼物",
@@ -88,13 +110,13 @@
         "writeoffTime": ""
     },
     {
-        "name": "ipad",
-        "price": 3500.0,
-        "type": "数码",
+        "name": "新眼镜",
+        "price": 700.0,
+        "type": "健康",
         "discountCoefficient": 0.5,
-        "comments": "买前生产力",
-        "discountDay": 3,
-        "firstRecordTime": "2024-01-17T18:05:29.541250",
+        "comments": "325 375",
+        "discountDay": 1,
+        "firstRecordTime": "2024-01-17T18:06:01.340191",
         "purchaseTime": "",
         "writeoffTime": ""
     },
@@ -110,35 +132,13 @@
         "writeoffTime": ""
     },
     {
-        "name": "烧水壶",
-        "price": 60.0,
-        "type": "健康",
-        "discountCoefficient": 0.9,
-        "comments": "烧啊烧啊烧",
-        "discountDay": 1,
-        "firstRecordTime": "2024-01-20T01:21:54.787279",
-        "purchaseTime": "",
-        "writeoffTime": ""
-    },
-    {
-        "name": "袜子",
-        "price": 59.0,
-        "type": "服装",
-        "discountCoefficient": 0.6,
-        "comments": "",
-        "discountDay": 5,
-        "firstRecordTime": "2024-01-20T01:22:31.699782",
-        "purchaseTime": "",
-        "writeoffTime": ""
-    },
-    {
-        "name": "冻干粥早餐",
-        "price": 60.0,
-        "type": "健康",
-        "discountCoefficient": 0.8,
-        "comments": "吃早饭吧",
-        "discountDay": 9,
-        "firstRecordTime": "2024-01-20T01:22:57.491852",
+        "name": "ipad",
+        "price": 3500.0,
+        "type": "数码",
+        "discountCoefficient": 0.5,
+        "comments": "买前生产力",
+        "discountDay": 3,
+        "firstRecordTime": "2024-01-17T18:05:29.541250",
         "purchaseTime": "",
         "writeoffTime": ""
     }
