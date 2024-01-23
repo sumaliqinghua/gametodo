@@ -8,7 +8,7 @@
         "discountDay": 1,
         "firstRecordTime": "2023-12-22T16:53:50.642830",
         "purchaseTime": "2023-12-22T17:09:27.444627",
-        "writeoffTime": ""
+        "writeoffTime": "2024-01-23 18:49:58.793498"
     },
     {
         "name": "5L农夫山泉",
@@ -108,5 +108,16 @@
         "firstRecordTime": "2024-01-19T17:33:48.868237",
         "purchaseTime": "2024-01-19T18:55:38.261411",
         "writeoffTime": "2024-01-19 18:55:47.585028"
+    },
+    {
+        "name": "妙控板",
+        "price": 188.08,
+        "type": "数码",
+        "discountCoefficient": 0.5,
+        "comments": "操控pad",
+        "discountDay": 3,
+        "firstRecordTime": "2024-01-13T14:18:41.106843",
+        "purchaseTime": "2024-01-23T18:49:50.606218",
+        "writeoffTime": "2024-01-23 18:50:03.343882"
     }
 ]

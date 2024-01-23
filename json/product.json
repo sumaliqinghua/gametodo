@@ -1,5 +1,16 @@
 [
     {
+        "name": "鹦鹉小窝",
+        "price": 30.0,
+        "type": "礼物",
+        "discountCoefficient": 0.9,
+        "comments": "to啾啾",
+        "discountDay": 9,
+        "firstRecordTime": "2024-01-23T13:55:17.978366",
+        "purchaseTime": "",
+        "writeoffTime": ""
+    },
+    {
         "name": "袜子",
         "price": 59.0,
         "type": "服装",
@@ -29,17 +40,6 @@
         "comments": "吃早饭吧",
         "discountDay": 9,
         "firstRecordTime": "2024-01-20T01:22:57.491852",
-        "purchaseTime": "",
-        "writeoffTime": ""
-    },
-    {
-        "name": "妙控板",
-        "price": 188.08,
-        "type": "数码",
-        "discountCoefficient": 0.5,
-        "comments": "操控pad",
-        "discountDay": 3,
-        "firstRecordTime": "2024-01-13T14:18:41.106843",
         "purchaseTime": "",
         "writeoffTime": ""
     },

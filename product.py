@@ -53,11 +53,12 @@ class Product:
     self.writeoffTime = writeoffTime
     
   def get_price(self):
-    today = datetime.today()
     price = self.price
-    if self.discountDay == today.day % 10:
+    if self.is_discount():
         price *= self.discountCoefficient
     return price
+  def is_discount(self):
+    return self.discountDay == datetime.today().day % 10
     
 # 修改后的数据存储
 products = [] 
@@ -226,3 +227,13 @@ def show_products():
     print('商品列表:')
     for index,product in enumerate(data):
         print('{}. {}:{}'.format(index,product.name,product.get_price()))
+    show_discount_products()
+
+def show_discount_products():
+    data = load_products()
+    data = sorted(data, key=lambda x: x.get_price())
+    # savejson(product_file_path,data)
+    print('打折商品列表:')
+    for index,product in enumerate(data):
+        if product.is_discount():
+            print('{}. {} 折扣:{}'.format(index,product.name,product.discountCoefficient))

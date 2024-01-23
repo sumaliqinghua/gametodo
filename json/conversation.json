@@ -410,5 +410,29 @@
     {
         "role": "assistant",
         "content": "{\n    \"Title\": \"Water Margin Story\",\n    \"Turns\": 49,\n    \"Health\": {\n        \"current\": 7,\n        \"maximum\": 100\n    },\n    \"Goal\": \"Discover the truth behind the mysterious disappearances\",\n    \"Scene\": \"你悄悄潜入声音传来的地方，发现一群武装匪徒正在密谋下一步行动。\",\n    \"Dialogue\": \"\",\n    \"PossibleActions\": {\n        \"1\": \"寻找机会潜行离开\",\n        \"2\": \"尝试跟踪匪徒\",\n        \"3\": \"直接面对匪徒\",\n        \"4\": \"藏起来观察他们的行动\"\n    }\n}"
+    },
+    {
+        "role": "user",
+        "content": "2"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n    \"Title\": \"Water Margin Story\",\n    \"Turns\": 50,\n    \"Health\": {\n        \"current\": 7,\n        \"maximum\": 100\n    },\n    \"Goal\": \"Discover the truth behind the mysterious disappearances\",\n    \"Scene\": \"你悄悄跟踪匪徒，发现他们正在前往一个神秘的山洞。\",\n    \"Dialogue\": \"\",\n    \"PossibleActions\": {\n        \"1\": \"继续跟踪进入山洞\",\n        \"2\": \"返回并汇报情报\",\n        \"3\": \"寻找帮手一同进入山洞\",\n        \"4\": \"注意力分散，忽略山洞而返回\"\n    }\n}"
+    },
+    {
+        "role": "user",
+        "content": "3"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n    \"Title\": \"Water Margin Story\",\n    \"Turns\": 51,\n    \"Health\": {\n        \"current\": 7,\n        \"maximum\": 100\n    },\n    \"Goal\": \"Discover the truth behind the mysterious disappearances\",\n    \"Scene\": \"你在周围寻找帮手，最终找到一位勇敢的村民愿意和你一同前往山洞。\",\n    \"Dialogue\": \"\",\n    \"PossibleActions\": {\n        \"1\": \"与村民一同进入山洞\",\n        \"2\": \"询问村民关于山洞的情况\",\n        \"3\": \"准备好装备并出发\",\n        \"4\": \"感到害怕，决定放弃探险\"\n    }\n}"
+    },
+    {
+        "role": "user",
+        "content": "4"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n    \"Title\": \"Water Margin Story\",\n    \"Turns\": 52,\n    \"Health\": {\n        \"current\": 2,\n        \"maximum\": 100\n    },\n    \"Goal\": \"Discover the truth behind the mysterious disappearances\",\n    \"Scene\": \"你因害怕而决定放弃探险，返回了村庄。\",\n    \"Dialogue\": \"\",\n    \"PossibleActions\": {\n        \"1\": \"再次找寻勇敢的同伴\",\n        \"2\": \"探访村庄周围的一些地方，寻找线索\",\n        \"3\": \"前往村庄附近的寺庙求助\",\n        \"4\": \"休息并恢复体力\"\n    }\n}"
     }
 ]
