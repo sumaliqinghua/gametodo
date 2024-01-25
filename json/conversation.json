@@ -434,5 +434,101 @@
     {
         "role": "assistant",
         "content": "{\n    \"Title\": \"Water Margin Story\",\n    \"Turns\": 52,\n    \"Health\": {\n        \"current\": 2,\n        \"maximum\": 100\n    },\n    \"Goal\": \"Discover the truth behind the mysterious disappearances\",\n    \"Scene\": \"你因害怕而决定放弃探险，返回了村庄。\",\n    \"Dialogue\": \"\",\n    \"PossibleActions\": {\n        \"1\": \"再次找寻勇敢的同伴\",\n        \"2\": \"探访村庄周围的一些地方，寻找线索\",\n        \"3\": \"前往村庄附近的寺庙求助\",\n        \"4\": \"休息并恢复体力\"\n    }\n}"
+    },
+    {
+        "role": "user",
+        "content": "1"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n    \"Title\": \"Water Margin Story\",\n    \"Turns\": 53,\n    \"Health\": {\n        \"current\": 2,\n        \"maximum\": 100\n    },\n    \"Goal\": \"Discover the truth behind the mysterious disappearances\",\n    \"Scene\": \"You have found a brave companion to join your quest. Together, you explore the outskirts of the village in search of clues.\",\n    \"Dialogue\": \"\",\n    \"PossibleActions\": {\n        \"1\": \"Examine the mysterious symbols carved on the ancient trees\",\n        \"2\": \"Investigate the abandoned temple hidden in the dense woods\",\n        \"3\": \"Ask the village elders about the legends of the area\",\n        \"4\": \"Rest and regain strength\"\n    }\n}"
+    },
+    {
+        "role": "user",
+        "content": "1"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n    \"Title\": \"水浒传的故事\",\n    \"Turns\": 54,\n    \"Health\": {\n        \"current\": 2,\n        \"maximum\": 100\n    },\n    \"Goal\": \"和李逵结拜为兄弟\",\n    \"Scene\": \"As you examine the mysterious symbols carved on the ancient trees, a sudden gust of wind carries a faint whisper of an old chant. A hidden path reveals itself leading deeper into the woods, shrouded in mystery.\",\n    \"Dialogue\": \"\",\n    \"PossibleActions\": {\n        \"1\": \"Follow the hidden path\",\n        \"2\": \"Search for clues around the ancient trees\",\n        \"3\": \"Continue investigating the abandoned temple\",\n        \"4\": \"Rest and regain strength\"\n    }\n}"
+    },
+    {
+        "role": "user",
+        "content": "2"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n    \"Title\": \"水浒传的故事\",\n    \"Turns\": 55,\n    \"Health\": {\n        \"current\": 2,\n        \"maximum\": 100\n    },\n    \"Goal\": \"和李逵结拜为兄弟\",\n    \"Scene\": \"你仔细检查树上刻有的古老符号，希望找到一个线索。突然，你听到了灌木丛中轻微的声响，一个身影钻进了影子中。似乎有人或有东西在监视你。\",\n    \"Dialogue\": \"\",\n    \"PossibleActions\": {\n        \"1\": \"走向灌木丛进行调查\",\n        \"2\": \"呼叫并试图与隐藏的身影沟\",\n        \"3\": \"撤退并返回主路\",\n        \"4\": \"准备可能的伏击\"\n    }\n}"
+    },
+    {
+        "role": "user",
+        "content": "4"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n    \"Title\": \"水浒传的故事\",\n    \"Turns\": 56,\n    \"Health\": {\n        \"current\": 0,\n        \"maximum\": 100\n    },\n    \"Goal\": \"和李逵结拜为兄弟\",\n    \"Scene\": \"突然，从四面八方，几个身影跃出，他们是山贼的手下，他们看起来凶狠无比。\",\n    \"Dialogue\": \"嗖！嗖！嗖！\",\n    \"PossibleActions\": {\n        \"1\": \"奋力反抗，与山贼作战\",\n        \"2\": \"试图迅速逃跑\",\n        \"3\": \"寻找周围的藏身之处\",\n        \"4\": \"无助地倒在地上\"\n    }\n}"
+    },
+    {
+        "role": "user",
+        "content": "3"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n    \"Title\": \"水浒传的故事\",\n    \"Turns\": 56,\n    \"Health\": {\n        \"current\": 0,\n        \"maximum\": 100\n    },\n    \"Goal\": \"和李逵结拜为兄弟\",\n    \"Scene\": \"你迅速寻找周围的藏身之处，找到了一处隐蔽的树丛，成功躲避了山贼的注意。\",\n    \"Dialogue\": \"\",\n    \"PossibleActions\": {\n        \"1\": \"继续寻找李逵\",\n        \"2\": \"等待山贼离开后再行动\",\n        \"3\": \"寻找出口逃离此地\",\n        \"4\": \"休息片刻恢复体力\"\n    }\n}"
+    },
+    {
+        "role": "user",
+        "content": "4"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n    \"Title\": \"水浒传的故事\",\n    \"Turns\": 57,\n    \"Health\": {\n        \"current\": 10,\n        \"maximum\": 100\n    },\n    \"Goal\": \"和李逵结拜为兄弟\",\n    \"Scene\": \"你成功躲避了山贼的注意，但休息片刻后，你意识到自己的伤势并不容乐观。你知道必须尽快寻找李逵才能得到进一步的帮助。\",\n    \"Dialogue\": \"\",\n    \"PossibleActions\": {\n        \"1\": \"继续寻找李逵\",\n        \"2\": \"等待山贼离开后再行动\",\n        \"3\": \"寻找出口逃离此地\",\n        \"4\": \"前往村子寻求帮助\"\n    }\n}"
+    },
+    {
+        "role": "user",
+        "content": "4"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n    \"Title\": \"水浒传的故事\",\n    \"Turns\": 58,\n    \"Health\": {\n        \"current\": 5,\n        \"maximum\": 100\n    },\n    \"Goal\": \"和李逵结拜为兄弟\",\n    \"Scene\": \"你决定前往村子寻求帮助，但途中你遇到了一群山贼。你拼尽全力与他们战斗，但最终你被击倒在地，身受重伤。\",\n    \"Dialogue\": \"*战斗声* *剑刃交击* *呼喊声*\",\n    \"PossibleActions\": {\n        \"1\": \"寻找李逵帮助\",\n        \"2\": \"寻找藏身地避免追击\",\n        \"3\": \"呼救\",\n        \"4\": \"继续战斗\"\n    }\n}"
+    },
+    {
+        "role": "user",
+        "content": "3"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n    \"Title\": \"水浒传的故事\",\n    \"Turns\": 59,\n    \"Health\": {\n        \"current\": 5,\n        \"maximum\": 100\n    },\n    \"Goal\": \"和李逵结拜为兄弟\",\n    \"Scene\": \"你发出呼救声，希望有人能听到并前来救援。山林中的回声使得你的声音反响回来，但并没有引来救援。\",\n    \"Dialogue\": \"*呼救声* *回声*\",\n    \"PossibleActions\": {\n        \"1\": \"寻找李逵帮助\",\n        \"2\": \"寻找藏身地避免追击\",\n        \"3\": \"继续呼救\",\n        \"4\": \"继续战斗\"\n    }\n}"
+    },
+    {
+        "role": "user",
+        "content": "1"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n    \"Title\": \"水浒传的故事\",\n    \"Turns\": 60,\n    \"Health\": {\n        \"current\": 5,\n        \"maximum\": 100\n    },\n    \"Goal\": \"和李逵结拜为兄弟\",\n    \"Scene\": \"你决定寻找李逵的帮助。在你转过一处山岩的时候，意外发现了一个隐藏的山洞。你小心地走近，发现山洞内部照耀着微弱的灯光。\",\n    \"Dialogue\": \"*微弱的灯光*\",\n    \"PossibleActions\": {\n        \"1\": \"走进山洞\",\n        \"2\": \"观察周围是否有埋伏\",\n        \"3\": \"继续寻找李逵\",\n        \"4\": \"呼叫山洞内的人\"\n    }\n}"
+    },
+    {
+        "role": "user",
+        "content": "3"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n    \"Title\": \"水浒传的故事\",\n    \"Turns\": 61,\n    \"Health\": {\n        \"current\": 5,\n        \"maximum\": 100\n    },\n    \"Goal\": \"和李逵结拜为兄弟\",\n    \"Scene\": \"你决定继续寻找李逵的踪迹。在山洞外，你寻找了许久也没能找到李逵的踪迹。突然，一阵异样的声音从山洞深处传来。\",\n    \"Dialogue\": \"*嗡嗡嗡*\",\n    \"PossibleActions\": {\n        \"1\": \"靠近山洞深处听清楚声音\",\n        \"2\": \"离开这里，继续寻找\",\n        \"3\": \"大声喊出李逵的名字\",\n        \"4\": \"寻找石块或木棍，备战可能的危险\"\n    }\n}"
+    },
+    {
+        "role": "user",
+        "content": "1"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n    \"Title\": \"水浒传的故事\",\n    \"Turns\": 62,\n    \"Health\": {\n        \"current\": 5,\n        \"maximum\": 100\n    },\n    \"Goal\": \"和李逵结拜为兄弟\",\n    \"Scene\": \"你靠近山洞深处，随着越来越清晰的声音，你发现山洞内有一群蜜蜂在忙碌地采集花蜜。这些蜜蜂似乎并不想和你为敌，它们只是在自己的活动中发出的嗡嗡声。\",\n    \"Dialogue\": \"\",\n    \"PossibleActions\": {\n        \"1\": \"小心绕过蜜蜂群，深入山洞内寻找线索\",\n        \"2\": \"离开山洞，继续寻找李逵\",\n        \"3\": \"试图与蜜蜂沟通\",\n        \"4\": \"伸手去拿蜜蜂群旁边的花蜜\"\n    }\n}"
+    },
+    {
+        "role": "user",
+        "content": "change the content of 'Goal'"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n    \"Title\": \"水浒传的故事\",\n    \"Turns\": 62,\n    \"Health\": {\n        \"current\": 5,\n        \"maximum\": 100\n    },\n    \"Goal\": \"寻找隐藏在山洞深处的宝藏\",\n    \"Scene\": \"你靠近山洞深处，随着越来越清晰的声音，你发现山洞内有一群蜜蜂在忙碌地采集花蜜。这些蜜蜂似乎并不想和你为敌，它们只是在自己的活动中发出的嗡嗡声。\",\n    \"Dialogue\": \"\",\n    \"PossibleActions\": {\n        \"1\": \"小心绕过蜜蜂群，深入山洞内寻找线索\",\n        \"2\": \"离开山洞，继续寻找李逵\",\n        \"3\": \"试图与蜜蜂沟通\",\n        \"4\": \"伸手去拿蜜蜂群旁边的花蜜\"\n    }\n}"
     }
 ]
