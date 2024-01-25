@@ -1374,6 +1374,19 @@
             "gain": 25.09,
             "last_active_days": "2024-01-21T13:38:44.492030",
             "last_time": "2024-01-25T16:56:22.889742"
+        },
+        {
+            "difficulty": "困难",
+            "task": "爱好",
+            "achievement": 1.0,
+            "focus": 3,
+            "tomatoes": 93,
+            "tomatoes_today": 5,
+            "continuous": 0,
+            "coins": 236.64499999999998,
+            "gain": 10.18,
+            "last_active_days": "2024-01-21T13:38:44.492030",
+            "last_time": "2024-01-25T21:43:03.449568"
         }
     ]
 }

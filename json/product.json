@@ -1,38 +1,5 @@
 [
     {
-        "name": "鹦鹉小窝",
-        "price": 30.0,
-        "type": "礼物",
-        "discountCoefficient": 0.9,
-        "comments": "to啾啾",
-        "discountDay": 9,
-        "firstRecordTime": "2024-01-23T13:55:17.978366",
-        "purchaseTime": "",
-        "writeoffTime": ""
-    },
-    {
-        "name": "袜子",
-        "price": 59.0,
-        "type": "服装",
-        "discountCoefficient": 0.6,
-        "comments": "",
-        "discountDay": 5,
-        "firstRecordTime": "2024-01-20T01:22:31.699782",
-        "purchaseTime": "",
-        "writeoffTime": ""
-    },
-    {
-        "name": "烧水壶",
-        "price": 60.0,
-        "type": "健康",
-        "discountCoefficient": 0.9,
-        "comments": "烧啊烧啊烧",
-        "discountDay": 1,
-        "firstRecordTime": "2024-01-20T01:21:54.787279",
-        "purchaseTime": "",
-        "writeoffTime": ""
-    },
-    {
         "name": "冻干粥早餐",
         "price": 60.0,
         "type": "健康",
@@ -40,17 +7,6 @@
         "comments": "吃早饭吧",
         "discountDay": 9,
         "firstRecordTime": "2024-01-20T01:22:57.491852",
-        "purchaseTime": "",
-        "writeoffTime": ""
-    },
-    {
-        "name": "马丁靴",
-        "price": 190.55,
-        "type": "服装",
-        "discountCoefficient": 0.5,
-        "comments": "哈尔滨",
-        "discountDay": 5,
-        "firstRecordTime": "2024-01-03T16:31:07.926190",
         "purchaseTime": "",
         "writeoffTime": ""
     },
