@@ -11,6 +11,17 @@
         "writeoffTime": ""
     },
     {
+        "name": "速热水杯",
+        "price": 199.0,
+        "type": "健康",
+        "discountCoefficient": 0.5,
+        "comments": "多喝热水",
+        "discountDay": 6,
+        "firstRecordTime": "2024-01-19T19:57:36.255369",
+        "purchaseTime": "",
+        "writeoffTime": ""
+    },
+    {
         "name": "护理液",
         "price": 139.0,
         "type": "健康",
@@ -31,17 +42,6 @@
         "firstRecordTime": "2024-01-03T15:29:38.600902",
         "purchaseTime": "",
         "writeoffTime": "2024-01-03T15:29:38.600902"
-    },
-    {
-        "name": "速热水杯",
-        "price": 199.0,
-        "type": "健康",
-        "discountCoefficient": 0.5,
-        "comments": "多喝热水",
-        "discountDay": 6,
-        "firstRecordTime": "2024-01-19T19:57:36.255369",
-        "purchaseTime": "",
-        "writeoffTime": ""
     },
     {
         "name": "dow熊圣诞礼物",

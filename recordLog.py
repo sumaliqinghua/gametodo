@@ -1,4 +1,5 @@
 from datetime import datetime
+from random import randint
 
 from Assitant.ainormal import get_response, load_raiseconversation
 
@@ -22,13 +23,29 @@ def add_record():
   for question in questions[questions.index(question)+1:]:
     record += f"{question}\n"
   judegment = judge_record(record)
+  print(judegment)
   record += f"9. AI点评: {judegment}\n"
 
   with open("recordLog.txt", "r+",encoding='utf-8') as f:
     content = f.read()
     f.seek(0, 0)
     f.write(record + "\n" + content)
+  print("记录已保存，粘贴到笔记中并【开启休息计时】吧")
+  index = randint(1,9)
+  play_audio(f"./Assets/wav/{index}.wav")
 def judge_record(content):
   content = load_raiseconversation(content)
-  judgment = get_response(content)["choices"][0]["message"]['content']
+  try:
+    judgment = get_response(content)["choices"][0]["message"]['content']
+  except:
+    judgment = "AI出错了，请重试"
   return judgment
+
+
+import os
+
+def play_audio(filename):
+    # index = randint(1,9)
+    # 使用afplay命令播放音频
+    os.system(f'afplay {filename}')
+# play_audio(f"./Assets/wav/{index}.wav")
