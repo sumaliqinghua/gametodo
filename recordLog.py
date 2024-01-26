@@ -30,7 +30,7 @@ def add_record():
     content = f.read()
     f.seek(0, 0)
     f.write(record + "\n" + content)
-  print("记录已保存，粘贴到笔记中并【开启休息计时】吧")
+  print("\n记录已保存，粘贴到笔记中并【开启休息计时】吧!\n")
   index = randint(1,9)
   play_audio(f"./Assets/wav/{index}.wav")
 def judge_record(content):
