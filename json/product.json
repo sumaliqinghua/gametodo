@@ -11,17 +11,6 @@
         "writeoffTime": ""
     },
     {
-        "name": "速热水杯",
-        "price": 199.0,
-        "type": "健康",
-        "discountCoefficient": 0.5,
-        "comments": "多喝热水",
-        "discountDay": 6,
-        "firstRecordTime": "2024-01-19T19:57:36.255369",
-        "purchaseTime": "",
-        "writeoffTime": ""
-    },
-    {
         "name": "护理液",
         "price": 139.0,
         "type": "健康",
@@ -33,15 +22,26 @@
         "writeoffTime": ""
     },
     {
-        "name": "加绒裤子",
-        "price": 158.0,
-        "type": "服装",
-        "discountCoefficient": 0.5,
-        "comments": "哈尔滨",
-        "discountDay": 7,
-        "firstRecordTime": "2024-01-03T15:29:38.600902",
+        "name": "tplink监控",
+        "price": 140.0,
+        "type": "数码",
+        "discountCoefficient": 0.7,
+        "comments": "啾啾",
+        "discountDay": 2,
+        "firstRecordTime": "2024-01-27T17:03:07.941636",
         "purchaseTime": "",
-        "writeoffTime": "2024-01-03T15:29:38.600902"
+        "writeoffTime": ""
+    },
+    {
+        "name": "速热水杯",
+        "price": 199.0,
+        "type": "健康",
+        "discountCoefficient": 0.5,
+        "comments": "多喝热水",
+        "discountDay": 6,
+        "firstRecordTime": "2024-01-19T19:57:36.255369",
+        "purchaseTime": "",
+        "writeoffTime": ""
     },
     {
         "name": "dow熊圣诞礼物",

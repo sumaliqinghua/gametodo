@@ -28,7 +28,7 @@ class User:
         self.tomatoes_today = tomatoes_today
         self.continuous = continuous
         self.coins = coins
-        self.gain = gain
+        self.gains = gain
         self.last_active_days = last_active_days
         self.last_time = last_time
     
@@ -42,7 +42,7 @@ class User:
             'tomatoes_today': self.tomatoes_today,
             'continuous': self.continuous,
             'coins': self.coins,
-            'gain': self.gain,
+            'gain': self.gains,
             'last_active_days': self.last_active_days,
             'last_time': self.last_time
         }
@@ -65,7 +65,7 @@ class User:
             self.tomatoes_today = user_dict['tomatoes_today']
             self.continuous = user_dict['continuous']
             self.coins = user_dict['coins']
-            self.gain = user_dict['gain']
+            self.gains = user_dict['gain']
             self.last_active_days = user_dict['last_active_days']
             self.last_time = user_dict['last_time']
         

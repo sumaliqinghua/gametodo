@@ -163,5 +163,16 @@
         "firstRecordTime": "2024-01-20T01:21:54.787279",
         "purchaseTime": "2024-01-25T22:12:45.904735",
         "writeoffTime": "2024-01-25 22:13:06.955022"
+    },
+    {
+        "name": "加绒裤子",
+        "price": 158.0,
+        "type": "服装",
+        "discountCoefficient": 0.5,
+        "comments": "哈尔滨",
+        "discountDay": 7,
+        "firstRecordTime": "2024-01-03T15:29:38.600902",
+        "purchaseTime": "2024-01-27T17:03:16.852948",
+        "writeoffTime": "2024-01-03T15:29:38.600902"
     }
 ]

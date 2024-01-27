@@ -191,7 +191,7 @@ def record_tomatoes():
 
     # 更新用户数据
     user.coins += coins
-    user.gain = coins
+    user.gains = coins
     user.last_time = datetime.now().isoformat()
     user.time_delta = time_delta
     user.tomatoes += 1
