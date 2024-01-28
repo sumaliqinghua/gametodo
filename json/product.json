@@ -1,5 +1,16 @@
 [
     {
+        "name": "通草球",
+        "price": 50.0,
+        "type": "宠物",
+        "discountCoefficient": 0.9,
+        "comments": "啾啾",
+        "discountDay": 9,
+        "firstRecordTime": "2024-01-28T13:56:44.222153",
+        "purchaseTime": "",
+        "writeoffTime": ""
+    },
+    {
         "name": "冻干粥早餐",
         "price": 60.0,
         "type": "健康",
@@ -29,6 +40,17 @@
         "comments": "啾啾",
         "discountDay": 2,
         "firstRecordTime": "2024-01-27T17:03:07.941636",
+        "purchaseTime": "",
+        "writeoffTime": ""
+    },
+    {
+        "name": "车载吸尘器",
+        "price": 160.0,
+        "type": "宠物",
+        "discountCoefficient": 0.7,
+        "comments": "啾啾",
+        "discountDay": 2,
+        "firstRecordTime": "2024-01-28T13:57:10.135025",
         "purchaseTime": "",
         "writeoffTime": ""
     },
