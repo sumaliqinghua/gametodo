@@ -1,27 +1,5 @@
 [
     {
-        "name": "通草球",
-        "price": 50.0,
-        "type": "宠物",
-        "discountCoefficient": 0.9,
-        "comments": "啾啾",
-        "discountDay": 9,
-        "firstRecordTime": "2024-01-28T13:56:44.222153",
-        "purchaseTime": "",
-        "writeoffTime": ""
-    },
-    {
-        "name": "冻干粥早餐",
-        "price": 60.0,
-        "type": "健康",
-        "discountCoefficient": 0.8,
-        "comments": "吃早饭吧",
-        "discountDay": 9,
-        "firstRecordTime": "2024-01-20T01:22:57.491852",
-        "purchaseTime": "",
-        "writeoffTime": ""
-    },
-    {
         "name": "护理液",
         "price": 139.0,
         "type": "健康",
@@ -29,17 +7,6 @@
         "comments": "fyj",
         "discountDay": 9,
         "firstRecordTime": "2024-01-19T17:50:33.086024",
-        "purchaseTime": "",
-        "writeoffTime": ""
-    },
-    {
-        "name": "tplink监控",
-        "price": 140.0,
-        "type": "数码",
-        "discountCoefficient": 0.7,
-        "comments": "啾啾",
-        "discountDay": 2,
-        "firstRecordTime": "2024-01-27T17:03:07.941636",
         "purchaseTime": "",
         "writeoffTime": ""
     },
@@ -75,17 +42,6 @@
         "firstRecordTime": "2023-12-24T18:30:44.276468",
         "purchaseTime": "",
         "writeoffTime": "2023-12-24T18:30:44.276468"
-    },
-    {
-        "name": "花花",
-        "price": 424.24,
-        "type": "礼物",
-        "discountCoefficient": 0.6,
-        "comments": "to乔",
-        "discountDay": 3,
-        "firstRecordTime": "2024-01-17T18:02:54.750998",
-        "purchaseTime": "",
-        "writeoffTime": ""
     },
     {
         "name": "新眼镜",
