@@ -1,14 +1,14 @@
 {
     "active": [
         {
-            "name": "勇士的试炼",
-            "desc": "A randomly generated challenge.",
-            "bonus": 82.44860054914112,
-            "goal": 7,
-            "cost": 70.0,
-            "progress": 0,
-            "start_time": "2024-02-04T17:19:41.008546",
-            "duration": 26.984871180909835,
+            "name": "19点前 la算法x2番",
+            "desc": "第一个挑战",
+            "bonus": 322.10827868441703,
+            "goal": 2,
+            "cost": 60.0,
+            "progress": 1,
+            "start_time": "2024-02-04T18:20:00.293437",
+            "duration": 1.0,
             "failed": false
         }
     ],

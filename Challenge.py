@@ -35,10 +35,10 @@ class Challenge():
         'failed': self.failed
     }
   def update_progress(self):
-    self.progress += 1
+    # self.progress += 1
     now = datetime.now()
     if now - datetime.fromisoformat(self.start_time) >= timedelta(hours=self.duration):
-        # 已超时 //【?】超时但还未完成呢
+        # 已超时 //【】超时但还未完成呢//S:也被记作finish
         self.failed = True
     else:  
         self.progress += 1
@@ -67,7 +67,7 @@ def create_challenge():
 
 def calculate_bouns(data):
     average_tomatoe_hour = record_tomato_pertime()/60#每个番茄耗时
-    rand = random.uniform(1.2, 3.6)
+    rand = random.uniform(1.2, 2.5)
     coeff = (data['goal'] * average_tomatoe_hour)/data['duration'] * rand
     data['bonus'] = data['cost'] * coeff
     print(f"当前平均番茄用时{average_tomatoe_hour} 预期用时{data['duration']} 奖励为: {data['bonus']}")
@@ -107,27 +107,27 @@ def load_challenges(is_active):
         data = json.load(f)
         # if 'start_time' in data:
         #     data['start_time'] = datetime.fromisoformat(data['start_time'])
-        for c in data['active'] if is_active else data['finished']:
+        for c in data['active'] if is_active else data['finished']: #is_active就取active的否则finished
             challenges.append(Challenge.load_from_dict(c))
     # except:
     #     pass
     return challenges
 # 传入的是激活的任务
 def check_challenges(challenges, user):
-    completed = [c.tojson() for c in challenges if c.is_completed()]
+    completed = [c for c in challenges if c.is_completed()]
     for c in completed:
-        if c['failed']:
+        if c.failed:
             print("挑战已超时,无任何奖励")
-            user.coins -= c['cost']
+            user.coins -= c.cost
         else:
-            print("挑战完成! 获得奖励"+str(c['bonus']))
-            user.coins += c['bonus']
-            user.gains += c['bonus']
+            print("挑战完成! 获得奖励"+str(c.bonus))
+            user.coins += c.bonus
+            user.gains += c.bonus
     completed_before = load_challenges(False)
-    completed_before.extend(completed) #这儿是列表类
-    active = [c.tojson() for c in challenges if not c.is_completed()]
-    completed_json = [c.tojson() for c in completed_before]
-    data = {'active': active, 'finished': completed_json}
+    completed_before.extend(completed) #completed_before是列表类 而completed在上面转换过了
+    active = [c.tojson() for c in challenges if not c.failed and not c.is_completed()]
+    completed_before = [c.tojson() for c in completed_before]
+    data = {'active': active, 'finished': completed_before}
     with open('json/challenges.json', 'w',encoding='utf-8') as f:
         json.dump(data, f, indent=4, ensure_ascii=False)
 
