@@ -47,9 +47,9 @@ class Challenge():
     return self.progress >= self.goal
   
 def create_challenge():
-    accept = input("是否接受挑战?(y/n)")
-    if accept == 'n':
-        return
+    # accept = input("是否接受挑战?(y/n)")
+    # if accept == 'n':
+    #     return
     data = {}
     data['name'] = input("输入挑战名称: ")
     data['desc'] = input("输入挑战描述: ")
@@ -61,11 +61,16 @@ def create_challenge():
     data['duration'] = float(input("输入挑战时长(小时) "))
     data['failed'] = False
     #计算奖励
-    average_tomatoe_hour = record_tomato_pertime()/60#每个番茄耗时
-    coeff = (data['goal'] * average_tomatoe_hour)/data['duration'] * 2
-    data['bonus'] = data['cost'] * coeff
-    print(f"当前平均番茄用时{average_tomatoe_hour} 奖励为: {data['bonus']}")
+    calculate_bouns(data)
+
     return Challenge.load_from_dict(data)
+
+def calculate_bouns(data):
+    average_tomatoe_hour = record_tomato_pertime()/60#每个番茄耗时
+    rand = random.uniform(1.2, 3.6)
+    coeff = (data['goal'] * average_tomatoe_hour)/data['duration'] * rand
+    data['bonus'] = data['cost'] * coeff
+    print(f"当前平均番茄用时{average_tomatoe_hour} 预期用时{data['duration']} 奖励为: {data['bonus']}")
 
 def create_random_challenge():
     total_tomatoes_stat = total_tomatoes_stats()
@@ -73,14 +78,14 @@ def create_random_challenge():
     data['name'] = "勇士的试炼"
     data['desc'] = "A randomly generated challenge."
     data['bonus'] = 0
-    data['goal'] = randint(1, int(total_tomatoes_stat * 3))
-    data['cost'] = float(data['goal'] * 10)
+    data['goal'] = randint(1, int(total_tomatoes_stat))
+    data['cost'] = float(data['goal'] * 20)
     data['progress'] = 0
     data['start_time'] = datetime.now().isoformat()
-    data['duration'] = random.uniform(12, 100)
-    average_tomatoe_hour = total_tomatoes_stat / 24
-    coeff = (data['goal'] / average_tomatoe_hour) / data['duration']
-    data['bonus'] = data['cost'] * coeff
+    rand = random.uniform(0.4, 1)
+    average_tomatoe_hour = record_tomato_pertime()/60#每个番茄耗时
+    data['duration'] = average_tomatoe_hour * rand * data['goal']
+    calculate_bouns(data)
     data['failed'] = False
     print("A random challenge has been created."
             "\nChallenge Name:", data['name'],
