@@ -898,5 +898,21 @@
     {
         "role": "assistant",
         "content": "{\n    \"Title\": \"Water Margin Story\",\n    \"Turns\": 103,\n    \"Health\": {\n        \"current\": 10,\n        \"maximum\": 100\n    },\n    \"Goal\": \"Retrieve the lost treasure hidden in the mountains\",\n    \"Scene\": \"You decide to follow the hidden path indicated by the ancient symbols. As you walk deeper into the mountains, you come across a narrow passage leading to a hidden cave. The whispering sound becomes more intense, as if urging you to continue your journey into the unknown.\",\n    \"Dialogue\": \"Mysterious echoes, faint footsteps\",\n    \"PossibleActions\": {\n        \"1\": \"Proceed into the hidden cave\",\n        \"2\": \"Use a torch to illuminate the cave\",\n        \"3\": \"Listen attentively to the whispering sound\",\n        \"4\": \"Retrace your steps and leave the cave\"\n    }\n}"
+    },
+    {
+        "role": "user",
+        "content": "2"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n    \"Title\": \"Water Margin Story\",\n    \"Turns\": 104,\n    \"Health\": {\n        \"current\": 10,\n        \"maximum\": 100\n    },\n    \"Goal\": \"Retrieve the lost treasure hidden in the mountains\",\n    \"Scene\": \"As you light up the torch, the hidden cave is illuminated, revealing ancient carvings on the walls and a glimmering object at the far end. A sense of excitement and unease fills the air as you approach the mysterious object.\",\n    \"Dialogue\": \"Flickering flames, distant echoes\",\n    \"PossibleActions\": {\n        \"1\": \"Examine the ancient carvings\",\n        \"2\": \"Approach the glimmering object\",\n        \"3\": \"Call out to anyone who might be present\",\n        \"4\": \"Stay cautious and observe the surroundings\"\n    }\n}"
+    },
+    {
+        "role": "user",
+        "content": "'Health' increase"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n    \"Title\": \"Water Margin Story\",\n    \"Turns\": 105,\n    \"Health\": {\n        \"current\": 20,\n        \"maximum\": 100\n    },\n    \"Goal\": \"Retrieve the lost treasure hidden in the mountains\",\n    \"Scene\": \"The ancient carvings depict scenes of battles and mythical creatures, hinting at the history of this hidden place. As you study the carvings, a faint sound of trickling water catches your attention.\",\n    \"Dialogue\": \"Trickling water, faint whispers\",\n    \"PossibleActions\": {\n        \"1\": \"Follow the sound of water\",\n        \"2\": \"Take a closer look at the glimmering object\",\n        \"3\": \"Listen intently for any other sounds\",\n        \"4\": \"Proceed deeper into the cave cautiously\"\n    }\n}"
     }
 ]

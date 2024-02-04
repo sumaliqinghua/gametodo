@@ -5,7 +5,7 @@ import math
 import os
 import random
 from Assitant.airequest import start_conversation
-from Challenge import create_challenge, create_random_challenge, load_challenges, save_challenges
+from Challenge import create_challenge, create_random_challenge, load_challenges, check_challenges
 from User import User
 
 from product import CanBuyOne, GotoStore, PurchaseProduct, RecordProduct, show_products
@@ -103,7 +103,7 @@ def main():
     # 加载用户数据
     print('当前时间{}, 欢迎━(*｀∀´*)ノ亻!'.format(datetime.now().isoformat()))
     user = User()
-    operation = input("请选择服务(番茄记录1/进入商城2/单纯日志记录3):")
+    operation = input("请选择服务(番茄记录1/进入商城2/纯日志记录3/录入挑战任务4):")
     if not operation or operation == "1":
         record_tomatoes()
         show_products()
@@ -117,30 +117,32 @@ def main():
         GotoStore(user)
     elif operation == "3":
         add_record()
+    elif operation == "4":
+        create_challenge()
     else:
         print("无效的选择")
         return
 
 def record_tomatoes():
     # 输入当前数据
-    # try:
-    #     challenges = load_challenges(True)
-    # except:
-    #     challenges = []
+    try:
+        challenges = load_challenges(True)
+    except:
+        challenges = []
 
-    # if challenges and len(challenges) != 0:
-    #     #更新challege的进度
-    #     for challenge in challenges:
-    #         challenge.update_progress()
-    #         print("挑战任务:{}进度{}/{}".format(challenge.name, challenge.progress, challenge.goal))
-    # else:
-    #     # 没有未完成挑战,按概率触发新的
-    #     # challenges = generate_challenges(user)
-    #     challenge = create_random_challenge()
-    #     if challenge:
-    #         challenges = [challenge]
-    #         print("新挑战任务:{}".format(challenge.name))
-    # save_challenges(challenges, user)
+    if challenges and len(challenges) != 0:
+        #更新challege的进度
+        for challenge in challenges:
+            challenge.update_progress()
+            print("挑战任务:{} 进度{}/{}".format(challenge.name, challenge.progress, challenge.goal))
+    else:
+        # 没有未完成挑战,按概率触发新的
+        # challenges = generate_challenges(user)
+        challenge = create_random_challenge()
+        if challenge:
+            challenges = [challenge]
+            print("新挑战任务:{} ".format(challenge.name))
+    check_challenges(challenges, user)
     difficulty = input('请输入难度(简单1/中等2/困难3):')  #根据数字转成对应的中文
     task = input('请输入任务类型(工作1/爱好2/杂事3):')
 
@@ -208,19 +210,19 @@ def record_tomatoes():
         user.gains += DAILY_REWARD
         user.save_user_data()
         
-    # if challenges and len(challenges) != 0:
-    #     #更新challege的进度
-    #     for challenge in challenges:
-    #         challenge.update_progress()
-    #         print("挑战任务:{}进度{}/{}".format(challenge.name, challenge.progress, challenge.goal))
-    # else:
-    #     # 没有未完成挑战,按概率触发新的
-    #     # challenges = generate_challenges(user)
-    #     challenge = create_random_challenge()
-    #     if challenge:
-    #         challenges = [challenge]
-    #         print("新挑战任务:{}".format(challenge.name))
-    # save_challenges(challenges, user)
+    if challenges and len(challenges) != 0:
+        #更新challege的进度
+        for challenge in challenges:
+            challenge.update_progress()
+            print("挑战任务:{}进度{}/{}".format(challenge.name, challenge.progress, challenge.goal))
+    else:
+        # 没有未完成挑战,按概率触发新的
+        # challenges = generate_challenges(user)
+        challenge = create_random_challenge()
+        if challenge:
+            challenges = [challenge]
+            print("新挑战任务:{}".format(challenge.name))
+    check_challenges(challenges, user)
 
     record_all_tomatoes(user)
     print('本次获得 {} 金币'.format(coins))

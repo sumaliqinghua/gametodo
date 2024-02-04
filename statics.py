@@ -79,6 +79,23 @@ def record_all_tomatoes(user):
     savejson(file_path,data)
     show_today_stats()
 
+# 每个番茄的平均用时
+def record_tomato_pertime():
+    data = get_all_tomatoes_data()
+    average_time = 0
+    for users in data.values():
+        #最后一个减去第一个
+        if len(users) <= 1:
+            continue
+        mins = calculate_mins(users[0]['last_time'],users[-1]['last_time'])
+        average_time_tmp = mins/(len(users)-1)
+        average_time += average_time_tmp
+    average_time /= len(data)
+    return average_time
+
+def calculate_mins(first, last):
+    return (datetime.fromisoformat(last) - datetime.fromisoformat(first)).total_seconds() / 60
+
 def get_all_tomatoes_data():
     file_exists = os.path.exists(file_path)
     if file_exists:
