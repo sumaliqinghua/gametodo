@@ -930,5 +930,29 @@
     {
         "role": "assistant",
         "content": "{\n    \"Title\": \"Water Margin Story\",\n    \"Turns\": 107,\n    \"Health\": {\n        \"current\": 10,\n        \"maximum\": 100\n    },\n    \"Goal\": \"Retrieve the lost treasure hidden in the mountains\",\n    \"Scene\": \"The moment you grab a treasure, the chamber starts to tremble. You realize that the entire cave is collapsing around you. The only way out is blocked by falling debris.\",\n    \"Dialogue\": \"Rumbling of the cave, crashing of rocks\",\n    \"PossibleActions\": {\n        \"1\": \"Attempt to clear the debris\",\n        \"2\": \"Search for an alternate way out\",\n        \"3\": \"Stay still and wait for the cave-in to stop\",\n        \"4\": \"Panic and start screaming for help\"\n    }\n}"
+    },
+    {
+        "role": "user",
+        "content": "'Health' increase"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n    \"Title\": \"Water Margin Story\",\n    \"Turns\": 108,\n    \"Health\": {\n        \"current\": 20,\n        \"maximum\": 100\n    },\n    \"Goal\": \"Retrieve the lost treasure hidden in the mountains\",\n    \"Scene\": \"As the dust settles from the cave-in, you find yourself trapped in a small chamber with only one exit. The air is thick with the smell of damp earth and your heart races as you realize time is running out.\",\n    \"Dialogue\": \"Muffled sounds of the collapsing cave, your own heavy breathing\",\n    \"PossibleActions\": {\n        \"1\": \"Examine the chamber for any hidden passages\",\n        \"2\": \"Check your equipment for any tools that might help in the situation\",\n        \"3\": \"Listen for any signs of life outside the chamber\",\n        \"4\": \"Try to force open the blocked exit\"\n    }\n}"
+    },
+    {
+        "role": "user",
+        "content": "'Health' increase"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n    \"Title\": \"Water Margin Story\",\n    \"Turns\": 109,\n    \"Health\": {\n        \"current\": 35,\n        \"maximum\": 100\n    },\n    \"Goal\": \"Retrieve the lost treasure hidden in the mountains\",\n    \"Scene\": \"Taking a moment to catch your breath, you survey your surroundings. The walls of the chamber are rough and uneven, but upon closer inspection, you notice some faint markings etched into the stone.\",\n    \"Dialogue\": \"The sound of your own heartbeat, a faint whisper of wind through the cracks\",\n    \"PossibleActions\": {\n        \"1\": \"Carefully examine the markings on the wall\",\n        \"2\": \"Search the chamber for loose rocks or debris to use as leverage\",\n        \"3\": \"Call out for help in case anyone is nearby\",\n        \"4\": \"Take a moment to rest and regain strength\"\n    }\n}"
+    },
+    {
+        "role": "user",
+        "content": "2"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n    \"Title\": \"Water Margin Story\",\n    \"Turns\": 110,\n    \"Health\": {\n        \"current\": 35,\n        \"maximum\": 100\n    },\n    \"Goal\": \"Retrieve the lost treasure hidden in the mountains\",\n    \"Scene\": \"As you search the chamber for loose rocks or debris, you stumble upon a hidden compartment in the wall. Inside, you find a dusty old map with intricate markings and a cryptic message written in an ancient script.\",\n    \"Dialogue\": \"The rustling of paper as you unfold the map, a faint creak as you open the compartment\",\n    \"PossibleActions\": {\n        \"1\": \"Study the map and try to decipher the message\",\n        \"2\": \"Search for a way to open the hidden compartment further\",\n        \"3\": \"Listen closely for any sounds coming from outside the chamber\",\n        \"4\": \"Ignore the map and continue exploring the chamber\"\n    }\n}"
     }
 ]

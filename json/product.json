@@ -1,16 +1,5 @@
 [
     {
-        "name": "dow熊圣诞礼物",
-        "price": 225.84999999999997,
-        "type": "礼物",
-        "discountCoefficient": 0.6,
-        "comments": "to乔鑫",
-        "discountDay": 4,
-        "firstRecordTime": "2023-12-24T18:30:44.276468",
-        "purchaseTime": "",
-        "writeoffTime": "2023-12-24T18:30:44.276468"
-    },
-    {
         "name": "护理液",
         "price": 139.0,
         "type": "健康",
@@ -44,6 +33,50 @@
         "writeoffTime": ""
     },
     {
+        "name": "dow熊圣诞礼物",
+        "price": 225.84999999999997,
+        "type": "礼物",
+        "discountCoefficient": 0.6,
+        "comments": "to乔鑫",
+        "discountDay": 4,
+        "firstRecordTime": "2023-12-24T18:30:44.276468",
+        "purchaseTime": "",
+        "writeoffTime": "2023-12-24T18:30:44.276468"
+    },
+    {
+        "name": "吉他课",
+        "price": 3000.0,
+        "type": "教育",
+        "discountCoefficient": 0.2,
+        "comments": "53231323",
+        "discountDay": 7,
+        "firstRecordTime": "2024-02-27T13:18:26.453694",
+        "purchaseTime": "",
+        "writeoffTime": ""
+    },
+    {
+        "name": "电钢琴",
+        "price": 600.0,
+        "type": "数码",
+        "discountCoefficient": 0.3,
+        "comments": "piano",
+        "discountDay": 4,
+        "firstRecordTime": "2024-02-27T13:19:23.519347",
+        "purchaseTime": "",
+        "writeoffTime": ""
+    },
+    {
+        "name": "钢琴指示灯",
+        "price": 600.0,
+        "type": "数码",
+        "discountCoefficient": 0.2,
+        "comments": "指法练习",
+        "discountDay": 4,
+        "firstRecordTime": "2024-02-27T13:20:14.011427",
+        "purchaseTime": "",
+        "writeoffTime": ""
+    },
+    {
         "name": "新眼镜",
         "price": 700.0,
         "type": "健康",
@@ -66,6 +99,17 @@
         "writeoffTime": ""
     },
     {
+        "name": "吉他blue lava",
+        "price": 1500.0,
+        "type": "教育",
+        "discountCoefficient": 0.3,
+        "comments": "play guitar",
+        "discountDay": 1,
+        "firstRecordTime": "2024-02-27T13:18:00.103353",
+        "purchaseTime": "",
+        "writeoffTime": ""
+    },
+    {
         "name": "ipad",
         "price": 3500.0,
         "type": "数码",
@@ -73,6 +117,28 @@
         "comments": "买前生产力",
         "discountDay": 3,
         "firstRecordTime": "2024-01-17T18:05:29.541250",
+        "purchaseTime": "",
+        "writeoffTime": ""
+    },
+    {
+        "name": "腾龙20-200镜头",
+        "price": 5000.0,
+        "type": "数码",
+        "discountCoefficient": 0.1,
+        "comments": "一镜走天涯",
+        "discountDay": 8,
+        "firstRecordTime": "2024-02-27T13:16:39.814539",
+        "purchaseTime": "",
+        "writeoffTime": ""
+    },
+    {
+        "name": "Sony A7M4",
+        "price": 15000.0,
+        "type": "数码",
+        "discountCoefficient": 0.1,
+        "comments": "数码相机,记录美好生活",
+        "discountDay": 6,
+        "firstRecordTime": "2024-02-27T13:16:04.218839",
         "purchaseTime": "",
         "writeoffTime": ""
     }

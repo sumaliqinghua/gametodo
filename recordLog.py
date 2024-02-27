@@ -36,7 +36,7 @@ def add_record():
 def judge_record(content):
   content = load_raiseconversation(content)
   try:
-    judgment = get_response(content)["choices"][0]["message"]['content']
+    judgment = get_response(content)
   except:
     judgment = "AI出错了，请重试"
   return judgment

@@ -4,6 +4,8 @@ import json
 import requests
 from dotenv import load_dotenv
 
+from ainormal import get_response
+
 # completion = openai.ChatCompletion.create(
 #                 # max_tokens = inf # 默认inf 最大令牌数
 #                 presence_penalty = 1, # 惩罚机制，-2.0 到 2.0之间，默认0，数值越小提交的重复令牌数越多，从而能更清楚文本意思
@@ -18,8 +20,6 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # url = "https://openai.1rmb.tk/v1/chat/completions"
-url = os.getenv("OPENAI_API_BASE")
-api_key = os.getenv("OPENAI_API_KEY")
 
 # Load the conversation history from a file
 def load_conversation():
@@ -65,38 +65,20 @@ def save_conversation(msg):
     with open("json/conversation.json", "w", encoding='utf-8') as output:
         json.dump(msg, output, indent=4, ensure_ascii=False)
 
-# Send a request to the API and get a response
-def get_response(msg):
-    headers = {
-        'Authorization': f'Bearer {api_key}',
-        'Content-Type': 'application/json'
-    }
-    payload = {
-        "model": "gpt-3.5-turbo-1106",
-        "messages": msg,
-        "response_format":{"type": "json_object"}
-    }
-    try:
-        response = requests.post(url, headers=headers, json=payload)
-        response.raise_for_status()
-        return response.json()
-    except requests.exceptions.RequestException as e:
-        print(f"请求错误: {e}")
-        return None
 
 # Add a message to the conversation history and send a request
 def add_message(msg, content):
-    msg.append({"role": "user", "content": content})
+    # msg.append({"role": "user", "content": content})
     # Truncate the conversation history if it's too long
     if len(json.dumps(msg)) > 2048:
         msgtmp = [msg[0]] + msg[-2:]
     else:
         msgtmp = msg
-    response = get_response(msgtmp)
+    response = get_response(msgtmp,True)
     if response is not None:
-        msg.append(response["choices"][0]["message"])
+        msg.append({"role": "assistant", "content": response})
     else:#获取消息失败
-        msg = msg[:-1]
+        msg = msg
     return msg
 
 # Start the conversation
@@ -117,4 +99,4 @@ def start_conversation(input):
     msg = add_message(msg, content)
     save_conversation(msg)
     print("AI: " + msg[-1]["content"])# //【?】好像不是打印的最后一条
-# start_conversation(2-1)
+start_conversation(2-1)

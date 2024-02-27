@@ -114,11 +114,12 @@ def load_challenges(is_active):
     return challenges
 # 传入的是激活的任务
 def check_challenges(challenges, user):
-    completed = [c for c in challenges if c.is_completed()]
+    completed = [c for c in challenges if c.is_completed() or c.failed]
     for c in completed:
         if c.failed:
             print("挑战已超时,无任何奖励")
             user.coins -= c.cost
+            user.gains -= c.cost
         else:
             print("挑战完成! 获得奖励"+str(c.bonus))
             user.coins += c.bonus
