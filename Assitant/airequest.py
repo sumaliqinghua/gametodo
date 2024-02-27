@@ -4,7 +4,7 @@ import json
 import requests
 from dotenv import load_dotenv
 
-from ainormal import get_response
+from Assitant.ainormal import get_response
 
 # completion = openai.ChatCompletion.create(
 #                 # max_tokens = inf # 默认inf 最大令牌数
@@ -99,4 +99,4 @@ def start_conversation(input):
     msg = add_message(msg, content)
     save_conversation(msg)
     print("AI: " + msg[-1]["content"])# //【?】好像不是打印的最后一条
-start_conversation(2-1)
+# start_conversation(2-1)
