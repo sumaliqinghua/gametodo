@@ -218,5 +218,16 @@
         "firstRecordTime": "2024-01-17T18:02:54.750998",
         "purchaseTime": "2024-02-03T18:49:41.051603",
         "writeoffTime": "2024-02-03 18:49:48.238777"
+    },
+    {
+        "name": "护理液",
+        "price": 139.0,
+        "type": "健康",
+        "discountCoefficient": 0.6,
+        "comments": "fyj",
+        "discountDay": 9,
+        "firstRecordTime": "2024-01-19T17:50:33.086024",
+        "purchaseTime": "2024-02-28T15:03:59.807724",
+        "writeoffTime": "2024-02-28 15:04:04.544032"
     }
 ]
