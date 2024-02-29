@@ -208,6 +208,7 @@ def record_tomatoes():
         for challenge in challenges:
             challenge.update_progress()
             print("挑战任务:{} 进度{}/{}".format(challenge.name, challenge.progress, challenge.goal))
+            print("任务描述:{}".format(challenge.desc[challenge.progress]))
     else:
         # 没有未完成挑战,按概率触发新的
         # challenges = generate_challenges(user)

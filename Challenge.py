@@ -52,7 +52,16 @@ def create_challenge():
     #     return
     data = {}
     data['name'] = input("输入挑战名称: ")
-    data['desc'] = input("输入挑战描述: ")
+    print("输入挑战描述: ")
+    lines = []
+    while True:
+        line = input()
+        if line:
+            lines.append(line)
+        else:
+            break
+    # 以“第”字作为分割，生成列表
+    data['desc'] = lines
     # data['bonus'] = float(input("完成任务后的奖励: "))
     data['goal'] = int(input("目标完成多少个番茄: "))
     data['cost'] = float(input("缴纳赌注: "))#float(data['goal'] * 20)
@@ -62,7 +71,7 @@ def create_challenge():
     data['failed'] = False
     #计算奖励
     calculate_bouns(data)
-
+    print(lines[0])
     return Challenge.load_from_dict(data)
 
 def calculate_bouns(data):
