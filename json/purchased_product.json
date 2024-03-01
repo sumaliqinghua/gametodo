@@ -229,5 +229,27 @@
         "firstRecordTime": "2024-01-19T17:50:33.086024",
         "purchaseTime": "2024-02-28T15:03:59.807724",
         "writeoffTime": "2024-02-28 15:04:04.544032"
+    },
+    {
+        "name": "吉他blue lava",
+        "price": 1500.0,
+        "type": "教育",
+        "discountCoefficient": 0.3,
+        "comments": "play guitar",
+        "discountDay": 1,
+        "firstRecordTime": "2024-02-27T13:18:00.103353",
+        "purchaseTime": "2024-03-01T14:02:56.574079",
+        "writeoffTime": "2024-03-01 14:03:25.925499"
+    },
+    {
+        "name": "新眼镜",
+        "price": 700.0,
+        "type": "健康",
+        "discountCoefficient": 0.5,
+        "comments": "325 375",
+        "discountDay": 1,
+        "firstRecordTime": "2024-01-17T18:06:01.340191",
+        "purchaseTime": "2024-03-01T14:03:19.748710",
+        "writeoffTime": "2024-03-01 14:03:30.750004"
     }
 ]

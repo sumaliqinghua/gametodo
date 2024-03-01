@@ -31,8 +31,13 @@ def add_record():
     f.seek(0, 0)
     f.write(record + "\n" + content)
   print("\n记录已保存，粘贴到笔记中并【开启休息计时】吧!\n")
-  index = randint(1,9)
-  play_audio(f"./Assets/wav/{index}.wav")
+  index = randint(1,27)
+  audio_path = f"./Assets/wav/{index}"
+  if index < 10:
+    audio_path += ".wav"
+  else:
+    audio_path += ".mp3"
+  play_audio(audio_path)
 def judge_record(content):
   content = load_raiseconversation(content)
   try:

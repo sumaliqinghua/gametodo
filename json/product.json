@@ -55,17 +55,6 @@
         "writeoffTime": ""
     },
     {
-        "name": "新眼镜",
-        "price": 700.0,
-        "type": "健康",
-        "discountCoefficient": 0.5,
-        "comments": "325 375",
-        "discountDay": 1,
-        "firstRecordTime": "2024-01-17T18:06:01.340191",
-        "purchaseTime": "",
-        "writeoffTime": ""
-    },
-    {
         "name": "乔北京之旅",
         "price": 1400.0,
         "type": "出行",
@@ -73,17 +62,6 @@
         "comments": "︿(￣︶￣)︿",
         "discountDay": 3,
         "firstRecordTime": "2024-01-20T01:19:24.670188",
-        "purchaseTime": "",
-        "writeoffTime": ""
-    },
-    {
-        "name": "吉他blue lava",
-        "price": 1500.0,
-        "type": "教育",
-        "discountCoefficient": 0.3,
-        "comments": "play guitar",
-        "discountDay": 1,
-        "firstRecordTime": "2024-02-27T13:18:00.103353",
         "purchaseTime": "",
         "writeoffTime": ""
     },

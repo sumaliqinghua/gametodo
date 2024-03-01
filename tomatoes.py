@@ -208,7 +208,10 @@ def record_tomatoes():
         for challenge in challenges:
             challenge.update_progress()
             print("挑战任务:{} 进度{}/{}".format(challenge.name, challenge.progress, challenge.goal))
-            print("任务描述:{}".format(challenge.desc[challenge.progress]))
+            if challenge.failed:
+                print("任务失败:{}".format(challenge.desc[-1]))
+            else:
+                print("任务描述:{}".format(challenge.desc[challenge.progress]))
     else:
         # 没有未完成挑战,按概率触发新的
         # challenges = generate_challenges(user)
@@ -221,7 +224,8 @@ def record_tomatoes():
     print('本次获得 {} 金币'.format(coins))
     print('当前金币数:{}'.format(user.coins))
     # result = max(min(coins/5, 6), 1)
-    start_conversation(int(coins))
+    # //【C】改为和任务系统结合
+    # start_conversation(int(coins))
 
 def handle_decay():
     try:
