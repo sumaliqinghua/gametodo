@@ -44,17 +44,6 @@
         "writeoffTime": ""
     },
     {
-        "name": "钢琴指示灯",
-        "price": 600.0,
-        "type": "数码",
-        "discountCoefficient": 0.2,
-        "comments": "指法练习",
-        "discountDay": 4,
-        "firstRecordTime": "2024-02-27T13:20:14.011427",
-        "purchaseTime": "",
-        "writeoffTime": ""
-    },
-    {
         "name": "乔北京之旅",
         "price": 1400.0,
         "type": "出行",

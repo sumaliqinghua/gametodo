@@ -22,7 +22,13 @@ def daily_stats(data):
 # '2023-01-01'
 def daily_stats(date):
   data = get_all_tomatoes_data()
-  users = data[date]
+  try:
+    users = data[date]
+  except KeyError:
+    return {
+      'total': 0,
+      'average': 0
+    }
   
   gains = [user['gain'] for user in users]
 

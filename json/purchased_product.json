@@ -251,5 +251,16 @@
         "firstRecordTime": "2024-01-17T18:06:01.340191",
         "purchaseTime": "2024-03-01T14:03:19.748710",
         "writeoffTime": "2024-03-01 14:03:30.750004"
+    },
+    {
+        "name": "钢琴指示灯",
+        "price": 600.0,
+        "type": "数码",
+        "discountCoefficient": 0.2,
+        "comments": "指法练习",
+        "discountDay": 4,
+        "firstRecordTime": "2024-02-27T13:20:14.011427",
+        "purchaseTime": "2024-03-02T17:11:48.181669",
+        "writeoffTime": ""
     }
 ]
