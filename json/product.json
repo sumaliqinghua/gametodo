@@ -1,49 +1,5 @@
 [
     {
-        "name": "车载吸尘器",
-        "price": 160.0,
-        "type": "宠物",
-        "discountCoefficient": 0.7,
-        "comments": "啾啾",
-        "discountDay": 2,
-        "firstRecordTime": "2024-01-28T13:57:10.135025",
-        "purchaseTime": "",
-        "writeoffTime": ""
-    },
-    {
-        "name": "速热水杯",
-        "price": 199.0,
-        "type": "健康",
-        "discountCoefficient": 0.5,
-        "comments": "多喝热水",
-        "discountDay": 6,
-        "firstRecordTime": "2024-01-19T19:57:36.255369",
-        "purchaseTime": "",
-        "writeoffTime": ""
-    },
-    {
-        "name": "dow熊圣诞礼物",
-        "price": 225.84999999999997,
-        "type": "礼物",
-        "discountCoefficient": 0.6,
-        "comments": "to乔鑫",
-        "discountDay": 4,
-        "firstRecordTime": "2023-12-24T18:30:44.276468",
-        "purchaseTime": "",
-        "writeoffTime": "2023-12-24T18:30:44.276468"
-    },
-    {
-        "name": "电钢琴",
-        "price": 600.0,
-        "type": "数码",
-        "discountCoefficient": 0.3,
-        "comments": "piano",
-        "discountDay": 4,
-        "firstRecordTime": "2024-02-27T13:19:23.519347",
-        "purchaseTime": "",
-        "writeoffTime": ""
-    },
-    {
         "name": "乔北京之旅",
         "price": 1400.0,
         "type": "出行",
