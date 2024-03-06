@@ -66,13 +66,36 @@ def create_challenge():
     data['goal'] = int(input("目标完成多少个番茄: "))
     data['cost'] = float(input("缴纳赌注: "))#float(data['goal'] * 20)
     data['progress'] = 0
-    data['start_time'] = datetime.now().isoformat()
-    data['duration'] = float(input("输入挑战时长(小时) "))
+    data['start_time'] = input_time().isoformat()
+    data['duration'] = float(input("输入挑战时长(分钟) ")) / 60
     data['failed'] = False
     #计算奖励
     calculate_bouns(data)
     print(lines[0])
     return Challenge.load_from_dict(data)
+
+def input_time():
+    # 让用户输入时间，例如 15.30
+    user_input = input("请输入开始时间（HH.MM，例如 15.30）,留空则立马开始：")
+
+    # 定义输入时间的格式
+    time_format = "%H.%M"
+
+    # 尝试将用户输入的字符串转换为时间
+    try:
+        # 先将用户输入的字符串转换为时间
+        user_time = datetime.strptime(user_input, time_format).time()
+        
+        # 获取当前日期
+        current_date = datetime.now().date()
+        
+        # 结合当前日期和用户输入的时间
+        datetime_combined = datetime.combine(current_date, user_time)
+        
+        print("结合当前日期的 datetime 对象为：", datetime_combined)
+        return datetime_combined
+    except ValueError:
+        return datetime.now()
 
 def calculate_bouns(data):
     average_tomatoe_hour = record_tomato_pertime()/60#每个番茄耗时
