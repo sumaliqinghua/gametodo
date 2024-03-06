@@ -37,8 +37,11 @@ class Challenge():
   def update_progress(self):
     # self.progress += 1
     now = datetime.now()
-    if now - datetime.fromisoformat(self.start_time) >= timedelta(hours=self.duration):
-        # 已超时 //【】超时但还未完成呢//S:也被记作finish
+    #计算差值float
+    dvalue = now - datetime.fromisoformat(self.start_time)
+    if dvalue <= timedelta(hours=0):
+        return
+    elif dvalue >= timedelta(hours=self.duration):
         self.failed = True
     else:  
         self.progress += 1
@@ -150,8 +153,8 @@ def check_challenges(challenges, user):
     for c in completed:
         if c.failed:
             print("挑战已超时,无任何奖励")
-            user.coins -= c.cost
-            user.gains -= c.cost
+            # user.coins -= c.cost
+            # user.gains -= c.cost
         else:
             print("挑战完成! 获得奖励"+str(c.bonus))
             user.coins += c.bonus

@@ -122,9 +122,14 @@ def main():
             challenges = load_challenges(True)
         except:
             challenges = []
-        if challenges == None or len(challenges) == 0:
-            challange = create_challenge()
-            check_challenges([challange],user)
+        # if challenges == None or len(challenges) == 0:
+            
+        challange = create_challenge()
+        user.coins -= challange.cost
+        challenges.append(challange)
+        check_challenges(challenges,user)
+        user.save_user_data()
+
     else:
         print("无效的选择")
         return
