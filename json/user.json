@@ -1,13 +1,13 @@
 {
     "difficulty": "中等",
     "task": "工作",
-    "achievement": 0.9,
+    "achievement": 0.7,
     "focus": 3,
-    "tomatoes": 191,
+    "tomatoes": 200,
     "tomatoes_today": 9,
-    "continuous": 0,
-    "coins": 52.00296355053931,
-    "gain": 17.57,
+    "continuous": 2,
+    "coins": -101.05703644946072,
+    "gain": 31.19,
     "last_active_days": "2024-03-05T14:44:19.288786",
-    "last_time": "2024-03-05T20:26:36.970106"
+    "last_time": "2024-03-06T19:37:07.886596"
 }

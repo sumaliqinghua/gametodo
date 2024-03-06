@@ -11,6 +11,17 @@
         "writeoffTime": ""
     },
     {
+        "name": "Sony A7M4",
+        "price": 15000.0,
+        "type": "数码",
+        "discountCoefficient": 0.1,
+        "comments": "数码相机,记录美好生活",
+        "discountDay": 6,
+        "firstRecordTime": "2024-02-27T13:16:04.218839",
+        "purchaseTime": "",
+        "writeoffTime": ""
+    },
+    {
         "name": "吉他课",
         "price": 3000.0,
         "type": "教育",
@@ -40,17 +51,6 @@
         "comments": "一镜走天涯",
         "discountDay": 8,
         "firstRecordTime": "2024-02-27T13:16:39.814539",
-        "purchaseTime": "",
-        "writeoffTime": ""
-    },
-    {
-        "name": "Sony A7M4",
-        "price": 15000.0,
-        "type": "数码",
-        "discountCoefficient": 0.1,
-        "comments": "数码相机,记录美好生活",
-        "discountDay": 6,
-        "firstRecordTime": "2024-02-27T13:16:04.218839",
         "purchaseTime": "",
         "writeoffTime": ""
     }
