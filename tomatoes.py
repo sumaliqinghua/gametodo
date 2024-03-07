@@ -212,7 +212,6 @@ def record_tomatoes():
         #更新challege的进度
         for challenge in challenges:
             challenge.update_progress()
-            print("挑战任务:{} 进度{}/{}".format(challenge.name, challenge.progress, challenge.goal))
             if challenge.failed:
                 print("任务失败:{}".format(challenge.desc[-1]))
             else:

@@ -16,7 +16,7 @@ class Challenge():
     self.cost = data['cost']
     self.progress = data['progress']
     self.start_time = data['start_time']  
-    self.duration = data['duration'] # 持续时间,单位:小时
+    self.duration = data['duration'] # 持续时间,单位:分钟
     self.failed = data['failed']
 
   @classmethod
@@ -41,10 +41,13 @@ class Challenge():
     dvalue = now - datetime.fromisoformat(self.start_time)
     if dvalue <= timedelta(hours=0):
         return
-    elif dvalue >= timedelta(hours=self.duration):
+    elif dvalue >= timedelta(hours=self.duration/60):
         self.failed = True
     else:  
         self.progress += 1
+        print("挑战任务:{} 已完成进度{}/{}".format(self.name, self.progress, self.goal))
+        print(f"当前delay时长{(self.duration * 60 / self.goal * self.progress - dvalue.total_seconds())/60}")
+        print(f"还剩时间:(分钟) : {int((self.duration * 60 - dvalue.total_seconds()) / 60)}")
     
   def is_completed(self):
     return self.progress >= self.goal
@@ -70,7 +73,7 @@ def create_challenge():
     data['cost'] = float(input("缴纳赌注: "))#float(data['goal'] * 20)
     data['progress'] = 0
     data['start_time'] = input_time().isoformat()
-    data['duration'] = float(input("输入挑战时长(分钟) ")) / 60
+    data['duration'] = float(input("输入挑战时长(分钟) "))
     data['failed'] = False
     #计算奖励
     calculate_bouns(data)
@@ -102,10 +105,10 @@ def input_time():
 
 def calculate_bouns(data):
     average_tomatoe_hour = record_tomato_pertime()/60#每个番茄耗时
-    rand = random.uniform(1.2, 2.5)
-    coeff = (data['goal'] * average_tomatoe_hour)/data['duration'] * rand
+    rand = random.uniform(1.2, 2.2)
+    coeff = (data['goal'] * average_tomatoe_hour * 60)/data['duration'] * rand
     data['bonus'] = data['cost'] * coeff
-    print(f"当前平均番茄用时{average_tomatoe_hour} 预期用时{data['duration']} 奖励为: {data['bonus']}")
+    print(f"标准用时{average_tomatoe_hour * data['goal']} 预期用时{data['duration']/60} 奖励为: {data['bonus']}")
 
 def create_random_challenge():
     total_tomatoes_stat = total_tomatoes_stats()
@@ -119,7 +122,7 @@ def create_random_challenge():
     data['start_time'] = datetime.now().isoformat()
     rand = random.uniform(0.4, 1)
     average_tomatoe_hour = record_tomato_pertime()/60#每个番茄耗时
-    data['duration'] = average_tomatoe_hour * rand * data['goal']
+    data['duration'] = average_tomatoe_hour * rand * data['goal'] * 60
     calculate_bouns(data)
     data['failed'] = False
     print("A random challenge has been created."
