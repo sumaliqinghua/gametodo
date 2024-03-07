@@ -306,5 +306,16 @@
         "firstRecordTime": "2024-01-28T13:57:10.135025",
         "purchaseTime": "2024-03-05T16:33:11.359930",
         "writeoffTime": ""
+    },
+    {
+        "name": "吉他课",
+        "price": 3000.0,
+        "type": "教育",
+        "discountCoefficient": 0.2,
+        "comments": "53231323",
+        "discountDay": 7,
+        "firstRecordTime": "2024-02-27T13:18:26.453694",
+        "purchaseTime": "2024-03-07T18:06:47.797582",
+        "writeoffTime": "2024-03-07 18:35:04.762391"
     }
 ]

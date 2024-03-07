@@ -1,12 +1,12 @@
 [
     {
-        "name": "吉他课",
-        "price": 3000.0,
-        "type": "教育",
-        "discountCoefficient": 0.2,
-        "comments": "53231323",
-        "discountDay": 7,
-        "firstRecordTime": "2024-02-27T13:18:26.453694",
+        "name": "袜子+内裤+卫生纸",
+        "price": 120.0,
+        "type": "服装",
+        "discountCoefficient": 10,
+        "comments": "一打",
+        "discountDay": 1,
+        "firstRecordTime": "2024-03-07T18:34:59.012897",
         "purchaseTime": "",
         "writeoffTime": ""
     },
