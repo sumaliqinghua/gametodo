@@ -317,5 +317,27 @@
         "firstRecordTime": "2024-02-27T13:18:26.453694",
         "purchaseTime": "2024-03-07T18:06:47.797582",
         "writeoffTime": "2024-03-07 18:35:04.762391"
+    },
+    {
+        "name": "袜子+内裤+卫生纸",
+        "price": 120.0,
+        "type": "服装",
+        "discountCoefficient": 10,
+        "comments": "一打",
+        "discountDay": 1,
+        "firstRecordTime": "2024-03-07T18:34:59.012897",
+        "purchaseTime": "2024-03-10T15:36:02.309255",
+        "writeoffTime": "2024-03-10 17:10:12.635555"
+    },
+    {
+        "name": "乔北京之旅",
+        "price": 1400.0,
+        "type": "出行",
+        "discountCoefficient": 0.7,
+        "comments": "︿(￣︶￣)︿",
+        "discountDay": 3,
+        "firstRecordTime": "2024-01-20T01:19:24.670188",
+        "purchaseTime": "2024-03-10T17:10:04.034875",
+        "writeoffTime": "2024-03-10 17:10:17.285417"
     }
 ]

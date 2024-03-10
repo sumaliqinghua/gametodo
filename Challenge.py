@@ -46,7 +46,8 @@ class Challenge():
     else:  
         self.progress += 1
         print("挑战任务:{} 已完成进度{}/{}".format(self.name, self.progress, self.goal))
-        print(f"当前delay时长{30 * self.progress - dvalue.total_seconds()/60}")
+        delay = dvalue.total_seconds()/60 - (30 * (self.progress - 1) + 25)
+        print(f"当前delay时长{delay} 灵活时间{self.duration - self.goal * 30 - delay}")
         # print(f"当前delay时长{(self.duration * 60 / self.goal * self.progress - dvalue.total_seconds())/60}")
         print(f"还剩时间:(分钟) : {int((self.duration * 60 - dvalue.total_seconds()) / 60)}")
     
