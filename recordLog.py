@@ -1,5 +1,6 @@
 from datetime import datetime
 from random import randint
+import sys
 
 from Assitant.ainormal import get_response, load_raiseconversation
 
@@ -50,7 +51,16 @@ def judge_record(content):
 import os
 
 def play_audio(filename):
-    # index = randint(1,9)
-    # 使用afplay命令播放音频
-    os.system(f'afplay {filename}')
-# play_audio(f"./Assets/wav/{index}.wav")
+    # 判断操作系统类型
+    if sys.platform == "win32":
+        # Windows系统
+        try:
+            import pygame
+            pygame.mixer.init()
+            pygame.mixer.music.load(filename)
+            pygame.mixer.music.play()
+        except pygame.error as e:
+            print(f"无法播放音频文件 {filename}: {e}")
+    elif sys.platform == "darwin":
+        # macOS系统
+        os.system(f"afplay {filename}")

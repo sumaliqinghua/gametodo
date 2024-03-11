@@ -3283,5 +3283,20 @@
             "last_active_days": "2024-03-09T14:01:50.064299",
             "last_time": "2024-03-10T20:34:15.138215"
         }
+    ],
+    "2024-03-11": [
+        {
+            "difficulty": "中等",
+            "task": "工作",
+            "achievement": 0.4,
+            "focus": 1,
+            "tomatoes": 236,
+            "tomatoes_today": 1,
+            "continuous": 0,
+            "coins": -831.2494967343813,
+            "gain": 2.27,
+            "last_active_days": "2024-03-09T14:01:50.064299",
+            "last_time": "2024-03-11T16:07:06.907820"
+        }
     ]
 }
