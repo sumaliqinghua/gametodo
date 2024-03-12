@@ -1,9 +1,10 @@
 from datetime import datetime
 from random import randint
 import sys
+import winsound
 
 from Assitant.ainormal import get_response, load_raiseconversation
-
+from playsound import playsound
 
 def add_record():
 
@@ -54,13 +55,12 @@ def play_audio(filename):
     # 判断操作系统类型
     if sys.platform == "win32":
         # Windows系统
-        try:
-            import pygame
-            pygame.mixer.init()
-            pygame.mixer.music.load(filename)
-            pygame.mixer.music.play()
-        except pygame.error as e:
-            print(f"无法播放音频文件 {filename}: {e}")
+        # 只能播放wav
+        # winsound.PlaySound(filename, winsound.SND_FILENAME)
+        absolute_path = os.path.abspath(filename)
+        os.startfile(absolute_path)
     elif sys.platform == "darwin":
         # macOS系统
         os.system(f"afplay {filename}")
+
+# play_audio(f"./Assets/wav/10.mp3")
