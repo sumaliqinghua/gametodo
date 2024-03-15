@@ -33,6 +33,17 @@
         "writeoffTime": ""
     },
     {
+        "name": "3.15po",
+        "price": 5000.0,
+        "type": "娱乐",
+        "discountCoefficient": 10.0,
+        "comments": "14-20.30",
+        "discountDay": 2,
+        "firstRecordTime": "2024-03-15T13:10:01.095426",
+        "purchaseTime": "",
+        "writeoffTime": ""
+    },
+    {
         "name": "3.11po",
         "price": 6000.0,
         "type": "娱乐",
@@ -44,10 +55,21 @@
         "writeoffTime": ""
     },
     {
+        "name": "atm机",
+        "price": 890.0,
+        "type": "数码",
+        "discountCoefficient": 10.0,
+        "comments": "攒钱攒人品",
+        "discountDay": 5,
+        "firstRecordTime": "2024-03-15T13:04:44.698089",
+        "purchaseTime": "",
+        "writeoffTime": ""
+    },
+    {
         "name": "Sony A7M4",
         "price": 15000.0,
         "type": "数码",
-        "discountCoefficient": 0.1,
+        "discountCoefficient": 0.2,
         "comments": "数码相机,记录美好生活",
         "discountDay": 6,
         "firstRecordTime": "2024-02-27T13:16:04.218839",

@@ -1,10 +1,9 @@
 from datetime import datetime
 from random import randint
 import sys
-import winsound
+# import winsound
 
 from Assitant.ainormal import get_response, load_raiseconversation
-from playsound import playsound
 
 def add_record():
 
