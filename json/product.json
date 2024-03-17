@@ -11,6 +11,28 @@
         "writeoffTime": ""
     },
     {
+        "name": "atm机",
+        "price": 890.0,
+        "type": "数码",
+        "discountCoefficient": 10.0,
+        "comments": "攒钱攒人品",
+        "discountDay": 5,
+        "firstRecordTime": "2024-03-15T13:04:44.698089",
+        "purchaseTime": "",
+        "writeoffTime": ""
+    },
+    {
+        "name": "Sony A7M4",
+        "price": 15000.0,
+        "type": "数码",
+        "discountCoefficient": 0.2,
+        "comments": "数码相机,记录美好生活",
+        "discountDay": 6,
+        "firstRecordTime": "2024-02-27T13:16:04.218839",
+        "purchaseTime": "",
+        "writeoffTime": ""
+    },
+    {
         "name": "ipad",
         "price": 3500.0,
         "type": "数码",
@@ -51,28 +73,6 @@
         "comments": "15-3.00",
         "discountDay": 6,
         "firstRecordTime": "2024-03-12T16:13:39.370057",
-        "purchaseTime": "",
-        "writeoffTime": ""
-    },
-    {
-        "name": "atm机",
-        "price": 890.0,
-        "type": "数码",
-        "discountCoefficient": 10.0,
-        "comments": "攒钱攒人品",
-        "discountDay": 5,
-        "firstRecordTime": "2024-03-15T13:04:44.698089",
-        "purchaseTime": "",
-        "writeoffTime": ""
-    },
-    {
-        "name": "Sony A7M4",
-        "price": 15000.0,
-        "type": "数码",
-        "discountCoefficient": 0.2,
-        "comments": "数码相机,记录美好生活",
-        "discountDay": 6,
-        "firstRecordTime": "2024-02-27T13:16:04.218839",
         "purchaseTime": "",
         "writeoffTime": ""
     }
