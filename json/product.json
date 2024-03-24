@@ -22,17 +22,6 @@
         "writeoffTime": ""
     },
     {
-        "name": "atm机",
-        "price": 890.0,
-        "type": "数码",
-        "discountCoefficient": 10.0,
-        "comments": "攒钱攒人品",
-        "discountDay": 5,
-        "firstRecordTime": "2024-03-15T13:04:44.698089",
-        "purchaseTime": "",
-        "writeoffTime": ""
-    },
-    {
         "name": "乔3.8",
         "price": 300.0,
         "type": "礼物",
@@ -40,6 +29,17 @@
         "comments": "loopy",
         "discountDay": 0,
         "firstRecordTime": "2024-03-09T13:35:44.573256",
+        "purchaseTime": "",
+        "writeoffTime": ""
+    },
+    {
+        "name": "atm机",
+        "price": 890.0,
+        "type": "数码",
+        "discountCoefficient": 10.0,
+        "comments": "攒钱攒人品",
+        "discountDay": 5,
+        "firstRecordTime": "2024-03-15T13:04:44.698089",
         "purchaseTime": "",
         "writeoffTime": ""
     },
@@ -106,6 +106,28 @@
         "comments": "数码相机,记录美好生活",
         "discountDay": 6,
         "firstRecordTime": "2024-02-27T13:16:04.218839",
+        "purchaseTime": "",
+        "writeoffTime": ""
+    },
+    {
+        "name": "捏捏乐",
+        "price": 300.0,
+        "type": "礼物",
+        "discountCoefficient": 10.0,
+        "comments": "to乔",
+        "discountDay": 1,
+        "firstRecordTime": "2024-03-24T15:23:32.096856",
+        "purchaseTime": "",
+        "writeoffTime": ""
+    },
+    {
+        "name": "老家监控",
+        "price": 220.0,
+        "type": "数码",
+        "discountCoefficient": 0.7,
+        "comments": "",
+        "discountDay": 0,
+        "firstRecordTime": "2024-03-24T15:24:30.473045",
         "purchaseTime": "",
         "writeoffTime": ""
     }
