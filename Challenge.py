@@ -160,7 +160,7 @@ def check_challenges(challenges, user):
         if c.failed:
             dvalue = datetime.now() - datetime.fromisoformat(c.start_time)
             if dvalue <= timedelta(minutes=20+c.duration):
-                print("挑战已超时,但未超过20min有奖励{}".format(c.cost/10))
+                print("挑战已超时,但未超过20min有奖励{}".format(c.cost/3))
                 user.coins += c.cost/10
                 user.gains += c.cost/10
             else:
