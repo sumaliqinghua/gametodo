@@ -43,6 +43,7 @@ class Challenge():
         return
     elif dvalue >= timedelta(hours=self.duration/60):
         self.failed = True
+        print("超时共计{}分钟".format(dvalue.total_seconds()/60 - self.duration))
     else:  
         self.progress += 1
         print("挑战任务:{} 已完成进度{}/{}".format(self.name, self.progress, self.goal))
@@ -157,11 +158,15 @@ def check_challenges(challenges, user):
     completed = [c for c in challenges if c.is_completed() or c.failed]
     for c in completed:
         if c.failed:
-            print("挑战已超时,无任何奖励")
-            # user.coins -= c.cost
-            # user.gains -= c.cost
+            dvalue = datetime.now() - datetime.fromisoformat(c.start_time)
+            if dvalue <= timedelta(minutes=20+c.duration):
+                print("挑战已超时,但未超过20min有奖励{}".format(c.cost/3))
+                user.coins += c.cost/10
+                user.gains += c.cost/10
+            else:
+                print("挑战{} 已超时,无任何奖励".format(c.name))
         else:
-            print("挑战完成! 获得奖励"+str(c.bonus))
+            print("挑战{} 完成! 获得奖励".format(c.name)+str(c.bonus))
             user.coins += c.bonus
             user.gains += c.bonus
     completed_before = load_challenges(False)
