@@ -4354,5 +4354,193 @@
             "last_active_days": "2024-03-24T13:59:26.100120",
             "last_time": "2024-03-24T20:10:16.211434"
         }
+    ],
+    "2024-04-01": [
+        {
+            "difficulty": "中等",
+            "task": "工作",
+            "achievement": 1.0,
+            "focus": 4,
+            "tomatoes": 298,
+            "tomatoes_today": 1,
+            "continuous": 0,
+            "coins": -3403.511731100457,
+            "gain": -4.06,
+            "last_active_days": "2024-04-01T11:11:06.081957",
+            "last_time": "2024-04-01T11:11:06.092464"
+        },
+        {
+            "difficulty": "中等",
+            "task": "工作",
+            "achievement": 0.9,
+            "focus": 4,
+            "tomatoes": 299,
+            "tomatoes_today": 2,
+            "continuous": 0,
+            "coins": -3782.561731100457,
+            "gain": 20.95,
+            "last_active_days": "2024-04-01T11:11:06.081957",
+            "last_time": "2024-04-01T12:08:13.492947"
+        },
+        {
+            "difficulty": "中等",
+            "task": "工作",
+            "achievement": 0.9,
+            "focus": 3,
+            "tomatoes": 300,
+            "tomatoes_today": 3,
+            "continuous": 1,
+            "coins": -3746.451731100457,
+            "gain": 36.11,
+            "last_active_days": "2024-04-01T11:11:06.081957",
+            "last_time": "2024-04-01T12:39:51.762532"
+        },
+        {
+            "difficulty": "中等",
+            "task": "工作",
+            "achievement": 0.5,
+            "focus": 2,
+            "tomatoes": 301,
+            "tomatoes_today": 4,
+            "continuous": 2,
+            "coins": -3717.891731100457,
+            "gain": 28.56,
+            "last_active_days": "2024-04-01T11:11:06.081957",
+            "last_time": "2024-04-01T13:12:08.320486"
+        },
+        {
+            "difficulty": "中等",
+            "task": "工作",
+            "achievement": 0.8,
+            "focus": 3,
+            "tomatoes": 302,
+            "tomatoes_today": 5,
+            "continuous": 3,
+            "coins": -2213.9238843524063,
+            "gain": 1503.9678467480508,
+            "last_active_days": "2024-04-01T11:11:06.081957",
+            "last_time": "2024-04-01T13:37:46.874621"
+        }
+    ],
+    "2024-04-02": [
+        {
+            "difficulty": "中等",
+            "task": "工作",
+            "achievement": 0.7,
+            "focus": 3,
+            "tomatoes": 302,
+            "tomatoes_today": 1,
+            "continuous": 0,
+            "coins": -4214.1617311004575,
+            "gain": 3.73,
+            "last_active_days": "2024-04-01T11:11:06.081957",
+            "last_time": "2024-04-02T11:28:34.920378"
+        },
+        {
+            "difficulty": "中等",
+            "task": "工作",
+            "achievement": 0.7,
+            "focus": 2,
+            "tomatoes": 303,
+            "tomatoes_today": 2,
+            "continuous": 0,
+            "coins": -4201.201731100457,
+            "gain": 12.96,
+            "last_active_days": "2024-04-01T11:11:06.081957",
+            "last_time": "2024-04-02T12:20:11.723984"
+        },
+        {
+            "difficulty": "中等",
+            "task": "工作",
+            "achievement": 0.7,
+            "focus": 2,
+            "tomatoes": 304,
+            "tomatoes_today": 3,
+            "continuous": 1,
+            "coins": -4182.481731100457,
+            "gain": 18.72,
+            "last_active_days": "2024-04-01T11:11:06.081957",
+            "last_time": "2024-04-02T12:59:39.173700"
+        },
+        {
+            "difficulty": "中等",
+            "task": "工作",
+            "achievement": 0.9,
+            "focus": 3,
+            "tomatoes": 305,
+            "tomatoes_today": 4,
+            "continuous": 0,
+            "coins": -4675.141731100457,
+            "gain": 7.34,
+            "last_active_days": "2024-04-01T11:11:06.081957",
+            "last_time": "2024-04-02T22:03:59.953255"
+        },
+        {
+            "difficulty": "中等",
+            "task": "爱好",
+            "achievement": 0.8,
+            "focus": 3,
+            "tomatoes": 306,
+            "tomatoes_today": 5,
+            "continuous": 1,
+            "coins": -4646.451731100457,
+            "gain": 28.69,
+            "last_active_days": "2024-04-01T11:11:06.081957",
+            "last_time": "2024-04-02T22:31:30.153193"
+        },
+        {
+            "difficulty": "中等",
+            "task": "工作",
+            "achievement": 0.7,
+            "focus": 3,
+            "tomatoes": 307,
+            "tomatoes_today": 6,
+            "continuous": 2,
+            "coins": -4613.881731100458,
+            "gain": 32.57,
+            "last_active_days": "2024-04-01T11:11:06.081957",
+            "last_time": "2024-04-02T23:04:56.618724"
+        },
+        {
+            "difficulty": "中等",
+            "task": "工作",
+            "achievement": 0.7,
+            "focus": 2,
+            "tomatoes": 308,
+            "tomatoes_today": 7,
+            "continuous": 3,
+            "coins": -4578.441731100458,
+            "gain": 35.44,
+            "last_active_days": "2024-04-01T11:11:06.081957",
+            "last_time": "2024-04-02T23:34:13.408455"
+        }
+    ],
+    "2024-04-03": [
+        {
+            "difficulty": "中等",
+            "task": "工作",
+            "achievement": 0.9,
+            "focus": 3,
+            "tomatoes": 309,
+            "tomatoes_today": 1,
+            "continuous": 4,
+            "coins": -3282.238077256021,
+            "gain": 1296.2036538444374,
+            "last_active_days": "2024-04-01T11:11:06.081957",
+            "last_time": "2024-04-03T00:01:25.584536"
+        },
+        {
+            "difficulty": "中等",
+            "task": "工作",
+            "achievement": 0.8,
+            "focus": 3,
+            "tomatoes": 310,
+            "tomatoes_today": 2,
+            "continuous": 0,
+            "coins": -3577.1880772560207,
+            "gain": 5.05,
+            "last_active_days": "2024-04-01T11:11:06.081957",
+            "last_time": "2024-04-03T16:01:27.531655"
+        }
     ]
 }
