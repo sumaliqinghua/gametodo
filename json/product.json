@@ -44,13 +44,24 @@
         "writeoffTime": ""
     },
     {
-        "name": "捏捏乐",
+        "name": "补湿套装",
         "price": 300.0,
-        "type": "礼物",
-        "discountCoefficient": 10.0,
-        "comments": "to乔",
+        "type": "美妆",
+        "discountCoefficient": 0.6,
+        "comments": "补水加活水",
+        "discountDay": 4,
+        "firstRecordTime": "2024-04-11T15:14:56.212733",
+        "purchaseTime": "",
+        "writeoffTime": ""
+    },
+    {
+        "name": "内衣洗衣机",
+        "price": 500.0,
+        "type": "家居",
+        "discountCoefficient": 0.7,
+        "comments": "分开洗",
         "discountDay": 1,
-        "firstRecordTime": "2024-03-24T15:23:32.096856",
+        "firstRecordTime": "2024-04-11T15:12:04.336815",
         "purchaseTime": "",
         "writeoffTime": ""
     },
@@ -66,6 +77,39 @@
         "writeoffTime": ""
     },
     {
+        "name": "3月美团消费",
+        "price": 1350.0,
+        "type": "美食",
+        "discountCoefficient": 0.7,
+        "comments": "",
+        "discountDay": 1,
+        "firstRecordTime": "2024-04-07T10:37:07.520721",
+        "purchaseTime": "",
+        "writeoffTime": ""
+    },
+    {
+        "name": "4.3破皮药",
+        "price": 4300.0,
+        "type": "娱乐",
+        "discountCoefficient": 0.5,
+        "comments": "4.3破皮，水肿，脸，继续破",
+        "discountDay": 1,
+        "firstRecordTime": "2024-04-07T10:36:12.160687",
+        "purchaseTime": "",
+        "writeoffTime": ""
+    },
+    {
+        "name": "捏捏乐",
+        "price": 300.0,
+        "type": "礼物",
+        "discountCoefficient": 10.0,
+        "comments": "to乔",
+        "discountDay": 1,
+        "firstRecordTime": "2024-03-24T15:23:32.096856",
+        "purchaseTime": "",
+        "writeoffTime": ""
+    },
+    {
         "name": "ipad",
         "price": 3500.0,
         "type": "数码",
@@ -73,17 +117,6 @@
         "comments": "买前生产力",
         "discountDay": 3,
         "firstRecordTime": "2024-01-17T18:05:29.541250",
-        "purchaseTime": "",
-        "writeoffTime": ""
-    },
-    {
-        "name": "3.19po",
-        "price": 4000.0,
-        "type": "娱乐",
-        "discountCoefficient": 10.0,
-        "comments": "4h+pov+new",
-        "discountDay": 1,
-        "firstRecordTime": "2024-03-20T13:47:29.760427",
         "purchaseTime": "",
         "writeoffTime": ""
     },
@@ -128,6 +161,17 @@
         "comments": "数码相机,记录美好生活",
         "discountDay": 6,
         "firstRecordTime": "2024-02-27T13:16:04.218839",
+        "purchaseTime": "",
+        "writeoffTime": ""
+    },
+    {
+        "name": "3.19po",
+        "price": 4000.0,
+        "type": "娱乐",
+        "discountCoefficient": 10.0,
+        "comments": "4h+pov+new",
+        "discountDay": 1,
+        "firstRecordTime": "2024-03-20T13:47:29.760427",
         "purchaseTime": "",
         "writeoffTime": ""
     }
