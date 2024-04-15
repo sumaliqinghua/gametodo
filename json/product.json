@@ -22,6 +22,17 @@
         "writeoffTime": ""
     },
     {
+        "name": "补湿套装",
+        "price": 300.0,
+        "type": "美妆",
+        "discountCoefficient": 0.6,
+        "comments": "补水加活水",
+        "discountDay": 4,
+        "firstRecordTime": "2024-04-11T15:14:56.212733",
+        "purchaseTime": "",
+        "writeoffTime": ""
+    },
+    {
         "name": "老家监控",
         "price": 220.0,
         "type": "数码",
@@ -44,13 +55,13 @@
         "writeoffTime": ""
     },
     {
-        "name": "补湿套装",
+        "name": "捏捏乐",
         "price": 300.0,
-        "type": "美妆",
-        "discountCoefficient": 0.6,
-        "comments": "补水加活水",
-        "discountDay": 4,
-        "firstRecordTime": "2024-04-11T15:14:56.212733",
+        "type": "礼物",
+        "discountCoefficient": 10.0,
+        "comments": "to乔",
+        "discountDay": 1,
+        "firstRecordTime": "2024-03-24T15:23:32.096856",
         "purchaseTime": "",
         "writeoffTime": ""
     },
@@ -88,28 +99,6 @@
         "writeoffTime": ""
     },
     {
-        "name": "4.3破皮药",
-        "price": 4300.0,
-        "type": "娱乐",
-        "discountCoefficient": 0.5,
-        "comments": "4.3破皮，水肿，脸，继续破",
-        "discountDay": 1,
-        "firstRecordTime": "2024-04-07T10:36:12.160687",
-        "purchaseTime": "",
-        "writeoffTime": ""
-    },
-    {
-        "name": "捏捏乐",
-        "price": 300.0,
-        "type": "礼物",
-        "discountCoefficient": 10.0,
-        "comments": "to乔",
-        "discountDay": 1,
-        "firstRecordTime": "2024-03-24T15:23:32.096856",
-        "purchaseTime": "",
-        "writeoffTime": ""
-    },
-    {
         "name": "ipad",
         "price": 3500.0,
         "type": "数码",
@@ -117,6 +106,28 @@
         "comments": "买前生产力",
         "discountDay": 3,
         "firstRecordTime": "2024-01-17T18:05:29.541250",
+        "purchaseTime": "",
+        "writeoffTime": ""
+    },
+    {
+        "name": "3.19po",
+        "price": 4000.0,
+        "type": "娱乐",
+        "discountCoefficient": 10.0,
+        "comments": "4h+pov+new",
+        "discountDay": 1,
+        "firstRecordTime": "2024-03-20T13:47:29.760427",
+        "purchaseTime": "",
+        "writeoffTime": ""
+    },
+    {
+        "name": "4.3破皮药",
+        "price": 4300.0,
+        "type": "娱乐",
+        "discountCoefficient": 0.5,
+        "comments": "4.3破皮，水肿，脸，继续破",
+        "discountDay": 1,
+        "firstRecordTime": "2024-04-07T10:36:12.160687",
         "purchaseTime": "",
         "writeoffTime": ""
     },
@@ -165,13 +176,46 @@
         "writeoffTime": ""
     },
     {
-        "name": "3.19po",
-        "price": 4000.0,
-        "type": "娱乐",
-        "discountCoefficient": 10.0,
-        "comments": "4h+pov+new",
-        "discountDay": 1,
-        "firstRecordTime": "2024-03-20T13:47:29.760427",
+        "name": "乔z剃须刀",
+        "price": 450.0,
+        "type": "美妆",
+        "discountCoefficient": 0.7,
+        "comments": "450",
+        "discountDay": 3,
+        "firstRecordTime": "2024-04-14T00:57:40.765314",
+        "purchaseTime": "",
+        "writeoffTime": ""
+    },
+    {
+        "name": "乔z香水",
+        "price": 150.0,
+        "type": "美妆",
+        "discountCoefficient": 0.7,
+        "comments": "脏话",
+        "discountDay": 6,
+        "firstRecordTime": "2024-04-14T00:58:15.597692",
+        "purchaseTime": "",
+        "writeoffTime": ""
+    },
+    {
+        "name": "乔z保湿",
+        "price": 170.0,
+        "type": "美妆",
+        "discountCoefficient": 0.7,
+        "comments": "补水",
+        "discountDay": 2,
+        "firstRecordTime": "2024-04-14T00:58:42.199269",
+        "purchaseTime": "",
+        "writeoffTime": ""
+    },
+    {
+        "name": "乔z衣服",
+        "price": 450.0,
+        "type": "服装",
+        "discountCoefficient": 0.7,
+        "comments": "",
+        "discountDay": 0,
+        "firstRecordTime": "2024-04-14T00:59:39.423730",
         "purchaseTime": "",
         "writeoffTime": ""
     }
