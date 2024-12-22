@@ -44,6 +44,32 @@ PRODUCTS = {'电池': 20, '帽子': 100, '奖杯': 200}
 
 firstLaunch = False
 
+class TomatoTimer:
+    def __init__(self):
+        self.running = False
+        self.start_time = None
+        self.user = User()
+
+    def start(self):
+        if not self.running:
+            self.running = True
+            self.start_time = datetime.now()
+            return True
+        return False
+
+    def stop(self):
+        if self.running:
+            self.running = False
+            end_time = datetime.now()
+            time_delta = (end_time - self.start_time).total_seconds() / 60
+            if time_delta >= 25:
+                coins = calculate_coins("番茄时间", 1, time_delta)
+                self.user.add_coins(coins)
+                record_tomatoes()
+            self.start_time = None
+            return True
+        return False
+
 def calculate_coins(task, continuous_count,time_delta):
     
     # 计算难度和任务类型系数
@@ -266,4 +292,5 @@ def handle_decay():
         print('金币衰减了{}!'.format(decayed))
         user.coins -= decayed
 
-main()
+if __name__ == '__main__':
+    main()

@@ -1,7 +1,7 @@
 from flask import Flask, render_template, jsonify, request
 from flask_cors import CORS
 from tomatoes import TomatoTimer
-from Challenge import Challenge
+from Challenge import Challenge, load_challenges, create_random_challenge
 from User import User
 import json
 
@@ -10,7 +10,8 @@ CORS(app)
 
 # 初始化必要的对象
 tomato_timer = TomatoTimer()
-challenge = Challenge()
+challenges = load_challenges(is_active=True)
+challenge = challenges[0] if challenges else create_random_challenge()
 user = User()
 
 @app.route('/')
@@ -38,4 +39,4 @@ def get_user_info():
     return jsonify(user_info)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=5000)
