@@ -1,6 +1,6 @@
 from flask import Flask, render_template, jsonify, request
 from flask_cors import CORS
-from tomatoes import TomatoTimer, record_tomatoes, show_today_stats
+from tomatoes import TomatoTimer, record_tomatoes, show_today_stats, show_products
 from Challenge import Challenge, load_challenges, create_random_challenge
 from User import User
 import json
@@ -118,6 +118,48 @@ def get_user_info():
     except Exception as e:
         logger.error(f"Error getting user info: {str(e)}", exc_info=True)
         return jsonify({"status": "error", "message": str(e)}), 500
+
+@app.route('/api/get-products')
+def get_products():
+    try:
+        products = show_products()
+        logger.info(f"Products from show_products: {products}")  
+        return jsonify({
+            "status": "success",
+            "products": products
+        })
+    except Exception as e:
+        logger.error(f"Error getting products: {str(e)}", exc_info=True)  
+        return jsonify({"status": "error", "message": str(e)})
+
+@app.route('/api/buy-product', methods=['POST'])
+def buy_product():
+    try:
+        data = request.json
+        product_name = data.get('product_name')
+        
+        # 检查产品是否存在并计算价格
+        products = show_products()
+        product = next((p for p in products if p['name'] == product_name), None)
+        
+        if not product:
+            return jsonify({"status": "error", "message": "产品不存在"})
+            
+        if user.coins < product['price']:
+            return jsonify({"status": "error", "message": "金币不足"})
+            
+        # 扣除金币
+        user.coins -= product['price']
+        user.save_user_data()
+        
+        return jsonify({
+            "status": "success",
+            "message": f"成功购买 {product_name}",
+            "user_info": user.get_user_info()
+        })
+    except Exception as e:
+        logger.error(f"Error buying product: {str(e)}")
+        return jsonify({"status": "error", "message": str(e)})
 
 if __name__ == '__main__':
     logger.info("Starting Flask application...")

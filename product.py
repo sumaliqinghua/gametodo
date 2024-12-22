@@ -7,6 +7,9 @@ import json
 import os
 import random
 from statics import show_today_stats, total_stats
+import logging
+
+logger = logging.getLogger(__name__)
 
 purchased_product_file_path = 'json/purchased_product.json'
 
@@ -59,7 +62,7 @@ class Product:
     return price
   def is_discount(self):
     return self.discountDay == datetime.today().day % 10
-    
+        
 # 修改后的数据存储
 products = [] 
 
@@ -220,14 +223,32 @@ def CanBuyOne(cash):
     data = sorted(data, key=lambda x: x.get_price())
     savejson(product_file_path,data)
     return cash - data[0].get_price(),data[0].name
+
 def show_products():
-    data = load_products()
-    data = sorted(data, key=lambda x: x.get_price())
-    # savejson(product_file_path,data)
-    print('商品列表:')
-    for index,product in enumerate(data):
-        print('{}. {}:{}'.format(index,product.name,product.get_price()))
-    show_discount_products()
+    """显示商品列表
+    Returns:
+        list: 商品列表，每个商品包含 name, description, price 字段
+    """
+    try:
+        with open('json/product.json', 'r', encoding='utf-8') as f:
+            data = json.load(f)
+            logger.info(f"Raw product data: {data}")  # 添加原始数据日志
+            
+            # 只返回未购买和未注销的商品
+            products = []
+            for product in data:
+                if not product.get('purchaseTime') and not product.get('writeoffTime'):
+                    products.append({
+                        'name': product['name'],
+                        'description': product.get('comments', ''),
+                        'price': float(product['price'])  # 确保价格是浮点数
+                    })
+            
+            logger.info(f"Processed products: {products}")  # 添加处理后的数据日志
+            return products
+    except Exception as e:
+        logger.error(f"Error loading products: {str(e)}", exc_info=True)  # 添加堆栈跟踪
+        return []
 
 def show_discount_products():
     data = load_products()

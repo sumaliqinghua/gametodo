@@ -1,10 +1,14 @@
+// 全局变量
+let userInfo = null;
+
 document.addEventListener('DOMContentLoaded', function() {
     // 获取用户信息
-    fetchUserInfo();
+    updateUserInfo();
     // 获取挑战列表
     fetchChallenges();
     // 获取统计信息
     fetchStats();
+    fetchProducts();
 
     // 定时器相关元素
     const timerDisplay = document.getElementById('timer');
@@ -72,17 +76,31 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// 获取用户信息
-function fetchUserInfo() {
-    fetch('/api/get-user-info')
-        .then(response => response.json())
-        .then(data => {
+// 更新用户信息
+async function updateUserInfo() {
+    try {
+        const response = await fetch('/api/get-user-info');
+        const data = await response.json();
+        
+        if (data.status === 'success') {
+            userInfo = data.user_info;  // 保存用户信息
             const userInfoDiv = document.getElementById('user-info');
+            if (!userInfoDiv) return;
+
             userInfoDiv.innerHTML = `
-                <p>用户名: ${data.username}</p>
-                <p>等级: ${data.level}</p>
+                <p>今日番茄：${userInfo.tomatoes_today}</p>
+                <p>总番茄数：${userInfo.tomatoes}</p>
+                <p>连续番茄：${userInfo.continuous}</p>
+                <p>金币：${userInfo.coins.toFixed(2)}</p>
+                <p>上次获得：${userInfo.gain}</p>
             `;
-        });
+            
+            // 更新商品列表（因为金币数可能影响购买按钮状态）
+            fetchProducts();
+        }
+    } catch (error) {
+        console.error('Error updating user info:', error);
+    }
 }
 
 // 获取挑战列表
@@ -143,7 +161,7 @@ async function recordTomato() {
         const data = await response.json();
         if (data.status === 'success') {
             alert(`记录成功！获得 ${data.result.coins_earned} 金币`);
-            updateUserInfo(data.user_info);
+            updateUserInfo();
             fetchStats();  // 更新统计信息
         } else {
             throw new Error(data.message);
@@ -179,16 +197,66 @@ async function fetchStats() {
     }
 }
 
-// 更新用户信息显示
-function updateUserInfo(userInfo) {
-    const userInfoDiv = document.getElementById('user-info');
-    if (!userInfoDiv) return;
+// 获取商品列表
+async function fetchProducts() {
+    try {
+        const response = await fetch('/api/get-products');
+        const data = await response.json();
+        console.log('Products data:', data);
+        
+        if (data.status === 'success') {
+            const productsList = document.getElementById('products-list');
+            if (!productsList) return;
 
-    userInfoDiv.innerHTML = `
-        <p>总番茄数：${userInfo.tomatoes}</p>
-        <p>今日番茄数：${userInfo.tomatoes_today}</p>
-        <p>连续番茄数：${userInfo.continuous}</p>
-        <p>金币：${userInfo.coins.toFixed(2)}</p>
-        <p>上次获得：${userInfo.gain}</p>
-    `;
+            if (!data.products || data.products.length === 0) {
+                productsList.innerHTML = '<p>暂无商品</p>';
+                return;
+            }
+
+            const productsHtml = data.products.map(product => `
+                <div class="product-item">
+                    <h3>${product.name}</h3>
+                    <p>${product.description || ''}</p>
+                    <p class="price">价格：${product.price} 金币</p>
+                    <button onclick="buyProduct('${product.name}')" 
+                            ${!userInfo || userInfo.coins < product.price ? 'disabled' : ''}>
+                        购买
+                    </button>
+                </div>
+            `).join('');
+
+            productsList.innerHTML = productsHtml;
+        } else {
+            console.error('Failed to fetch products:', data.message);
+        }
+    } catch (error) {
+        console.error('Error fetching products:', error);
+    }
+}
+
+// 购买商品
+async function buyProduct(productName) {
+    try {
+        const response = await fetch('/api/buy-product', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                product_name: productName
+            })
+        });
+
+        const data = await response.json();
+        if (data.status === 'success') {
+            alert(data.message);
+            updateUserInfo();
+            fetchProducts();  // 刷新商品列表
+        } else {
+            throw new Error(data.message);
+        }
+    } catch (error) {
+        console.error('Error buying product:', error);
+        alert('购买失败：' + error.message);
+    }
 }
