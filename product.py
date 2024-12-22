@@ -59,7 +59,7 @@ class Product:
     return price
   def is_discount(self):
     return self.discountDay == datetime.today().day % 10
-    
+        
 # 修改后的数据存储
 products = [] 
 
@@ -223,12 +223,16 @@ def CanBuyOne(cash):
 def show_products():
     data = load_products()
     data = sorted(data, key=lambda x: x.get_price())
-    # savejson(product_file_path,data)
-    print('商品列表:')
-    for index,product in enumerate(data):
-        print('{}. {}:{}'.format(index,product.name,product.get_price()))
-    show_discount_products()
-
+    products_list = []
+    for product in data:
+        products_list.append({
+            'name': product.name,
+            'price': product.get_price(),
+            'type': product.type,
+            'description': product.comments,
+            'discount': product.discountCoefficient if product.is_discount() else 1.0
+        })
+    return products_list
 def show_discount_products():
     data = load_products()
     data = sorted(data, key=lambda x: x.get_price())

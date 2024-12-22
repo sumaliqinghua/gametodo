@@ -19,7 +19,7 @@ from utilsd import savejson
 # }
 # 定义User类
 class User:
-    def __init__(self, difficulty, task, achievement, focus, tomatoes, tomatoes_today, continuous, coins, gain, last_active_days, last_time):
+    def __init__(self, difficulty='中等', task='工作', achievement=0.0, focus=2, tomatoes=0, tomatoes_today=0, continuous=0, coins=0.0, gain=0.0, last_active_days='', last_time=''):
         self.difficulty = difficulty
         self.task = task
         self.achievement = achievement
@@ -31,7 +31,20 @@ class User:
         self.gains = gain
         self.last_active_days = last_active_days
         self.last_time = last_time
-    
+        self.username = "玩家"  # 添加默认用户名
+        self.level = 1  # 添加默认等级
+
+    def get_user_info(self):
+        return {
+            'username': self.username,
+            'level': self.level,
+            'coins': self.coins,
+            'tomatoes': self.tomatoes,
+            'tomatoes_today': self.tomatoes_today,
+            'continuous': self.continuous,
+            'achievement': self.achievement
+        }
+
     def user_data_to_json(self):
         user_data = {
             'difficulty': self.difficulty,
@@ -47,6 +60,7 @@ class User:
             'last_time': self.last_time
         }
         return user_data
+
     def save_user_data(self):
         user_dict = self.user_data_to_json()
         savejson('json/user.json', user_dict)
