@@ -3,37 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GameTodo</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>GameTodo - 新版本</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css', v=3) }}">
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>GameTodo</h1>
+            <h1>GameTodo - 新版本</h1>
             <div id="user-info">
                 <!-- User information will be displayed here -->
             </div>
         </header>
 
         <main>
-            <section class="timer-section">
-                <div class="timer-display">
-                    <h2>番茄计时器</h2>
-                    <div id="timer">25:00</div>
-                    <button id="start-timer">开始</button>
-                    <button id="stop-timer">停止</button>
-                </div>
-            </section>
+            <div class="grid-container">
+                <!-- 左侧面板 -->
+                <section class="timer-section panel">
+                    <div class="timer-display">
+                        <h2>番茄计时器</h2>
+                        <div id="timer">25:00</div>
+                        <div class="timer-controls">
+                            <button id="start-timer">开始</button>
+                            <button id="stop-timer">停止</button>
+                            <button id="record-tomato">记录番茄</button>
+                        </div>
+                    </div>
+                </section>
 
-            <section class="challenges-section">
-                <h2>挑战</h2>
-                <div id="challenges-list">
-                    <!-- Challenges will be displayed here -->
-                </div>
-            </section>
+                <!-- 右侧面板 -->
+                <section class="info-section panel">
+                    <div class="tabs">
+                        <button class="tab-btn active" data-tab="challenges">挑战</button>
+                        <button class="tab-btn" data-tab="products">商店</button>
+                        <button class="tab-btn" data-tab="chat">对话</button>
+                        <button class="tab-btn" data-tab="records">记录</button>
+                    </div>
+                    
+                    <div class="tab-content">
+                        <div id="challenges" class="tab-pane active">
+                            <div id="challenges-list">
+                                <!-- Challenges will be displayed here -->
+                            </div>
+                        </div>
+                        
+                        <div id="products" class="tab-pane">
+                            <div id="products-list">
+                                <!-- Products will be displayed here -->
+                            </div>
+                        </div>
+                        
+                        <div id="chat" class="tab-pane">
+                            <div class="chat-container">
+                                <div id="chat-messages">
+                                    <!-- Chat messages will be displayed here -->
+                                </div>
+                                <div class="chat-input">
+                                    <input type="text" id="message-input" placeholder="输入消息...">
+                                    <button id="send-message">发送</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div id="records" class="tab-pane">
+                            <div id="tomato-records">
+                                <!-- Tomato records will be displayed here -->
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
         </main>
     </div>
 
-    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/main.js', v=3) }}"></script>
 </body>
 </html>

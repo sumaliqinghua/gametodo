@@ -22,18 +22,29 @@ header {
     padding: 1rem;
     margin-bottom: 2rem;
     border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 header h1 {
-    margin-bottom: 10px;
+    margin: 0;
 }
 
-.timer-section {
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 2rem;
+}
+
+.panel {
     background-color: white;
     padding: 2rem;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    margin-bottom: 2rem;
+}
+
+.timer-section {
     text-align: center;
 }
 
@@ -43,13 +54,19 @@ header h1 {
     font-weight: bold;
 }
 
+.timer-controls {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
 button {
     padding: 10px 20px;
-    margin: 5px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     font-size: 1rem;
+    transition: background-color 0.3s;
 }
 
 #start-timer {
@@ -62,23 +79,88 @@ button {
     color: white;
 }
 
-.challenges-section {
-    background-color: white;
-    padding: 2rem;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+#record-tomato {
+    background-color: #2196F3;
+    color: white;
 }
 
-#challenges-list {
+.tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 1rem;
+}
+
+.tab-btn {
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    padding: 0.5rem 1rem;
+}
+
+.tab-btn.active {
+    background-color: #007bff;
+    color: white;
+    border-color: #0056b3;
+}
+
+.tab-pane {
+    display: none;
+}
+
+.tab-pane.active {
+    display: block;
+}
+
+#challenges-list, #products-list {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 1rem;
-    margin-top: 1rem;
 }
 
-.challenge-card {
+.challenge-card, .product-card {
     background-color: #f8f9fa;
     padding: 1rem;
     border-radius: 5px;
     border: 1px solid #dee2e6;
+}
+
+.chat-container {
+    display: flex;
+    flex-direction: column;
+    height: 400px;
+}
+
+#chat-messages {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: 1rem;
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+}
+
+.chat-input {
+    display: flex;
+    gap: 10px;
+}
+
+#message-input {
+    flex-grow: 1;
+    padding: 0.5rem;
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+}
+
+#send-message {
+    background-color: #007bff;
+    color: white;
+}
+
+#tomato-records {
+    max-height: 400px;
+    overflow-y: auto;
+    padding: 1rem;
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
 }
