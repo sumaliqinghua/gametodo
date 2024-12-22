@@ -89,12 +89,23 @@ function fetchChallenges() {
         .then(response => response.json())
         .then(challenges => {
             const challengesList = document.getElementById('challenges-list');
+            if (!Array.isArray(challenges)) {
+                console.error('Challenges data is not an array:', challenges);
+                return;
+            }
             challengesList.innerHTML = challenges.map(challenge => `
                 <div class="challenge-card">
-                    <h3>${challenge.title}</h3>
-                    <p>${challenge.description}</p>
-                    <p>难度: ${challenge.difficulty}</p>
+                    <h3>${challenge.name}</h3>
+                    <p>${challenge.desc}</p>
+                    <p>目标: ${challenge.goal} 番茄</p>
+                    <p>进度: ${challenge.progress}/${challenge.goal}</p>
+                    <p>奖励: ${challenge.bonus}</p>
+                    <p>花费: ${challenge.cost}</p>
+                    ${challenge.failed ? '<p class="failed">已失败</p>' : ''}
                 </div>
             `).join('');
+        })
+        .catch(error => {
+            console.error('Error fetching challenges:', error);
         });
 }
