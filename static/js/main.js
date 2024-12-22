@@ -3,6 +3,8 @@ document.addEventListener('DOMContentLoaded', function() {
     fetchUserInfo();
     // 获取挑战列表
     fetchChallenges();
+    // 获取统计信息
+    fetchStats();
 
     // 定时器相关元素
     const timerDisplay = document.getElementById('timer');
@@ -84,28 +86,109 @@ function fetchUserInfo() {
 }
 
 // 获取挑战列表
-function fetchChallenges() {
-    fetch('/api/get-challenges')
-        .then(response => response.json())
-        .then(challenges => {
+async function fetchChallenges() {
+    try {
+        const response = await fetch('/api/get-challenges');
+        const data = await response.json();
+        
+        if (data.status === 'success') {
             const challengesList = document.getElementById('challenges-list');
-            if (!Array.isArray(challenges)) {
-                console.error('Challenges data is not an array:', challenges);
+            if (!challengesList) return;
+
+            if (!data.challenges || data.challenges.length === 0) {
+                challengesList.innerHTML = '<p>当前没有活跃的挑战</p>';
                 return;
             }
-            challengesList.innerHTML = challenges.map(challenge => `
-                <div class="challenge-card">
+
+            const challengesHtml = data.challenges.map(challenge => `
+                <div class="challenge-item">
                     <h3>${challenge.name}</h3>
-                    <p>${challenge.desc}</p>
-                    <p>目标: ${challenge.goal} 番茄</p>
-                    <p>进度: ${challenge.progress}/${challenge.goal}</p>
-                    <p>奖励: ${challenge.bonus}</p>
-                    <p>花费: ${challenge.cost}</p>
-                    ${challenge.failed ? '<p class="failed">已失败</p>' : ''}
+                    <p>${challenge.desc[challenge.progress || 0]}</p>
+                    <p>目标：${challenge.goal} 番茄钟</p>
+                    <p>奖励：${challenge.bonus} 金币</p>
+                    <p>进度：${challenge.progress || 0}/${challenge.goal}</p>
                 </div>
             `).join('');
-        })
-        .catch(error => {
-            console.error('Error fetching challenges:', error);
+
+            challengesList.innerHTML = challengesHtml;
+        } else {
+            console.error('Failed to fetch challenges:', data.message);
+        }
+    } catch (error) {
+        console.error('Error fetching challenges:', error);
+    }
+}
+
+// 记录番茄钟
+async function recordTomato() {
+    const difficulty = document.getElementById('difficulty').value;
+    const task = document.getElementById('task').value;
+    const focus = parseInt(document.getElementById('focus').value);
+    const achievement = parseFloat(document.getElementById('achievement').value);
+
+    try {
+        const response = await fetch('/api/record-tomato', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                difficulty,
+                task,
+                focus,
+                achievement
+            })
         });
+
+        const data = await response.json();
+        if (data.status === 'success') {
+            alert(`记录成功！获得 ${data.result.coins_earned} 金币`);
+            updateUserInfo(data.user_info);
+            fetchStats();  // 更新统计信息
+        } else {
+            throw new Error(data.message);
+        }
+    } catch (error) {
+        console.error('Error recording tomato:', error);
+        alert('记录失败：' + error.message);
+    }
+}
+
+// 获取统计信息
+async function fetchStats() {
+    try {
+        const response = await fetch('/api/get-stats');
+        const data = await response.json();
+        
+        if (data.status === 'success' && data.stats) {
+            const statsDiv = document.getElementById('stats');
+            if (!statsDiv) return;
+
+            statsDiv.innerHTML = `
+                <h2>今日统计</h2>
+                <p>今日番茄数：${data.stats.tomatoes_today}</p>
+                <p>总番茄数：${data.stats.total_tomatoes}</p>
+                <p>连续番茄数：${data.stats.continuous}</p>
+                <p>当前金币：${data.stats.coins.toFixed(2)}</p>
+            `;
+        } else {
+            console.error('Failed to fetch stats:', data.message);
+        }
+    } catch (error) {
+        console.error('Error fetching stats:', error);
+    }
+}
+
+// 更新用户信息显示
+function updateUserInfo(userInfo) {
+    const userInfoDiv = document.getElementById('user-info');
+    if (!userInfoDiv) return;
+
+    userInfoDiv.innerHTML = `
+        <p>总番茄数：${userInfo.tomatoes}</p>
+        <p>今日番茄数：${userInfo.tomatoes_today}</p>
+        <p>连续番茄数：${userInfo.continuous}</p>
+        <p>金币：${userInfo.coins.toFixed(2)}</p>
+        <p>上次获得：${userInfo.gain}</p>
+    `;
 }

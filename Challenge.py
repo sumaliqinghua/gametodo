@@ -126,36 +126,30 @@ def calculate_bouns(data):
         raise
 
 def create_random_challenge():
+    """创建随机挑战"""
     try:
-        total_tomatoes_stat = total_tomatoes_stats()
-        data = {}
-        data['name'] = "勇士的试炼"
-        data['desc'] = "A randomly generated challenge."
-        data['bonus'] = 0
-        data['goal'] = randint(1, int(total_tomatoes_stat))
-        data['cost'] = float(data['goal'] * 20)
-        data['progress'] = 0
-        data['start_time'] = datetime.now().isoformat()
-        rand = random.uniform(0.4, 1)
-        average_tomatoe_hour = record_tomato_pertime()/60#每个番茄耗时
-        data['duration'] = average_tomatoe_hour * rand * data['goal'] * 60
-        calculate_bouns(data)
-        data['failed'] = False
-        print("A random challenge has been created."
-                "\nChallenge Name:", data['name'],
-                "\nChallenge Description:", data['desc'],
-                "\nChallenge Goal:", data['goal'],
-                "\nChallenge Cost:", data['cost'],
-                "\nChallenge Bonus:", data['bonus'],
-                "\nChallenge Duration:", data['duration'])
-        accept = input("是否接受挑战?(y/n)")
-        if accept == 'n':
-            return
-        else:
-            return Challenge(data)
+        # 生成随机挑战参数
+        goal = random.randint(1, 3)
+        duration = random.uniform(24, 72)  # 1-3天
+        cost = 20.0
+        bonus = cost * random.uniform(1.5, 3.0)
+        
+        print(f"预计时{duration} 实际时{duration * 0.625} 倍为: {bonus}")
+        
+        # 创建挑战对象
+        challenge = Challenge(
+            name="随机挑战",
+            desc=["开始一个随机挑战！"],
+            goal=goal,
+            cost=cost,
+            bonus=bonus,
+            duration=duration
+        )
+        
+        return challenge
     except Exception as e:
         logger.error(f"Error creating random challenge: {str(e)}")
-        raise
+        return None
 
 def load_challenges(is_active):
     try:

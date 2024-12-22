@@ -1,6 +1,6 @@
 from flask import Flask, render_template, jsonify, request
 from flask_cors import CORS
-from tomatoes import TomatoTimer
+from tomatoes import TomatoTimer, record_tomatoes, show_today_stats
 from Challenge import Challenge, load_challenges, create_random_challenge
 from User import User
 import json
@@ -48,19 +48,65 @@ def stop_timer():
         logger.error(f"Error stopping timer: {str(e)}", exc_info=True)
         return jsonify({"status": "error", "message": str(e)}), 500
 
-@app.route('/api/get-challenges', methods=['GET'])
+@app.route('/api/record-tomato', methods=['POST'])
+def record_tomato():
+    try:
+        logger.debug("Recording tomato")
+        data = request.json
+        difficulty = data.get('difficulty', '中等')
+        task = data.get('task', '工作')
+        focus = int(data.get('focus', 2))
+        achievement = float(data.get('achievement', 0.0))
+        
+        # 记录番茄钟
+        result = record_tomatoes(
+            user=user,  # 传递全局 user 对象
+            difficulty=difficulty,
+            task=task,
+            focus=focus,
+            achievement=achievement
+        )
+        
+        return jsonify({
+            "status": "success", 
+            "message": "Tomato recorded",
+            "result": result,
+            "user_info": user.get_user_info()
+        })
+    except Exception as e:
+        logger.error(f"Error recording tomato: {str(e)}", exc_info=True)
+        return jsonify({"status": "error", "message": str(e)}), 500
+
+@app.route('/api/get-stats')
+def get_stats():
+    try:
+        if user is None:
+            return jsonify({"status": "error", "message": "User not initialized"})
+            
+        stats = {
+            "tomatoes_today": user.tomatoes_today,
+            "total_tomatoes": user.tomatoes,
+            "coins": user.coins,
+            "continuous": user.continuous
+        }
+        return jsonify({"status": "success", "stats": stats})
+    except Exception as e:
+        logger.error(f"Error getting stats: {str(e)}")
+        return jsonify({"status": "error", "message": str(e)})
+
+@app.route('/api/get-challenges')
 def get_challenges():
     try:
-        logger.debug("Fetching challenges")
-        challenges_data = challenge.get_all_challenges()
-        logger.debug(f"Challenges data: {challenges_data}")
-        # 确保返回的是数组格式
-        if 'active' in challenges_data:
-            return jsonify(challenges_data['active'])
-        return jsonify([])
+        challenges = load_challenges(True)
+        if challenges is None:
+            challenges = []
+        return jsonify({
+            "status": "success",
+            "challenges": [c.__dict__ for c in challenges] if challenges else []
+        })
     except Exception as e:
-        logger.error(f"Error getting challenges: {str(e)}", exc_info=True)
-        return jsonify({"status": "error", "message": str(e)}), 500
+        logger.error(f"Error getting challenges: {str(e)}")
+        return jsonify({"status": "success", "challenges": []})
 
 @app.route('/api/get-user-info', methods=['GET'])
 def get_user_info():

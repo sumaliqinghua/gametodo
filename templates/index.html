@@ -25,6 +25,52 @@
                 </div>
             </section>
 
+            <div class="record-section">
+                <h2>记录番茄钟</h2>
+                <form id="record-form" onsubmit="event.preventDefault(); recordTomato();">
+                    <div class="form-group">
+                        <label for="difficulty">难度：</label>
+                        <select id="difficulty" required>
+                            <option value="简单">简单</option>
+                            <option value="中等" selected>中等</option>
+                            <option value="困难">困难</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="task">任务类型：</label>
+                        <select id="task" required>
+                            <option value="工作" selected>工作</option>
+                            <option value="爱好">爱好</option>
+                            <option value="杂事">杂事</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="focus">专注度：</label>
+                        <select id="focus" required>
+                            <option value="0">不在状态</option>
+                            <option value="1">不佳</option>
+                            <option value="2" selected>一般</option>
+                            <option value="3">比较投入</option>
+                            <option value="4">全神贯注</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="achievement">成果分（0-1）：</label>
+                        <input type="number" id="achievement" min="0" max="1" step="0.1" value="0.5" required>
+                    </div>
+
+                    <button type="submit">记录</button>
+                </form>
+            </div>
+
+            <div id="stats" class="stats-section">
+                <h2>今日统计</h2>
+                <!-- 统计信息将通过 JavaScript 动态更新 -->
+            </div>
+
             <section class="challenges-section">
                 <h2>挑战</h2>
                 <div id="challenges-list">
