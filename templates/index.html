@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GameTodo</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>GameTodo</h1>
+            <div id="user-info">
+                <!-- User information will be displayed here -->
+            </div>
+        </header>
+
+        <main>
+            <section class="timer-section">
+                <div class="timer-display">
+                    <h2>番茄计时器</h2>
+                    <div id="timer">25:00</div>
+                    <button id="start-timer">开始</button>
+                    <button id="stop-timer">停止</button>
+                </div>
+            </section>
+
+            <section class="challenges-section">
+                <h2>挑战</h2>
+                <div id="challenges-list">
+                    <!-- Challenges will be displayed here -->
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
