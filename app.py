@@ -6,6 +6,7 @@ from User import User
 from product import Product, load_products, savejson, product_type_dict
 import json
 import logging
+from datetime import datetime
 
 # 配置日志
 logging.basicConfig(
@@ -223,6 +224,55 @@ def add_product():
         })
     except Exception as e:
         logger.error(f"Error adding product: {str(e)}", exc_info=True)
+        return jsonify({"status": "error", "message": str(e)})
+
+@app.route('/api/add-challenge', methods=['POST'])
+def add_challenge():
+    try:
+        data = request.json
+        challenge_data = {
+            'name': data.get('name'),
+            'desc': data.get('desc').split('\n'),  # 将描述拆分为行
+            'goal': int(data.get('goal')),
+            'cost': float(data.get('cost')),
+            'progress': 0,
+            'start_time': datetime.now().isoformat(),
+            'duration': float(data.get('duration')),
+            'failed': False,
+            'bonus': 0  # 将在保存时计算
+        }
+        
+        # 计算奖励
+        tomatoes_per_hour = total_tomatoes_stats()['tomatoes_per_hour']
+        if tomatoes_per_hour > 0:
+            challenge_data['bonus'] = challenge_data['cost'] * (challenge_data['goal'] / (tomatoes_per_hour * challenge_data['duration']/60))
+        else:
+            challenge_data['bonus'] = challenge_data['cost'] * 1.5
+            
+        # 创建新挑战
+        new_challenge = Challenge(challenge_data)
+        
+        # 加载现有挑战
+        challenges = load_challenges(True)
+        if not challenges:
+            challenges = []
+        challenges.append(new_challenge)
+        
+        # 保存挑战
+        with open('json/challenges.json', 'r+', encoding='utf-8') as f:
+            data = json.load(f)
+            data['active'] = [c.tojson() for c in challenges]
+            f.seek(0)
+            json.dump(data, f, indent=4, ensure_ascii=False)
+            f.truncate()
+            
+        return jsonify({
+            "status": "success",
+            "message": "挑战创建成功",
+            "challenge": new_challenge.tojson()
+        })
+    except Exception as e:
+        logger.error(f"Error adding challenge: {str(e)}", exc_info=True)
         return jsonify({"status": "error", "message": str(e)})
 
 if __name__ == '__main__':

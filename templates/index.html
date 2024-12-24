@@ -76,11 +76,52 @@
             </div>
 
             <section class="challenges-section">
-                <h2>挑战</h2>
-                <div id="challenges-list">
+                <div class="section-header" onclick="toggleSection('challenges-list')">
+                    <h2>挑战</h2>
+                    <button id="show-add-challenge" class="action-button" onclick="event.stopPropagation()">新增挑战</button>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div id="challenges-list" class="section-content expanded">
                     <!-- Challenges will be displayed here -->
                 </div>
             </section>
+
+            <div id="add-challenge-form" class="modal" style="display: none;">
+                <div class="modal-content">
+                    <h2>新增挑战</h2>
+                    <form id="challenge-form">
+                        <div class="form-group">
+                            <label for="challenge-name">挑战名称：</label>
+                            <input type="text" id="challenge-name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="challenge-desc">挑战描述：</label>
+                            <textarea id="challenge-desc" required></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="challenge-goal">目标番茄数：</label>
+                            <input type="number" id="challenge-goal" min="1" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="challenge-cost">赌注（金币）：</label>
+                            <input type="number" id="challenge-cost" step="0.01" min="0" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="challenge-duration">挑战时长（分钟）：</label>
+                            <input type="number" id="challenge-duration" min="30" required>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit">创建挑战</button>
+                            <button type="button" id="cancel-add-challenge">取消</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
 
         </main>
     </div>

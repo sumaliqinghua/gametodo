@@ -27,6 +27,8 @@ function initMainPage() {
     fetchStats();
     // 获取商品列表
     fetchProducts();
+    // 初始化新增挑战表单
+    initAddChallengeForm();
 
     // 定时器相关元素
     const timerDisplay = document.getElementById('timer');
@@ -155,12 +157,23 @@ async function fetchChallenges() {
             }
 
             const challengesHtml = data.challenges.map(challenge => `
-                <div class="challenge-item">
+                <div class="challenge-item ${challenge.failed ? 'failed' : ''} ${challenge.progress >= challenge.goal ? 'completed' : ''}">
                     <h3>${challenge.name}</h3>
-                    <p>${challenge.desc[challenge.progress || 0]}</p>
-                    <p>目标：${challenge.goal} 番茄钟</p>
-                    <p>奖励：${challenge.bonus} 金币</p>
-                    <p>进度：${challenge.progress || 0}/${challenge.goal}</p>
+                    <div class="challenge-desc">
+                        ${challenge.desc.map(line => `<p>${line}</p>`).join('')}
+                    </div>
+                    <p class="challenge-stats">
+                        进度：${challenge.progress}/${challenge.goal} 番茄
+                        <br>
+                        赌注：${challenge.cost} 金币
+                        <br>
+                        奖励：${challenge.bonus.toFixed(1)} 金币
+                        <br>
+                        剩余时间：${calculateRemainingTime(challenge.start_time, challenge.duration)}
+                    </p>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: ${(challenge.progress / challenge.goal * 100)}%"></div>
+                    </div>
                 </div>
             `).join('');
 
@@ -171,6 +184,23 @@ async function fetchChallenges() {
     } catch (error) {
         console.error('Error fetching challenges:', error);
     }
+}
+
+// 计算剩余时间
+function calculateRemainingTime(startTime, duration) {
+    const start = new Date(startTime);
+    const end = new Date(start.getTime() + duration * 60000);
+    const now = new Date();
+    
+    if (now > end) {
+        return '已结束';
+    }
+    
+    const diff = end - now;
+    const hours = Math.floor(diff / (1000 * 60 * 60));
+    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    
+    return `${hours}小时${minutes}分钟`;
 }
 
 // 记录番茄钟
@@ -484,4 +514,60 @@ async function submitLog() {
         console.error('提交日志失败:', error);
         alert('提交失败，请重试');
     }
+}
+
+// 初始化新增挑战表单
+function initAddChallengeForm() {
+    const showFormButton = document.getElementById('show-add-challenge');
+    const modal = document.getElementById('add-challenge-form');
+    const form = document.getElementById('challenge-form');
+    const cancelButton = document.getElementById('cancel-add-challenge');
+
+    if (!showFormButton || !modal || !form || !cancelButton) return;
+
+    showFormButton.addEventListener('click', () => {
+        modal.style.display = 'block';
+    });
+
+    cancelButton.addEventListener('click', () => {
+        modal.style.display = 'none';
+        form.reset();
+    });
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        const formData = {
+            name: document.getElementById('challenge-name').value,
+            desc: document.getElementById('challenge-desc').value,
+            goal: document.getElementById('challenge-goal').value,
+            cost: document.getElementById('challenge-cost').value,
+            duration: document.getElementById('challenge-duration').value
+        };
+
+        try {
+            const response = await fetch('/api/add-challenge', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData)
+            });
+
+            const data = await response.json();
+            
+            if (data.status === 'success') {
+                alert('挑战创建成功！');
+                modal.style.display = 'none';
+                form.reset();
+                // 刷新挑战列表
+                fetchChallenges();
+            } else {
+                alert('创建失败：' + data.message);
+            }
+        } catch (error) {
+            console.error('Error adding challenge:', error);
+            alert('创建失败，请检查网络连接');
+        }
+    });
 }
