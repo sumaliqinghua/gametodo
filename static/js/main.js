@@ -13,6 +13,9 @@ document.addEventListener('DOMContentLoaded', function() {
     } else if (window.location.pathname === '/logs') {
         // 日志页功能
         initLogsPage();
+    } else if (window.location.pathname === '/product') {
+        // 商店页功能
+        initProductPage();
     }
 });
 
@@ -97,6 +100,12 @@ function initMainPage() {
 function initLogsPage() {
     // 获取日志记录
     fetchLogs();
+}
+
+// 商店页初始化
+function initProductPage() {
+    // 获取商品列表
+    fetchProducts();
 }
 
 // 更新用户信息

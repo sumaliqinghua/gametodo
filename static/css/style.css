@@ -29,17 +29,28 @@ header {
 .header-right {
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 15px;
+}
+
+.store-button,
+.log-button {
+    padding: 8px 16px;
+    border-radius: 4px;
+    text-decoration: none;
+    color: white;
+    transition: background-color 0.3s;
+}
+
+.store-button {
+    background-color: #ff6b6b;
+}
+
+.store-button:hover {
+    background-color: #ff5252;
 }
 
 .log-button {
     background-color: #4CAF50;
-    color: white;
-    padding: 8px 16px;
-    border-radius: 4px;
-    text-decoration: none;
-    font-weight: bold;
-    transition: background-color 0.3s;
 }
 
 .log-button:hover {

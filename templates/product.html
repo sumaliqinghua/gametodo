@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GameTodo - 商店</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>GameTodo - 商店</h1>
+            <div class="header-right">
+                <a href="/" class="nav-button">返回主页</a>
+                <a href="/logs" class="log-button">查看日志</a>
+                <div id="user-info">
+                    <!-- User information will be displayed here -->
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <section class="store-section">
+                <h2>商店</h2>
+                <div id="products-list">
+                    <!-- 商品列表将通过 JavaScript 动态更新 -->
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

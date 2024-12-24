@@ -28,6 +28,11 @@ def index():
     logger.debug("Serving index page")
     return render_template('index.html')
 
+@app.route('/product')
+def product():
+    logger.debug("Serving product page")
+    return render_template('product.html')
+
 @app.route('/api/start-timer', methods=['POST'])
 def start_timer():
     try:
