@@ -292,16 +292,19 @@ button[type="submit"]:hover {
     height: 100%;
     background-color: rgba(0,0,0,0.5);
     z-index: 1000;
+    overflow-y: auto;
 }
 
 .modal-content {
     background-color: white;
-    margin: 10% auto;
+    margin: 5% auto;
     padding: 20px;
     width: 80%;
     max-width: 500px;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    max-height: 90vh;
+    overflow-y: auto;
 }
 
 .modal-content h2 {
@@ -355,6 +358,44 @@ button[type="submit"]:hover {
 .form-actions button[type="button"] {
     background-color: #f44336;
     color: white;
+}
+
+/* 可折叠区域样式 */
+.section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    padding: 10px;
+    background-color: #f8f9fa;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.section-header h2 {
+    margin: 0;
+}
+
+.section-header .toggle-icon {
+    font-size: 20px;
+    transition: transform 0.3s;
+}
+
+.section-header .toggle-icon.collapsed {
+    transform: rotate(-90deg);
+}
+
+.section-content {
+    transition: max-height 0.3s ease-out;
+    overflow: hidden;
+}
+
+.section-content.collapsed {
+    max-height: 0;
+}
+
+.section-content.expanded {
+    max-height: 2000px;
 }
 
 /* 已购买商品样式 */

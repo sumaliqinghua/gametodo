@@ -76,15 +76,21 @@
             </div>
 
             <section class="store-section">
-                <h2>商品列表</h2>
-                <div id="products-list">
+                <div class="section-header" onclick="toggleSection('products-list')">
+                    <h2>商品列表</h2>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div id="products-list" class="section-content expanded">
                     <!-- 商品列表将通过 JavaScript 动态更新 -->
                 </div>
             </section>
 
             <section class="purchased-section">
-                <h2>已购买商品</h2>
-                <div id="purchased-products-list">
+                <div class="section-header" onclick="toggleSection('purchased-products-list')">
+                    <h2>已购买商品</h2>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div id="purchased-products-list" class="section-content expanded">
                     <!-- 已购买商品列表将通过 JavaScript 动态更新 -->
                 </div>
             </section>

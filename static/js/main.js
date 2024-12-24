@@ -351,6 +351,23 @@ async function fetchPurchasedProducts() {
     }
 }
 
+// 切换区域的展开/折叠状态
+function toggleSection(sectionId) {
+    const section = document.getElementById(sectionId);
+    const header = section.previousElementSibling;
+    const icon = header.querySelector('.toggle-icon');
+    
+    if (section.classList.contains('expanded')) {
+        section.classList.remove('expanded');
+        section.classList.add('collapsed');
+        icon.classList.add('collapsed');
+    } else {
+        section.classList.remove('collapsed');
+        section.classList.add('expanded');
+        icon.classList.remove('collapsed');
+    }
+}
+
 // 初始化新增商品表单
 function initAddProductForm() {
     const showFormButton = document.getElementById('show-add-product');
