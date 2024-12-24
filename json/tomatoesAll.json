@@ -5160,5 +5160,20 @@
             "last_active_days": "2024-04-20T19:34:04.138862",
             "last_time": "2024-12-24T23:51:15.102371"
         }
+    ],
+    "2024-12-25": [
+        {
+            "difficulty": null,
+            "task": null,
+            "achievement": 0.5,
+            "focus": 2,
+            "tomatoes": 356,
+            "tomatoes_today": 12,
+            "continuous": 1,
+            "coins": -3289.1205270791356,
+            "gain": 13.86,
+            "last_active_days": "2024-04-20T19:34:04.138862",
+            "last_time": "2024-12-25T00:30:22.038728"
+        }
     ]
 }

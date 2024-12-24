@@ -98,6 +98,62 @@ def handle_decay(user):
     except Exception as e:
         print(f"Error handling decay: {str(e)}")
 
+def record_tomato(user, difficulty=None, task=None, focus=None, achievement=None):
+    """记录番茄钟完成情况"""
+    continuous_count = 0
+    time_delta = 0
+
+    # 计算时间间隔
+    try:
+        last_time = datetime.fromisoformat(user.last_time) if user.last_time else datetime.now()
+        time_delta = (datetime.now() - last_time).total_seconds() / 60
+        is_continuous = time_delta <= 25+20  # 在20分钟内又完成了一个番茄
+        if is_continuous:
+            continuous_count = user.continuous + 1
+    except Exception as e:
+        print(f"Error calculating time delta: {str(e)}")
+        time_delta = 0
+    
+    # 更新用户数据
+    user.difficulty = difficulty
+    user.task = task
+    user.focus = focus
+    user.achievement = achievement
+
+    # 计算本次获得的金币数
+    coins = calculate_coins(user, task, continuous_count, time_delta)
+  
+    # 处理衰减逻辑
+    handle_decay(user)
+
+    # 更新用户数据
+    user.coins += coins
+    user.gains = coins
+    user.last_time = datetime.now().isoformat()
+    user.time_delta = time_delta
+    user.tomatoes += 1
+    user.tomatoes_today += 1
+    user.continuous = continuous_count
+    
+    if not user.last_active_days:
+        user.last_active_days = datetime.now().isoformat()
+    
+    # 检查是否达到每日目标
+    if user.tomatoes_today == DAILY_GOAL:
+        print('恭喜达到每日目标!获得额外奖励{}金币'.format(DAILY_REWARD))
+        user.coins += DAILY_REWARD
+        user.gains += DAILY_REWARD
+    
+    user.save_user_data()
+    record_all_tomatoes(user)
+    
+    return {
+        'coins_earned': coins,
+        'total_coins': user.coins,
+        'continuous_count': continuous_count,
+        'time_delta': time_delta
+    }
+
 # Web Routes
 @app.route('/')
 def index():
@@ -158,13 +214,13 @@ def get_challenges_api():
 @app.route('/api/get-stats')
 def get_stats_api():
     try:
-        stats = show_today_stats()
-        if stats is None:
-            stats = {
-                'tomatoes_today': 0,
-                'total_tomatoes': 0,
-                'coins': 0
-            }
+        user = User()
+        stats = {
+            'tomatoes_today': user.tomatoes_today,
+            'total_tomatoes': user.tomatoes,
+            'continuous_count': user.continuous,
+            'coins': round(user.coins, 2)
+        }
         return jsonify({"status": "success", "stats": stats})
     except Exception as e:
         return jsonify({"status": "error", "message": str(e)})
@@ -215,14 +271,14 @@ def record_tomato_api():
     try:
         data = request.json
         user = User()
-        record_tomatoes(
+        result = record_tomato(
             user,
             difficulty=data.get('difficulty'),
             task=data.get('task'),
             focus=int(data.get('focus', 2)),
             achievement=float(data.get('achievement', 0.5))
         )
-        return jsonify({"status": "success"})
+        return jsonify({"status": "success", "data": result})
     except Exception as e:
         return jsonify({"status": "error", "message": str(e)})
 

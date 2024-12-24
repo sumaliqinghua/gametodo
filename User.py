@@ -1,6 +1,7 @@
 # # 用户数据
 import json
 import logging
+from datetime import datetime
 from utilsd import savejson
 
 logger = logging.getLogger(__name__)
@@ -23,6 +24,9 @@ class User:
             self.gains = user_dict['gain']
             self.last_active_days = user_dict['last_active_days']
             self.last_time = user_dict['last_time']
+            
+            # 检查是否需要重置每日数据
+            self.check_and_reset_daily_data()
         
         except FileNotFoundError:
             logger.warning('user.json not found, initializing with default values')
@@ -35,13 +39,30 @@ class User:
             self.continuous = 0
             self.coins = 0.0
             self.gains = 0.0
-            self.last_active_days = ""
+            self.last_active_days = datetime.now().date().isoformat()
             self.last_time = ""
             # Save the default values
             self.save_user_data()
         except Exception as e:
             logger.error(f"Error initializing user: {str(e)}")
             raise
+    
+    def check_and_reset_daily_data(self):
+        """检查并重置每日数据"""
+        try:
+            current_date = datetime.now().date()
+            if self.last_active_days:
+                last_active = datetime.fromisoformat(self.last_active_days).date()
+                if current_date > last_active:
+                    # 重置每日数据
+                    self.tomatoes_today = 0
+                    self.continuous = 0
+                    self.gains = 0
+                    self.last_active_days = current_date.isoformat()
+                    self.save_user_data()
+                    logger.info("Daily data reset successfully")
+        except Exception as e:
+            logger.error(f"Error checking daily data: {str(e)}")
     
     def user_data_to_json(self):
         user_data = {
@@ -65,6 +86,8 @@ class User:
         return user_dict
 
     def get_user_info(self):
+        # 确保在获取用户信息时检查日期
+        self.check_and_reset_daily_data()
         return self.user_data_to_json()
 
     def gain_coins(self, coins):

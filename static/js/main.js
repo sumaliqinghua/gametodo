@@ -161,12 +161,7 @@ async function fetchChallenges() {
 }
 
 // 记录番茄钟
-async function recordTomato() {
-    const difficulty = document.getElementById('difficulty').value;
-    const task = document.getElementById('task').value;
-    const focus = parseInt(document.getElementById('focus').value);
-    const achievement = parseFloat(document.getElementById('achievement').value);
-
+async function recordTomato(difficulty, task, focus, achievement) {
     try {
         const response = await fetch('/api/record-tomato', {
             method: 'POST',
@@ -183,15 +178,24 @@ async function recordTomato() {
 
         const data = await response.json();
         if (data.status === 'success') {
-            alert(`记录成功！获得 ${data.result.coins_earned} 金币`);
-            updateUserInfo();
-            fetchStats();  // 更新统计信息
+            // 更新统计信息
+            updateStats({
+                tomatoes_today: userInfo.tomatoes_today + 1,
+                total_tomatoes: userInfo.tomatoes + 1,
+                continuous_count: data.data.continuous_count,
+                coins: data.data.total_coins
+            });
+            
+            // 更新用户信息
+            await updateUserInfo();
+            
+            alert(`成功记录番茄！获得 ${data.data.coins_earned} 金币`);
         } else {
             throw new Error(data.message);
         }
     } catch (error) {
         console.error('Error recording tomato:', error);
-        alert('记录失败：' + error.message);
+        alert('记录番茄失败：' + error.message);
     }
 }
 
@@ -200,23 +204,26 @@ async function fetchStats() {
     try {
         const response = await fetch('/api/get-stats');
         const data = await response.json();
-        
-        if (data.status === 'success' && data.stats) {
-            const statsDiv = document.getElementById('stats');
-            if (!statsDiv) return;
-
-            statsDiv.innerHTML = `
-                <h2>今日统计</h2>
-                <p>今日番茄数：${data.stats.tomatoes_today}</p>
-                <p>总番茄数：${data.stats.total_tomatoes}</p>
-                <p>连续番茄数：${data.stats.continuous}</p>
-                <p>当前金币：${data.stats.coins.toFixed(2)}</p>
-            `;
+        if (data.status === 'success') {
+            updateStats(data.stats);
         } else {
             console.error('Failed to fetch stats:', data.message);
         }
     } catch (error) {
-        console.error('Error fetching stats:', error);
+        console.error('Failed to fetch stats:', error);
+    }
+}
+
+// 更新统计信息显示
+function updateStats(stats) {
+    const statsContainer = document.getElementById('stats');
+    if (statsContainer) {
+        statsContainer.innerHTML = `
+            <p>今日番茄数：${stats.tomatoes_today || 0}</p>
+            <p>总番茄数：${stats.total_tomatoes || 0}</p>
+            <p>连续番茄数：${stats.continuous_count || 0}</p>
+            <p>金币：${stats.coins || 0}</p>
+        `;
     }
 }
 
