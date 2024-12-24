@@ -12,6 +12,12 @@ from product import CanBuyOne, GotoStore, PurchaseProduct, RecordProduct, show_p
 from recordLog import add_record
 from statics import record_all_tomatoes, show_today_stats
 from utilsd import savejson
+from flask import Flask, request, jsonify, render_template
+
+app = Flask(__name__, 
+    template_folder=os.path.join(os.path.dirname(os.path.abspath(__file__)), 'templates'),
+    static_folder=os.path.join(os.path.dirname(os.path.abspath(__file__)), 'static')
+)
 
 # 基础配置
 BASE_REWARD = 7 # 每个番茄钟的基础奖励
@@ -225,6 +231,75 @@ def handle_decay(user):
     except Exception as e:
         print(f"Error handling decay: {str(e)}")
 
+@app.route('/')
+def index():
+    return render_template('index.html')
+
+@app.route('/api/start-timer', methods=['POST'])
+def start_timer():
+    timer = TomatoTimer()
+    if timer.start():
+        return jsonify({"status": "success"})
+    return jsonify({"status": "error", "message": "Timer already running"})
+
+@app.route('/api/stop-timer', methods=['POST'])
+def stop_timer():
+    timer = TomatoTimer()
+    if timer.stop():
+        return jsonify({"status": "success"})
+    return jsonify({"status": "error", "message": "Timer not running"})
+
+@app.route('/api/get-user-info')
+def get_user_info():
+    user = User()
+    return jsonify({
+        "status": "success",
+        "user_info": {
+            "tomatoes_today": user.tomatoes_today,
+            "tomatoes": user.tomatoes,
+            "continuous": user.continuous,
+            "coins": user.coins,
+            "gain": user.gain
+        }
+    })
+
+@app.route('/api/add-log', methods=['POST'])
+def add_log_api():
+    data = request.json
+    current_time = datetime.now()
+    record = f"{current_time.year}年{current_time.month}月{current_time.day}日{current_time.hour}:{current_time.minute}:{current_time.second}\n"
+    
+    questions = ["1. 实际进度: ", "2. 困难/浪费: ", "3. 学到/收获: ", "4. 做得好的/不好的: ", "5. 改进措施: ", "6. 后续: ", "7. 鼓励: ", "8. 自我评分: "]
+    
+    for question in questions:
+        answer = data.get(question.split('.')[1].strip().rstrip(':'), '')
+        record += f"{question}{answer}\n"
+    
+    judegment = judge_record(record)
+    record += f"9. AI点评: {judegment}\n"
+
+    try:
+        with open("recordLog.txt", "r+", encoding='utf-8') as f:
+            content = f.read()
+            f.seek(0, 0)
+            f.write(record + "\n" + content)
+        return jsonify({"status": "success", "message": "日志已保存", "judgment": judegment})
+    except Exception as e:
+        return jsonify({"status": "error", "message": str(e)})
+
+@app.route('/api/get-logs')
+def get_logs():
+    try:
+        with open("recordLog.txt", "r", encoding='utf-8') as f:
+            content = f.read()
+        return jsonify({"status": "success", "logs": content})
+    except Exception as e:
+        return jsonify({"status": "error", "message": str(e)})
+
+@app.route('/logs')
+def logs_page():
+    return render_template('logs.html')
+
 def main():
     global user,firstLaunch
     # 加载用户数据
@@ -286,4 +361,4 @@ def main():
         return
 
 if __name__ == '__main__':
-    main()
+    app.run(debug=True)

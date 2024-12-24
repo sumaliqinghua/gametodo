@@ -9,6 +9,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // 获取统计信息
     fetchStats();
     fetchProducts();
+    // 获取日志记录
+    fetchLogs();
 
     // 定时器相关元素
     const timerDisplay = document.getElementById('timer');
@@ -258,5 +260,67 @@ async function buyProduct(productName) {
     } catch (error) {
         console.error('Error buying product:', error);
         alert('购买失败：' + error.message);
+    }
+}
+
+// 获取日志记录
+async function fetchLogs() {
+    try {
+        const response = await fetch('/api/get-logs');
+        const data = await response.json();
+        
+        if (data.status === 'success') {
+            const logsDiv = document.getElementById('logs-container');
+            if (!logsDiv) return;
+            
+            // 将日志文本转换为HTML格式
+            const logsHtml = data.logs.split('\n').map(line => 
+                `<div class="log-line">${line}</div>`
+            ).join('');
+            
+            logsDiv.innerHTML = logsHtml;
+        }
+    } catch (error) {
+        console.error('获取日志失败:', error);
+    }
+}
+
+// 提交日志
+async function submitLog() {
+    const logData = {
+        '实际进度': document.getElementById('progress').value,
+        '困难/浪费': document.getElementById('difficulties').value,
+        '学到/收获': document.getElementById('learnings').value,
+        '做得好的/不好的': document.getElementById('evaluation').value,
+        '改进措施': document.getElementById('improvements').value,
+        '后续': document.getElementById('next-steps').value,
+        '鼓励': document.getElementById('encouragement').value,
+        '自我评分': document.getElementById('self-score').value
+    };
+
+    try {
+        const response = await fetch('/api/add-log', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(logData)
+        });
+        const data = await response.json();
+        
+        if (data.status === 'success') {
+            alert('日志保存成功！\nAI点评：' + data.judgment);
+            // 清空输入框
+            Object.keys(logData).forEach(key => {
+                document.getElementById(key.toLowerCase().replace(/[\/\s]/g, '-')).value = '';
+            });
+            // 刷新日志显示
+            fetchLogs();
+        } else {
+            alert('保存失败：' + data.message);
+        }
+    } catch (error) {
+        console.error('提交日志失败:', error);
+        alert('提交失败，请重试');
     }
 }
