@@ -1,6 +1,6 @@
 from flask import Flask, render_template, jsonify, request
 from flask_cors import CORS
-from tomatoes import TomatoTimer, record_tomatoes, show_today_stats, show_products
+from tomatoes import TomatoTimer, record_tomato, show_today_stats, show_products
 from Challenge import Challenge, load_challenges, create_random_challenge
 from User import User
 import json

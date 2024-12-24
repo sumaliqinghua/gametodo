@@ -243,17 +243,29 @@ async function fetchProducts() {
                 return;
             }
 
-            const productsHtml = data.products.map(product => `
-                <div class="product-item">
-                    <h3>${product.name}</h3>
-                    <p>${product.description || ''}</p>
-                    <p class="price">价格：${product.price} 金币</p>
-                    <button onclick="buyProduct('${product.name}')" 
-                            ${!userInfo || userInfo.coins < product.price ? 'disabled' : ''}>
-                        购买
-                    </button>
-                </div>
-            `).join('');
+            const productsHtml = data.products.map(product => {
+                const hasDiscount = product.discountCoefficient < 1.0;
+                const priceDisplay = hasDiscount ? 
+                    `<p class="price">
+                        <span class="original-price">原价：${product.price} 金币</span>
+                        <span class="discount-price">折扣价：${product.discountPrice} 金币</span>
+                        <span class="discount-rate">(${(product.discountCoefficient * 100).toFixed(0)}折)</span>
+                    </p>` :
+                    `<p class="price">价格：${product.price} 金币</p>`;
+
+                return `
+                    <div class="product-item ${hasDiscount ? 'has-discount' : ''}">
+                        <h3>${product.name}</h3>
+                        <p class="type">类型：${product.type}</p>
+                        <p>${product.description || ''}</p>
+                        ${priceDisplay}
+                        <button onclick="buyProduct('${product.name}')" 
+                                ${!userInfo || userInfo.coins < (hasDiscount ? product.discountPrice : product.price) ? 'disabled' : ''}>
+                            购买
+                        </button>
+                    </div>
+                `;
+            }).join('');
 
             productsList.innerHTML = productsHtml;
         } else {

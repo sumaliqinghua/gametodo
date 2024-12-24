@@ -227,7 +227,8 @@ def CanBuyOne(cash):
 def show_products():
     """显示商品列表
     Returns:
-        list: 商品列表，每个商品包含 name, description, price 字段
+        list: 商品列表，包含 name, description, price, type, discountCoefficient 字段，
+             对于折扣商品还会显示折扣价
     """
     try:
         with open('json/product.json', 'r', encoding='utf-8') as f:
@@ -238,11 +239,19 @@ def show_products():
             products = []
             for product in data:
                 if not product.get('purchaseTime') and not product.get('writeoffTime'):
-                    products.append({
+                    product_info = {
                         'name': product['name'],
                         'description': product.get('comments', ''),
-                        'price': float(product['price'])  # 确保价格是浮点数
-                    })
+                        'price': float(product['price']),  # 确保价格是浮点数
+                        'type': product.get('type', '未分类'),
+                        'discountCoefficient': product.get('discountCoefficient', 1.0)
+                    }
+                    
+                    # 如果是折扣商品，添加折扣价
+                    if product.get('discountCoefficient', 1.0) < 1.0:
+                        product_info['discountPrice'] = round(product_info['price'] * product_info['discountCoefficient'], 2)
+                    
+                    products.append(product_info)
             
             logger.info(f"Processed products: {products}")  # 添加处理后的数据日志
             return products
