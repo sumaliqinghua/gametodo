@@ -3,6 +3,7 @@ from flask_cors import CORS
 from tomatoes import TomatoTimer, record_tomato, show_today_stats, show_products
 from Challenge import Challenge, load_challenges, create_random_challenge
 from User import User
+from product import Product, load_products, savejson, product_type_dict
 import json
 import logging
 
@@ -164,6 +165,64 @@ def buy_product():
         })
     except Exception as e:
         logger.error(f"Error buying product: {str(e)}")
+        return jsonify({"status": "error", "message": str(e)})
+
+@app.route('/api/get-purchased-products')
+def get_purchased_products():
+    try:
+        products = load_products('json/purchased_product.json')
+        products_data = []
+        for product in products:
+            product_data = {
+                'name': product.name,
+                'description': product.comments,
+                'price': product.price,
+                'type': product.type,
+                'purchaseTime': product.purchaseTime,
+                'writeoffTime': product.writeoffTime
+            }
+            products_data.append(product_data)
+        return jsonify({
+            "status": "success",
+            "products": products_data
+        })
+    except Exception as e:
+        logger.error(f"Error getting purchased products: {str(e)}", exc_info=True)
+        return jsonify({"status": "error", "message": str(e)})
+
+@app.route('/api/add-product', methods=['POST'])
+def add_product():
+    try:
+        data = request.json
+        name = data.get('name')
+        type_id = data.get('type')
+        price = float(data.get('price'))
+        discount = float(data.get('discount'))
+        comments = data.get('comments', '')
+        
+        # 获取类型名称
+        type_name = product_type_dict.get(str(type_id), '其他')
+        
+        # 创建新产品
+        new_product = Product(
+            name=name,
+            price=price,
+            type=type_name,
+            discountCoefficient=discount,
+            comments=comments
+        )
+        
+        # 加载现有产品并添加新产品
+        products = load_products()
+        products.append(new_product)
+        savejson('json/product.json', products)
+        
+        return jsonify({
+            "status": "success",
+            "message": "商品添加成功"
+        })
+    except Exception as e:
+        logger.error(f"Error adding product: {str(e)}", exc_info=True)
         return jsonify({"status": "error", "message": str(e)})
 
 if __name__ == '__main__':

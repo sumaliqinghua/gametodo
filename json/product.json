@@ -262,5 +262,16 @@
         "firstRecordTime": "2024-03-15T13:10:01.095426",
         "purchaseTime": "",
         "writeoffTime": ""
+    },
+    {
+        "name": "智云稳定器",
+        "price": 900.0,
+        "type": "数码",
+        "discountCoefficient": 0.9,
+        "comments": "",
+        "discountDay": 1,
+        "firstRecordTime": "2024-12-25T00:58:31.812940",
+        "purchaseTime": "",
+        "writeoffTime": ""
     }
 ]

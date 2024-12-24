@@ -106,6 +106,10 @@ function initLogsPage() {
 function initProductPage() {
     // 获取商品列表
     fetchProducts();
+    // 获取已购买商品列表
+    fetchPurchasedProducts();
+    // 初始化新增商品表单
+    initAddProductForm();
 }
 
 // 更新用户信息
@@ -310,6 +314,97 @@ async function buyProduct(productName) {
         console.error('Error buying product:', error);
         alert('购买失败：' + error.message);
     }
+}
+
+// 获取已购买商品列表
+async function fetchPurchasedProducts() {
+    try {
+        const response = await fetch('/api/get-purchased-products');
+        const data = await response.json();
+        
+        if (data.status === 'success') {
+            const purchasedList = document.getElementById('purchased-products-list');
+            if (!purchasedList) return;
+
+            if (!data.products || data.products.length === 0) {
+                purchasedList.innerHTML = '<p>暂无已购买商品</p>';
+                return;
+            }
+
+            const productsHtml = data.products.map(product => `
+                <div class="product-item ${product.writeoffTime ? 'writeoff' : ''}">
+                    <h3>${product.name}</h3>
+                    <p class="type">类型：${product.type}</p>
+                    <p>${product.description || ''}</p>
+                    <p class="price">价格：${product.price} 金币</p>
+                    <p class="purchase-time">购买时间：${new Date(product.purchaseTime).toLocaleString()}</p>
+                    ${product.writeoffTime ? 
+                        `<p class="writeoff-time">核销时间：${new Date(product.writeoffTime).toLocaleString()}</p>` : 
+                        '<p class="status">状态：未核销</p>'}
+                </div>
+            `).join('');
+
+            purchasedList.innerHTML = productsHtml;
+        }
+    } catch (error) {
+        console.error('Error fetching purchased products:', error);
+    }
+}
+
+// 初始化新增商品表单
+function initAddProductForm() {
+    const showFormButton = document.getElementById('show-add-product');
+    const modal = document.getElementById('add-product-form');
+    const form = document.getElementById('product-form');
+    const cancelButton = document.getElementById('cancel-add-product');
+
+    if (!showFormButton || !modal || !form || !cancelButton) return;
+
+    showFormButton.addEventListener('click', () => {
+        modal.style.display = 'block';
+    });
+
+    cancelButton.addEventListener('click', () => {
+        modal.style.display = 'none';
+        form.reset();
+    });
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        const formData = {
+            name: document.getElementById('product-name').value,
+            type: document.getElementById('product-type').value,
+            price: document.getElementById('product-price').value,
+            discount: document.getElementById('product-discount').value,
+            comments: document.getElementById('product-comments').value
+        };
+
+        try {
+            const response = await fetch('/api/add-product', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData)
+            });
+
+            const data = await response.json();
+            
+            if (data.status === 'success') {
+                alert('商品添加成功！');
+                modal.style.display = 'none';
+                form.reset();
+                // 刷新商品列表
+                fetchProducts();
+            } else {
+                alert('添加失败：' + data.message);
+            }
+        } catch (error) {
+            console.error('Error adding product:', error);
+            alert('添加失败，请检查网络连接');
+        }
+    });
 }
 
 // 获取日志记录

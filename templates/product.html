@@ -20,10 +20,72 @@
         </header>
 
         <main>
+            <div class="product-actions">
+                <button id="show-add-product" class="action-button">新增商品</button>
+            </div>
+
+            <div id="add-product-form" class="modal" style="display: none;">
+                <div class="modal-content">
+                    <h2>新增商品</h2>
+                    <form id="product-form">
+                        <div class="form-group">
+                            <label for="product-name">商品名称：</label>
+                            <input type="text" id="product-name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="product-type">商品分类：</label>
+                            <select id="product-type" required>
+                                <option value="1">娱乐</option>
+                                <option value="2">服装</option>
+                                <option value="3">健康</option>
+                                <option value="4">出行</option>
+                                <option value="5">教育</option>
+                                <option value="6">数码</option>
+                                <option value="7">礼物</option>
+                                <option value="8">家居</option>
+                                <option value="9">美食</option>
+                                <option value="10">美妆</option>
+                                <option value="11">宠物</option>
+                                <option value="12">虚拟</option>
+                                <option value="13">其他</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="product-price">价格：</label>
+                            <input type="number" id="product-price" step="0.01" min="0" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="product-discount">折扣系数（0-1）：</label>
+                            <input type="number" id="product-discount" step="0.01" min="0" max="1" value="1" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="product-comments">备注：</label>
+                            <textarea id="product-comments"></textarea>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit">保存</button>
+                            <button type="button" id="cancel-add-product">取消</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
             <section class="store-section">
-                <h2>商店</h2>
+                <h2>商品列表</h2>
                 <div id="products-list">
                     <!-- 商品列表将通过 JavaScript 动态更新 -->
+                </div>
+            </section>
+
+            <section class="purchased-section">
+                <h2>已购买商品</h2>
+                <div id="purchased-products-list">
+                    <!-- 已购买商品列表将通过 JavaScript 动态更新 -->
                 </div>
             </section>
         </main>
