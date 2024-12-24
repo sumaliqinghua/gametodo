@@ -140,8 +140,18 @@ def get_user_info_api():
 @app.route('/api/get-challenges')
 def get_challenges_api():
     try:
-        challenges = load_challenges()
-        return jsonify({"status": "success", "challenges": challenges})
+        # 默认加载活跃的挑战
+        challenges = load_challenges(is_active=True)
+        # 格式化挑战数据为可序列化的格式
+        challenges_data = []
+        for challenge in challenges:
+            challenges_data.append({
+                'name': challenge.name,
+                'desc': challenge.desc,
+                'progress': challenge.progress,
+                'failed': challenge.failed
+            })
+        return jsonify({"status": "success", "challenges": challenges_data})
     except Exception as e:
         return jsonify({"status": "error", "message": str(e)})
 
@@ -149,6 +159,12 @@ def get_challenges_api():
 def get_stats_api():
     try:
         stats = show_today_stats()
+        if stats is None:
+            stats = {
+                'tomatoes_today': 0,
+                'total_tomatoes': 0,
+                'coins': 0
+            }
         return jsonify({"status": "success", "stats": stats})
     except Exception as e:
         return jsonify({"status": "error", "message": str(e)})

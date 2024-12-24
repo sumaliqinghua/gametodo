@@ -1,82 +1,103 @@
 // 全局变量
 let userInfo = null;
 
+// 页面初始化
 document.addEventListener('DOMContentLoaded', function() {
     // 获取用户信息
     updateUserInfo();
+
+    // 根据当前页面初始化不同功能
+    if (window.location.pathname === '/') {
+        // 主页功能
+        initMainPage();
+    } else if (window.location.pathname === '/logs') {
+        // 日志页功能
+        initLogsPage();
+    }
+});
+
+// 主页初始化
+function initMainPage() {
     // 获取挑战列表
     fetchChallenges();
     // 获取统计信息
     fetchStats();
+    // 获取商品列表
     fetchProducts();
-    // 获取日志记录
-    fetchLogs();
 
     // 定时器相关元素
     const timerDisplay = document.getElementById('timer');
     const startButton = document.getElementById('start-timer');
     const stopButton = document.getElementById('stop-timer');
 
-    // 计时器状态
-    let isRunning = false;
-    let timeLeft = 25 * 60; // 25分钟，以秒为单位
+    if (timerDisplay && startButton && stopButton) {
+        // 计时器状态
+        let isRunning = false;
+        let timeLeft = 25 * 60; // 25分钟，以秒为单位
 
-    // 开始计时器
-    startButton.addEventListener('click', function() {
-        if (!isRunning) {
-            fetch('/api/start-timer', {
-                method: 'POST'
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.status === 'success') {
-                    isRunning = true;
-                    startTimer();
-                }
-            });
+        // 开始计时器
+        startButton.addEventListener('click', function() {
+            if (!isRunning) {
+                fetch('/api/start-timer', {
+                    method: 'POST'
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'success') {
+                        isRunning = true;
+                        startTimer();
+                    }
+                });
+            }
+        });
+
+        // 停止计时器
+        stopButton.addEventListener('click', function() {
+            if (isRunning) {
+                fetch('/api/stop-timer', {
+                    method: 'POST'
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'success') {
+                        isRunning = false;
+                        timeLeft = 25 * 60;
+                        updateTimerDisplay();
+                    }
+                });
+            }
+        });
+
+        // 更新计时器显示
+        function updateTimerDisplay() {
+            const minutes = Math.floor(timeLeft / 60);
+            const seconds = timeLeft % 60;
+            timerDisplay.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
         }
-    });
 
-    // 停止计时器
-    stopButton.addEventListener('click', function() {
-        if (isRunning) {
-            fetch('/api/stop-timer', {
-                method: 'POST'
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.status === 'success') {
+        // 启动计时器
+        function startTimer() {
+            if (isRunning) {
+                if (timeLeft > 0) {
+                    timeLeft--;
+                    updateTimerDisplay();
+                    setTimeout(startTimer, 1000);
+                } else {
                     isRunning = false;
+                    alert('时间到！');
                     timeLeft = 25 * 60;
                     updateTimerDisplay();
                 }
-            });
-        }
-    });
-
-    // 更新计时器显示
-    function updateTimerDisplay() {
-        const minutes = Math.floor(timeLeft / 60);
-        const seconds = timeLeft % 60;
-        timerDisplay.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-    }
-
-    // 启动计时器
-    function startTimer() {
-        if (isRunning) {
-            if (timeLeft > 0) {
-                timeLeft--;
-                updateTimerDisplay();
-                setTimeout(startTimer, 1000);
-            } else {
-                isRunning = false;
-                alert('时间到！');
-                timeLeft = 25 * 60;
-                updateTimerDisplay();
             }
         }
     }
-});
+}
+
+// 日志页初始化
+function initLogsPage() {
+    // 获取日志记录
+    fetchLogs();
+}
 
 // 更新用户信息
 async function updateUserInfo() {
