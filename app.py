@@ -4,6 +4,7 @@ from tomatoes import TomatoTimer, record_tomato, show_today_stats, show_products
 from Challenge import Challenge, load_challenges, create_random_challenge
 from User import User
 from product import Product, load_products, savejson, product_type_dict
+from statics import record_all_tomatoes, show_today_stats, total_tomatoes_stats
 import json
 import logging
 from datetime import datetime
@@ -56,7 +57,7 @@ def stop_timer():
         return jsonify({"status": "error", "message": str(e)}), 500
 
 @app.route('/api/record-tomato', methods=['POST'])
-def record_tomato():
+def record_tomatoes():
     try:
         logger.debug("Recording tomato")
         data = request.json
@@ -66,7 +67,7 @@ def record_tomato():
         achievement = float(data.get('achievement', 0.0))
         
         # 记录番茄钟
-        result = record_tomatoes(
+        result = record_tomato(
             user=user,  # 传递全局 user 对象
             difficulty=difficulty,
             task=task,
@@ -121,7 +122,10 @@ def get_user_info():
         logger.debug("Fetching user info")
         user_info = user.get_user_info()
         logger.debug(f"User info: {user_info}")
-        return jsonify(user_info)
+        return jsonify({
+            "status": "success",
+            "user_info": user_info
+        })
     except Exception as e:
         logger.error(f"Error getting user info: {str(e)}", exc_info=True)
         return jsonify({"status": "error", "message": str(e)}), 500
@@ -243,7 +247,9 @@ def add_challenge():
         }
         
         # 计算奖励
-        tomatoes_per_hour = total_tomatoes_stats()['tomatoes_per_hour']
+        tomatoes_per_day = total_tomatoes_stats(includeLastDay=False)
+        tomatoes_per_hour = (tomatoes_per_day * 24) if tomatoes_per_day > 0 else 1
+        
         if tomatoes_per_hour > 0:
             challenge_data['bonus'] = challenge_data['cost'] * (challenge_data['goal'] / (tomatoes_per_hour * challenge_data['duration']/60))
         else:
@@ -273,7 +279,7 @@ def add_challenge():
         })
     except Exception as e:
         logger.error(f"Error adding challenge: {str(e)}", exc_info=True)
-        return jsonify({"status": "error", "message": str(e)})
+        return jsonify({"status": "error", "message": str(e)}), 500
 
 if __name__ == '__main__':
     logger.info("Starting Flask application...")

@@ -144,6 +144,12 @@ def record_tomato(user, difficulty=None, task=None, focus=None, achievement=None
         user.coins += DAILY_REWARD
         user.gains += DAILY_REWARD
     
+    # 更新并检查挑战进度
+    challenges = load_challenges(True)
+    for challenge in challenges:
+        challenge.update_progress()
+    check_challenges(challenges, user)
+    
     user.save_user_data()
     record_all_tomatoes(user)
     

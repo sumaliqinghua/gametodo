@@ -38,12 +38,15 @@ class Challenge():
         }
 
     def get_all_challenges(self):
+        """获取所有挑战"""
         try:
             with open('json/challenges.json', 'r', encoding='utf-8') as f:
                 data = json.load(f)
+                active = [c for c in data.get('active', [])]
+                finished = [c for c in data.get('finished', [])]
                 return {
-                    'active': [Challenge.load_from_dict(c).tojson() for c in data.get('active', [])],
-                    'finished': [Challenge.load_from_dict(c).tojson() for c in data.get('finished', [])]
+                    'active': active,
+                    'finished': finished
                 }
         except FileNotFoundError:
             logger.warning("challenges.json not found, initializing with empty lists")
@@ -53,23 +56,41 @@ class Challenge():
             raise
 
     def update_progress(self):
+        """更新挑战进度"""
         try:
             now = datetime.now()
             start_time = datetime.fromisoformat(self.start_time)
             dvalue = now - start_time
             
+            # 检查是否已经开始
             if dvalue <= timedelta(hours=0):
                 return
-            elif dvalue >= timedelta(hours=self.duration/60):
+                
+            # 检查是否已经超时
+            if dvalue >= timedelta(minutes=self.duration):
                 self.failed = True
                 logger.info("Challenge failed: exceeded time limit by {} minutes".format(
                     dvalue.total_seconds()/60 - self.duration))
-            else:  
+            else:
+                # 更新进度
                 self.progress += 1
                 logger.info("Challenge progress: {}/{} for '{}'".format(
                     self.progress, self.goal, self.name))
+                
+                # 计算当前延迟
                 delay = dvalue.total_seconds()/60 - (30 * (self.progress - 1) + 25)
                 logger.debug(f"Current delay: {delay}min, Flexible time remaining: {self.duration - self.goal * 30 - delay}min")
+                
+            # 保存更新后的挑战状态
+            challenges = self.get_all_challenges()
+            for i, challenge in enumerate(challenges['active']):
+                if challenge['name'] == self.name:
+                    challenges['active'][i] = self.tojson()
+                    break
+            
+            with open('json/challenges.json', 'w', encoding='utf-8') as f:
+                json.dump(challenges, f, indent=4, ensure_ascii=False, default=datetime_handler)
+                
         except Exception as e:
             logger.error(f"Error updating progress: {str(e)}")
             raise
@@ -118,7 +139,8 @@ def calculate_bouns(data):
     try:
         average_tomatoe_hour = record_tomato_pertime()/60#每个番茄耗时
         rand = random.uniform(1.2, 2.2)
-        coeff = (data['goal'] * average_tomatoe_hour * 60)/data['duration'] * rand
+        #//【C】为啥这儿要乘1000才对
+        coeff = (data['goal'] * average_tomatoe_hour * 60 * 1000)/data['duration'] * rand
         data['bonus'] = data['cost'] * coeff
         print(f"标准用时{average_tomatoe_hour * data['goal']} 预期用时{data['duration']/60} 奖励为: {data['bonus']}")
     except Exception as e:

@@ -39,6 +39,28 @@ function initMainPage() {
         // 计时器状态
         let isRunning = false;
         let timeLeft = 25 * 60; // 25分钟，以秒为单位
+        let startTime = null;
+        let animationFrameId = null;
+
+        // 从localStorage恢复计时器状态
+        function restoreTimerState() {
+            const savedState = JSON.parse(localStorage.getItem('timerState') || '{}');
+            if (savedState.isRunning) {
+                isRunning = true;
+                startTime = savedState.startTime;
+                timeLeft = savedState.timeLeft;
+                startTimer();
+            }
+        }
+
+        // 保存计时器状态到localStorage
+        function saveTimerState() {
+            localStorage.setItem('timerState', JSON.stringify({
+                isRunning,
+                startTime,
+                timeLeft
+            }));
+        }
 
         // 开始计时器
         startButton.addEventListener('click', function() {
@@ -50,7 +72,9 @@ function initMainPage() {
                 .then(data => {
                     if (data.status === 'success') {
                         isRunning = true;
+                        startTime = Date.now();
                         startTimer();
+                        saveTimerState();
                     }
                 });
             }
@@ -67,7 +91,13 @@ function initMainPage() {
                     if (data.status === 'success') {
                         isRunning = false;
                         timeLeft = 25 * 60;
+                        startTime = null;
+                        if (animationFrameId) {
+                            cancelAnimationFrame(animationFrameId);
+                            animationFrameId = null;
+                        }
                         updateTimerDisplay();
+                        saveTimerState();
                     }
                 });
             }
@@ -82,19 +112,27 @@ function initMainPage() {
 
         // 启动计时器
         function startTimer() {
-            if (isRunning) {
-                if (timeLeft > 0) {
-                    timeLeft--;
-                    updateTimerDisplay();
-                    setTimeout(startTimer, 1000);
-                } else {
-                    isRunning = false;
-                    alert('时间到！');
-                    timeLeft = 25 * 60;
-                    updateTimerDisplay();
-                }
+            if (!isRunning) return;
+
+            const currentTime = Date.now();
+            const elapsedSeconds = Math.floor((currentTime - startTime) / 1000);
+            timeLeft = Math.max(25 * 60 - elapsedSeconds, 0);
+
+            if (timeLeft > 0) {
+                updateTimerDisplay();
+                animationFrameId = requestAnimationFrame(startTimer);
+            } else {
+                isRunning = false;
+                startTime = null;
+                timeLeft = 25 * 60;
+                alert('时间到！');
+                updateTimerDisplay();
+                saveTimerState();
             }
         }
+
+        // 页面加载时恢复计时器状态
+        restoreTimerState();
     }
 }
 
@@ -120,24 +158,53 @@ async function updateUserInfo() {
         const response = await fetch('/api/get-user-info');
         const data = await response.json();
         
-        if (data.status === 'success') {
+        if (data.status === 'success' && data.user_info) {
             userInfo = data.user_info;  // 保存用户信息
-            const userInfoDiv = document.getElementById('user-info');
-            if (!userInfoDiv) return;
-
-            userInfoDiv.innerHTML = `
-                <p>今日番茄：${userInfo.tomatoes_today}</p>
-                <p>总番茄数：${userInfo.tomatoes}</p>
-                <p>连续番茄：${userInfo.continuous}</p>
-                <p>金币：${userInfo.coins.toFixed(2)}</p>
-                <p>上次获得：${userInfo.gain}</p>
-            `;
             
-            // 更新商品列表（因为金币数可能影响购买按钮状态）
-            fetchProducts();
+            // 确保所有必要的属性都有默认值
+            userInfo.tomatoes_today = userInfo.tomatoes_today || 0;
+            userInfo.tomatoes = userInfo.tomatoes || 0;
+            userInfo.continuous = userInfo.continuous || 0;
+            userInfo.coins = userInfo.coins || 0;
+            userInfo.gain = userInfo.gain || 0;
+
+            updateUserInfoDisplay();
+        } else {
+            console.error('Failed to get user info:', data.message || '未知错误');
+            // 设置默认用户信息
+            userInfo = {
+                tomatoes_today: 0,
+                tomatoes: 0,
+                continuous: 0,
+                coins: 0,
+                gain: 0
+            };
         }
     } catch (error) {
         console.error('Error updating user info:', error);
+        // 设置默认用户信息
+        userInfo = {
+            tomatoes_today: 0,
+            tomatoes: 0,
+            continuous: 0,
+            coins: 0,
+            gain: 0
+        };
+    }
+    return userInfo;
+}
+
+// 更新用户信息显示
+function updateUserInfoDisplay() {
+    const userInfoDiv = document.getElementById('user-info');
+    if (userInfoDiv && userInfo) {
+        userInfoDiv.innerHTML = `
+            <p>今日番茄：${userInfo.tomatoes_today}</p>
+            <p>总番茄数：${userInfo.tomatoes}</p>
+            <p>连续番茄：${userInfo.continuous}</p>
+            <p>金币：${userInfo.coins.toFixed(2)}</p>
+            <p>上次获得：${userInfo.gain}</p>
+        `;
     }
 }
 
@@ -156,11 +223,25 @@ async function fetchChallenges() {
                 return;
             }
 
-            const challengesHtml = data.challenges.map(challenge => `
+            const challengesHtml = data.challenges.map(challenge => {
+                // 确定当前要显示的描述
+                let currentDesc = '';
+                if (challenge.failed) {
+                    // 如果失败，显示失败结束语（最后一条）
+                    currentDesc = challenge.desc[challenge.desc.length - 1];
+                } else if (challenge.progress >= challenge.goal) {
+                    // 如果完成，显示成功结束语（倒数第二条）
+                    currentDesc = challenge.desc[challenge.desc.length - 2];
+                } else {
+                    // 否则显示当前进度对应的描述
+                    currentDesc = challenge.desc[Math.min(challenge.progress, challenge.desc.length - 3)];
+                }
+
+                return `
                 <div class="challenge-item ${challenge.failed ? 'failed' : ''} ${challenge.progress >= challenge.goal ? 'completed' : ''}">
                     <h3>${challenge.name}</h3>
                     <div class="challenge-desc">
-                        ${challenge.desc.map(line => `<p>${line}</p>`).join('')}
+                        <p>${currentDesc}</p>
                     </div>
                     <p class="challenge-stats">
                         进度：${challenge.progress}/${challenge.goal} 番茄
@@ -169,21 +250,39 @@ async function fetchChallenges() {
                         <br>
                         奖励：${challenge.bonus.toFixed(1)} 金币
                         <br>
-                        剩余时间：${calculateRemainingTime(challenge.start_time, challenge.duration)}
+                        <span class="remaining-time" data-start="${challenge.start_time}" data-duration="${challenge.duration}">
+                            剩余时间：${calculateRemainingTime(challenge.start_time, challenge.duration)}
+                        </span>
                     </p>
                     <div class="progress-bar">
                         <div class="progress" style="width: ${(challenge.progress / challenge.goal * 100)}%"></div>
                     </div>
                 </div>
-            `).join('');
+            `}).join('');
 
             challengesList.innerHTML = challengesHtml;
+
+            // 启动定时更新剩余时间
+            startTimeUpdater();
         } else {
             console.error('Failed to fetch challenges:', data.message);
         }
     } catch (error) {
         console.error('Error fetching challenges:', error);
     }
+}
+
+// 定时更新剩余时间
+function startTimeUpdater() {
+    // 每分钟更新一次剩余时间
+    setInterval(() => {
+        const timeElements = document.querySelectorAll('.remaining-time');
+        timeElements.forEach(element => {
+            const startTime = element.dataset.start;
+            const duration = element.dataset.duration;
+            element.textContent = '剩余时间：' + calculateRemainingTime(startTime, duration);
+        });
+    }, 60000); // 每分钟更新一次
 }
 
 // 计算剩余时间
@@ -209,7 +308,7 @@ async function recordTomato(difficulty, task, focus, achievement) {
         const response = await fetch('/api/record-tomato', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json',
+                'Content-Type': 'application/json'
             },
             body: JSON.stringify({
                 difficulty,
@@ -220,25 +319,30 @@ async function recordTomato(difficulty, task, focus, achievement) {
         });
 
         const data = await response.json();
+        
         if (data.status === 'success') {
-            // 更新统计信息
-            updateStats({
-                tomatoes_today: userInfo.tomatoes_today + 1,
-                total_tomatoes: userInfo.tomatoes + 1,
-                continuous_count: data.data.continuous_count,
-                coins: data.data.total_coins
-            });
-            
             // 更新用户信息
-            await updateUserInfo();
+            if (data.user_info) {
+                userInfo = data.user_info;
+                updateUserInfoDisplay();
+            }
             
-            alert(`成功记录番茄！获得 ${data.data.coins_earned} 金币`);
+            // 立即更新挑战列表显示
+            await fetchChallenges();
+            
+            // 显示获得的金币
+            if (data.result && data.result.coins_earned) {
+                alert(`成功记录番茄！获得 ${data.result.coins_earned} 金币`);
+            }
+            
+            return data.result;
         } else {
-            throw new Error(data.message);
+            console.error('Failed to record tomato:', data.message);
+            return null;
         }
     } catch (error) {
         console.error('Error recording tomato:', error);
-        alert('记录番茄失败：' + error.message);
+        return null;
     }
 }
 
