@@ -139,10 +139,10 @@ def calculate_bouns(data):
     try:
         average_tomatoe_hour = record_tomato_pertime()/60#每个番茄耗时
         rand = random.uniform(1.2, 2.2)
-        #//【C】为啥这儿要乘1000才对
+        #//【C】为啥这儿要乘1000才对//S:没走这儿
         coeff = (data['goal'] * average_tomatoe_hour * 60 * 1000)/data['duration'] * rand
         data['bonus'] = data['cost'] * coeff
-        print(f"标准用时{average_tomatoe_hour * data['goal']} 预期用时{data['duration']/60} 奖励为: {data['bonus']}")
+        logger.info(f"标准用时{average_tomatoe_hour * data['goal']} 预期用时{data['duration']/60} 奖励为: {data['bonus']}")
     except Exception as e:
         logger.error(f"Error calculating bonus: {str(e)}")
         raise

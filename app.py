@@ -4,10 +4,12 @@ from tomatoes import TomatoTimer, record_tomato, show_today_stats, show_products
 from Challenge import Challenge, load_challenges, create_random_challenge
 from User import User
 from product import Product, load_products, savejson, product_type_dict
-from statics import record_all_tomatoes, show_today_stats, total_tomatoes_stats
+from statics import record_all_tomatoes, show_today_stats, total_tomatoes_stats, record_tomato_pertime
 import json
 import logging
 from datetime import datetime
+import random
+
 
 # 配置日志
 logging.basicConfig(
@@ -247,13 +249,18 @@ def add_challenge():
         }
         
         # 计算奖励
-        tomatoes_per_day = total_tomatoes_stats(includeLastDay=False)
-        tomatoes_per_hour = (tomatoes_per_day * 24) if tomatoes_per_day > 0 else 1
+        average_tomatoe_hour = record_tomato_pertime()/60#每个番茄耗时
+        rand = random.uniform(1.1, 1.6)
+        coeff = (challenge_data['goal'] * average_tomatoe_hour * 60)/challenge_data['duration'] * rand
+        challenge_data['bonus'] = challenge_data['cost'] * coeff
+        logger.info(f"标准用时{average_tomatoe_hour * challenge_data['goal']} 预期用时{challenge_data['duration']/60} 奖励为: {challenge_data['bonus']}")
+        # tomatoes_per_day = total_tomatoes_stats(includeLastDay=False)
+        # tomatoes_per_hour = (tomatoes_per_day * 24) if tomatoes_per_day > 0 else 1
         
-        if tomatoes_per_hour > 0:
-            challenge_data['bonus'] = challenge_data['cost'] * (challenge_data['goal'] / (tomatoes_per_hour * challenge_data['duration']/60))
-        else:
-            challenge_data['bonus'] = challenge_data['cost'] * 1.5
+        # if tomatoes_per_hour > 0:
+        #     challenge_data['bonus'] = challenge_data['cost'] * (challenge_data['goal'] / (tomatoes_per_hour * challenge_data['duration']/60))
+        # else:
+        #     challenge_data['bonus'] = challenge_data['cost'] * 1.5
             
         # 创建新挑战
         new_challenge = Challenge(challenge_data)
